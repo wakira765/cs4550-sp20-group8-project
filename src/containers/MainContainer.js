@@ -28,7 +28,7 @@ class MainContainer extends React.Component {
                 <ul>
                     {
                         this.props.drugs && this.props.drugs.map(drug =>
-                            <li>{drug.minConcept.name}</li>
+                            <li>{drug.name}</li>
                         )
                     }
                 </ul>
@@ -47,7 +47,7 @@ const dispatchToPropertyMapper = (dispatch) => {
     return ({
         findDrugsByName: (drugName) =>
             DrugService.findDrugsByName(drugName)
-                .then(drugs => dispatch(findDrugsByNameAction(drugs.rxclassDrugInfoList.rxclassDrugInfo)))
+                .then(drugs => dispatch(findDrugsByNameAction(drugs)))
 
     })
 };
