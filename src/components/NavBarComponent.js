@@ -1,8 +1,9 @@
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { findDrugsByName, findDrugsByDisease, getDrugSideEffects } from "../services/DrugService";
 
-const NavBarComponent = ({findDrugsByName, handleSearchTermChange, searchTerm}) => {
+const NavBarComponent = ({findDrugsByName, findDrugsByDisease, getDrugSideEffects, handleSearchTermChange, searchTerm}) => {
     return (
         <div>
             <nav className="navbar fixed-top navbar-expand-md navbar-dark bg-info px-0">
@@ -17,7 +18,17 @@ const NavBarComponent = ({findDrugsByName, handleSearchTermChange, searchTerm}) 
                 <button className="btn btn-info mx-sm-2"
                         type="submit"
                         onClick={() => findDrugsByName(searchTerm)}>
-                    Search
+                    Find Drug
+                </button>
+                <button className="btn btn-info mx-sm-2"
+                        type="submit"
+                        onClick={() => findDrugsByDisease(searchTerm)}>
+                    Find Treatments
+                </button>
+                <button className="btn btn-info mx-sm-2"
+                        type="submit"
+                        onClick={() => getDrugSideEffects(searchTerm)}>
+                    Get Side effects
                 </button>
             </nav>
         </div>
