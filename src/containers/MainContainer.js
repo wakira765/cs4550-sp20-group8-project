@@ -30,7 +30,11 @@ class MainContainer extends React.Component {
                 <ul>
                     {
                         this.props.drugs && this.props.drugs.map(drug =>
+<<<<<<< HEAD
                             <li>{drug}</li>
+=======
+                            <li>{drug.name}</li>
+>>>>>>> 7a358b4ffe417bd1d637bd64f73f3ece83322391
                         )
                     }
                 </ul>
@@ -50,6 +54,7 @@ const dispatchToPropertyMapper = (dispatch) => {
     return ({
         findDrugsByName: (drugName) =>
             DrugService.findDrugsByName(drugName)
+<<<<<<< HEAD
                 .then(drugs => dispatch(findDrugsByNameAction(drugs))),
         findDrugsByDisease: (diseaseName) =>
             DrugService.findDrugsByDisease(diseaseName)
@@ -57,6 +62,10 @@ const dispatchToPropertyMapper = (dispatch) => {
         getDrugSideEffects: (drugName) =>
             DrugService.getDrugSideEffects(drugName)
                 .then(side_effects => dispatch(getDrugSideEffectsAction(side_effects)))
+=======
+                .then(drugs => dispatch(findDrugsByNameAction(drugs)))
+
+>>>>>>> 7a358b4ffe417bd1d637bd64f73f3ece83322391
     })
 };
 

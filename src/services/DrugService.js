@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {RX_CLASS_DRUG_URL, NHS_DRUG_URL, NHS_KEY} from "../constants";
 import $ from 'jquery';
 
@@ -5,6 +6,12 @@ import $ from 'jquery';
 // Used for mapping drug names to its concept for centralzied information
 export const findDrugConcept = (drugName) => {
     return fetch(`${RX_CLASS_DRUG_URL}/class/byDrugName.json?drugName=${drugName}&relaSource=MEDRT&relas=has_ingredient&trans=0&ttys=IN`)
+=======
+import {LOCALHOST_URL} from "../constants";
+
+export const findDrugsByName = (drugName) => {
+    return fetch(`${LOCALHOST_URL}/drugs/${drugName}`)
+>>>>>>> 7a358b4ffe417bd1d637bd64f73f3ece83322391
         .then(response => response.json())
         .then(data => data.rxclassDrugInfoList.rxclassDrugInfo)
         .then(drugInfo => {
@@ -16,6 +23,7 @@ export const findDrugConcept = (drugName) => {
         })
 };
 
+<<<<<<< HEAD
 // finding drugs that treat the given disease
 export const findDrugsByDisease = (diseaseName) => {
     return fetch(`${RX_CLASS_DRUG_URL}/class/byName.json?className=${diseaseName}`)
@@ -71,3 +79,13 @@ export const getDrugSideEffects = (drugName) => {
 export default {
     findDrugsByName, findDrugsByDisease, getDrugSideEffects
 }
+=======
+export const findAssociatedDiseasesByDrugName = (drugName) => {
+    return fetch(`${LOCALHOST_URL}/class/byDrugName.json?drugName=${drugName}&relaSource=MEDRT&relas=may_treat`)
+        .then(response => response.json())
+};
+
+export default {
+    findDrugsByName
+}
+>>>>>>> 7a358b4ffe417bd1d637bd64f73f3ece83322391
