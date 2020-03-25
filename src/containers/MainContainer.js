@@ -3,6 +3,7 @@ import React from "react"
 import NavBarComponent from "../components/NavBarComponent";
 import {connect} from "react-redux";
 import DrugService from "../services/DrugService";
+import {Link} from "react-router-dom";
 import {findDrugsByNameAction, findDrugsByDiseaseAction, getDrugSideEffectsAction} from "../actions/MainActions";
 
 class MainContainer extends React.Component {
@@ -29,13 +30,13 @@ class MainContainer extends React.Component {
                 />
                 <ul>
                     {
-                        this.props.drugs && this.props.drugs.map(drug =>
-<<<<<<< HEAD
-                            <li>{drug}</li>
-=======
-                            <li>{drug.name}</li>
->>>>>>> 7a358b4ffe417bd1d637bd64f73f3ece83322391
-                        )
+                        this.props.searchResults && this.props.searchResults.map((result, index) => {
+                                return (<li>
+                                    <Link key={index}
+                                          to={`/${result}`}>{result}
+                                    </Link>
+                                </li>)
+                        })
                     }
                 </ul>
             </div>
@@ -45,8 +46,7 @@ class MainContainer extends React.Component {
 
 const stateToPropertyMapper = (state) => {
     return ({
-        drugs: state.main.drugs,
-        side_effects: state.main.side_effects
+        searchResults: state.main.searchResults
     })
 };
 
@@ -54,18 +54,13 @@ const dispatchToPropertyMapper = (dispatch) => {
     return ({
         findDrugsByName: (drugName) =>
             DrugService.findDrugsByName(drugName)
-<<<<<<< HEAD
                 .then(drugs => dispatch(findDrugsByNameAction(drugs))),
         findDrugsByDisease: (diseaseName) =>
             DrugService.findDrugsByDisease(diseaseName)
                 .then(drugs => dispatch(findDrugsByDiseaseAction(drugs))),
         getDrugSideEffects: (drugName) =>
             DrugService.getDrugSideEffects(drugName)
-                .then(side_effects => dispatch(getDrugSideEffectsAction(side_effects)))
-=======
-                .then(drugs => dispatch(findDrugsByNameAction(drugs)))
-
->>>>>>> 7a358b4ffe417bd1d637bd64f73f3ece83322391
+                .then(sideEffects => dispatch(getDrugSideEffectsAction(sideEffects)))
     })
 };
 

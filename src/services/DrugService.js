@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import {RX_CLASS_DRUG_URL, NHS_DRUG_URL, NHS_KEY} from "../constants";
 import $ from 'jquery';
 
@@ -6,31 +5,26 @@ import $ from 'jquery';
 // Used for mapping drug names to its concept for centralzied information
 export const findDrugConcept = (drugName) => {
     return fetch(`${RX_CLASS_DRUG_URL}/class/byDrugName.json?drugName=${drugName}&relaSource=MEDRT&relas=has_ingredient&trans=0&ttys=IN`)
-=======
-import {LOCALHOST_URL} from "../constants";
-
-export const findDrugsByName = (drugName) => {
-    return fetch(`${LOCALHOST_URL}/drugs/${drugName}`)
->>>>>>> 7a358b4ffe417bd1d637bd64f73f3ece83322391
         .then(response => response.json())
-        .then(data => data.rxclassDrugInfoList.rxclassDrugInfo)
-        .then(drugInfo => {
-            for (var i=0; i < drugInfo.length; i++) {
-                if (drugInfo[i].minConcept.tty === "IN") {
-                    console.log(drugInfo[i].minConcept.name)
+        .then(data => {
+            const drugList = data.rxclassDrugInfoList.rxclassDrugInfo;
+            let result = [];
+            for (let drug of drugList) {
+                if (drug.minConcept.tty === "IN") {
+                    result.push(drug.minConcept.name);
                 }
             }
+            return result;
         })
 };
 
-<<<<<<< HEAD
 // finding drugs that treat the given disease
 export const findDrugsByDisease = (diseaseName) => {
     return fetch(`${RX_CLASS_DRUG_URL}/class/byName.json?className=${diseaseName}`)
         .then(response => response.json())
         .then(data => data.rxclassMinConceptList.rxclassMinConcept[0].classId)
         .then(classId => findDrugsByDiseaseId(classId))
-}
+};
 
 const findDrugsByDiseaseId = (classId) => {
     console.log(classId)
@@ -38,54 +32,74 @@ const findDrugsByDiseaseId = (classId) => {
     .then(response => response.json())
     .then(data => data.drugMemberGroup.drugMember)
     .then(drugList => {
-        var drugs = new Array()
-        for (var i=0; i < drugList.length; i++) {
+        let drugs = [];
+        for (let i=0; i < drugList.length; i++) {
             drugs.push(drugList[i].minConcept.name)
         }
         return drugs
     })
-}
+};
 
 export const findDrugsByName = (drugName) => {
     return findDrugConcept(drugName)
-}
+};
 
 export const getDrugSideEffects = (drugName) => {
-    //let drugConcept = findDrugConcept(drugName) // ibuprofen --> ibuprofen-for-adults
-    return fetch(`${NHS_DRUG_URL}/${drugName}`, {
+    return findDrugConcept(drugName)
+        .then(drugConcepts => {
+            const concept = drugConcepts[0];
+            return fetch(`${NHS_DRUG_URL}/${concept}`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'subscription-key': NHS_KEY
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const pages = data.mainEntityOfPage;
+                    let sideEffects = [];
+                    for (let page of pages) {
+                        if (page.headline === "Side effects") {
+                            const se_html = $(page.mainEntityOfPage[0].text).children();
+                            for (let se of se_html) {
+                                sideEffects.push($(se).text());
+                            }
+                        }
+                    }
+                    return sideEffects
+                })
+        })
+};
+
+export const findDrugData = (drugConcept) => {
+    return fetch(`${NHS_DRUG_URL}/${drugConcept}`, {
         headers: {
             'Content-Type': 'application/json',
             'subscription-key': NHS_KEY
         }
     })
-    .then(response => response.json())
-    .then(data => data.mainEntityOfPage)
-    .then(pages => {
-        var side_effects = new Array()
-        for (var i=0; i < pages.length; i++) {
-            if (pages[i].headline === "Side effects") {
-                var se_html = $(pages[i].mainEntityOfPage[0].text).children()
-                console.log(se_html)
-                for (var f=0; f < se_html.length; f++) {
-                    side_effects.push(console.log($(se_html[f]).text()))
+        .then(response => response.json())
+        .then(data => {
+            const pages = data.mainEntityOfPage;
+            let drugInfo = [];
+            for (let page of pages) {
+                let info = [];
+                if (page.headline !== "Common questions") {
+                    const htmlInfo = $(page.mainEntityOfPage[0].text).children();
+                    for (let i of htmlInfo) {
+                        info.push($(i).text());
+                    }
+                    drugInfo.push({
+                        headline: page.headline,
+                        info: info
+                    })
                 }
             }
-        }
-        console.log(side_effects)
-    })
-}
-
-
-export default {
-    findDrugsByName, findDrugsByDisease, getDrugSideEffects
-}
-=======
-export const findAssociatedDiseasesByDrugName = (drugName) => {
-    return fetch(`${LOCALHOST_URL}/class/byDrugName.json?drugName=${drugName}&relaSource=MEDRT&relas=may_treat`)
-        .then(response => response.json())
+            return drugInfo
+        })
 };
 
+
 export default {
-    findDrugsByName
+    findDrugsByName, findDrugsByDisease, getDrugSideEffects, findDrugData
 }
->>>>>>> 7a358b4ffe417bd1d637bd64f73f3ece83322391

@@ -1,7 +1,6 @@
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { findDrugsByName, findDrugsByDisease, getDrugSideEffects } from "../services/DrugService";
 
 const NavBarComponent = ({findDrugsByName, findDrugsByDisease, getDrugSideEffects, handleSearchTermChange, searchTerm}) => {
     return (
