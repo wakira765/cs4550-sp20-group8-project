@@ -20,7 +20,7 @@ class MainContainer extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="react-container">
                 <NavBarComponent
                     findDrugsByName={this.props.findDrugsByName}
                     findDrugsByDisease={this.props.findDrugsByDisease}
@@ -28,17 +28,17 @@ class MainContainer extends React.Component {
                     handleSearchTermChange={this.handleSearchTermChange}
                     searchTerm={this.state.searchTerm}
                 />
-                <ul>
+                <div className="search-results-container">
                     {
                         this.props.searchResults && this.props.searchResults.map((result, index) => {
-                                return (<li>
-                                    <Link key={index}
-                                          to={`/${result}`}>{result}
-                                    </Link>
-                                </li>)
+                                return (
+                                    <div key={index} className={"search-result"+index}>
+                                        <Link to={`/${result}`}>{result}</Link>
+                                    </div>
+                                )
                         })
                     }
-                </ul>
+                </div>
             </div>
         )
     }

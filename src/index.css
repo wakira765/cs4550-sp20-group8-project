@@ -12,6 +12,68 @@ code {
     monospace;
 }
 
-body {
-  padding-top: 80px;
+/* nav bar styles */
+.nav-bar {
+    padding: 20px 10px;
+    background-color: #17a2b8;
+}
+
+.nav-bar .search-bar-label {
+    display: block;
+    color: #FDFEFE;
+    font-weight: 600;
+    margin: 0;
+}
+
+.nav-bar .nav-search-bar {
+    padding: 5px 10px;
+    border: 1px solid #FDFEFE;
+    border-radius: 5px;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.nav-bar .cta-container button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    background-color: transparent;
+    border: 1px solid #FDFEFE;
+    border-radius: 5px;
+    color: #FDFEFE;
+    font-weight: 600;
+    padding: 5px 10px;
+    transition: background-color 0.5s, border-color 0.5s;
+    line-height: 1.2;
+}
+
+.nav-bar .cta-container button:hover,
+.nav-bar .cta-container button:focus,
+.nav-bar .cta-container button:active {
+    background-color: #138496;
+    border-color: #117a8b;
+}
+
+/* media queries (desktop styles) */
+@media screen and (min-width: 768px) {
+  .nav-bar .nav-search-bar {
+      display: inline-block;
+      width: 50%;
+      margin-right: 2%;
+  }
+
+  .nav-bar .cta-container {
+      width: 48%;
+      display: inline-block;
+  }
+
+  .nav-bar .cta-container .button-container {
+      display: flex;
+      justify-content: space-around;
+  }
+
+  .nav-bar .cta-container button {
+      width: 30%;
+      padding: 10px;
+  }
 }
