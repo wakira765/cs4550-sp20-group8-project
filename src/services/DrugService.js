@@ -27,7 +27,6 @@ export const findDrugsByDisease = (diseaseName) => {
 };
 
 const findDrugsByDiseaseId = (classId) => {
-    console.log(classId)
     return fetch(`${RX_CLASS_DRUG_URL}/classMembers.json?classId=${classId}&relaSource=MEDRT&rela=may_treat&trans=0&ttys=IN`)
     .then(response => response.json())
     .then(data => data.drugMemberGroup.drugMember)
@@ -85,20 +84,17 @@ export const findDrugData = (drugConcept) => {
             for (let page of pages) {
                 let info = [];
                 if (page.headline !== "Common questions") {
-                    const htmlInfo = $(page.mainEntityOfPage[0].text).children();
-                    for (let i of htmlInfo) {
-                        info.push($(i).text());
-                    }
+                    const htmlInfo = page.mainEntityOfPage[0]["text"];
+                    info.push(htmlInfo);
                     drugInfo.push({
                         headline: page.headline,
                         info: info
-                    })
+                    });
                 }
             }
-            return drugInfo
+            return drugInfo;
         })
 };
-
 
 export default {
     findDrugsByName, findDrugsByDisease, getDrugSideEffects, findDrugData
