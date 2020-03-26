@@ -92,7 +92,10 @@ export const findDrugData = (drugConcept) => {
                     });
                 }
             }
-            return drugInfo;
+            return {
+                name: data.name,
+                drugInfo: drugInfo
+            };
         })
 };
 

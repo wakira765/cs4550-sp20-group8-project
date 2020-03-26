@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #000000;
 }
 
 code {
@@ -54,6 +55,60 @@ code {
     border-color: #117a8b;
 }
 
+/* drug info page */
+.drug-component a {
+    color: #000000;
+}
+
+.drug-component .drug-header-bar {
+    background-color: #34495E;
+    padding: 20px;
+    display: flex;
+}
+
+.drug-component .drug-header-bar .close-button {
+    color: #FDFEFE;
+    border: none;
+    font-size: 24px;
+    background-color: transparent;
+}
+
+.drug-component .drug-header-bar .drug-name {
+    margin: 0 30px;
+    color: #FDFEFE;
+}
+
+.drug-component .drug-information-container {
+    padding: 20px;
+}
+
+.drug-component .drug-information-container h3 {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #000000;
+    margin-bottom: 15px;
+}
+
+.drug-component .drug-information-container p {
+    margin-bottom: 10px;
+}
+
+.drug-component .drug-information-container p,
+.drug-component .drug-information-container li,
+.drug-component .drug-information-container strong {
+    font-size: 14px;
+}
+
+.drug-component .drug-information-container .drug-information {
+    margin: 0 auto 20px;
+}
+
+.drug-component .drug-information-container .drug-information .section-information h3 {
+    font-size: 20px;
+    border-bottom: none;
+    margin: 20px 0 0;
+}
+
+
 /* media queries (desktop styles) */
 @media screen and (min-width: 768px) {
   .nav-bar .nav-search-bar {
@@ -75,5 +130,10 @@ code {
   .nav-bar .cta-container button {
       width: 30%;
       padding: 10px;
+  }
+
+  /* drug info page */
+  .drug-component .drug-information-container .drug-information {
+      width: 75%;
   }
 }

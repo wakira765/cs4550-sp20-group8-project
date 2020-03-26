@@ -3,6 +3,9 @@ import DrugService from "../services/DrugService";
 import {connect} from "react-redux";
 import {findDrugDataAction} from "../actions/DrugActions";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+
 class DrugComponent extends React.Component {
 
     componentDidMount() {
@@ -11,13 +14,19 @@ class DrugComponent extends React.Component {
 
     render() {
         return (
-            <div className="drug-information-container">
-                <div className="list-drug-information">
+            <div className="drug-component">
+                <nav className="drug-header-bar">
+                    <button onClick={() => this.props.history.push("/")} className="close-button">
+                      <FontAwesomeIcon icon={faTimes}></FontAwesomeIcon>
+                    </button>
+                    <h2 className="drug-name">{this.props.drugInfo.name}</h2>
+                </nav>
+                <div className="drug-information-container">
                     {
-                        this.props.drugInfo && this.props.drugInfo.map((page, index) => {
-                            return <div key={index}>
+                        this.props.drugInfo.drugInfo && this.props.drugInfo.drugInfo.map((page, index) => {
+                            return <div key={index} className="drug-information">
                                 <h3 className="section-title">{page.headline}</h3>
-                                <div className="section-list">
+                                <div className="section-information">
                                     <div dangerouslySetInnerHTML={{ __html: page.info }}></div>
                                 </div>
                             </div>
