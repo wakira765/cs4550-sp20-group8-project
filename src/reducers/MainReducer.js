@@ -1,7 +1,7 @@
 import {FIND_DRUGS_BY_NAME, FIND_DRUGS_BY_DISEASE, GET_DRUG_SIDE_EFFECTS} from "../actions/MainActions";
 
 const initialState = {
-    drugs: []
+    searchResults: []
 };
 
 const MainReducer = (state = initialState, action) => {
@@ -9,17 +9,17 @@ const MainReducer = (state = initialState, action) => {
         case FIND_DRUGS_BY_NAME:
             return {
                 ...state,
-                drugs: action.drugs
+                searchResults: action.drugs
             };
         case FIND_DRUGS_BY_DISEASE:
             return {
                 ...state,
-                drugs: action.drugs
+                searchResults: action.drugs
             };
         case GET_DRUG_SIDE_EFFECTS:
             return {
                 ...state,
-                side_effects: action.side_effects
+                searchResults: action.sideEffects
             };
         default:
             return state
