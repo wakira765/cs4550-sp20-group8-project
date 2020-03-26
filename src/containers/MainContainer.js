@@ -30,11 +30,7 @@ class MainContainer extends React.Component {
                 <ul>
                     {
                         this.props.drugs && this.props.drugs.map(drug =>
-<<<<<<< HEAD
                             <li>{drug}</li>
-=======
-                            <li>{drug.name}</li>
->>>>>>> 7a358b4ffe417bd1d637bd64f73f3ece83322391
                         )
                     }
                 </ul>
