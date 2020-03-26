@@ -30,11 +30,6 @@ class MainContainer extends React.Component {
                 />
                 <div className="search-results-container">
                     {
-<<<<<<< HEAD
-                        this.props.drugs && this.props.drugs.map(drug =>
-                            <li>{drug}</li>
-                        )
-=======
                         this.props.searchResults && this.props.searchResults.map((result, index) => {
                                 return (
                                     <div key={index} className={"search-result"+index}>
@@ -42,7 +37,6 @@ class MainContainer extends React.Component {
                                     </div>
                                 )
                         })
->>>>>>> c3a7febee64004d42efa7ef2f3667754026c6cf1
                     }
                 </div>
             </div>
