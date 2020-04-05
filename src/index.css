@@ -13,6 +13,12 @@ code {
     monospace;
 }
 
+.button-link {
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+}
+
 /* nav bar styles */
 .nav-bar {
     padding: 20px 10px;
@@ -53,6 +59,34 @@ code {
 .nav-bar .cta-container button:active {
     background-color: #138496;
     border-color: #117a8b;
+}
+
+/* Search page styles */
+.search-results-container {
+    padding: 20px 10px;
+}
+
+.search-results-container .search-result {
+    margin: 10px 0 0;
+    padding: 40px 10px;
+    border-bottom: 1px solid #000000;
+}
+
+.search-results-container .search-result .drug-name-link {
+    font-size: 20px;
+}
+
+.search-results-container .search-result .drug-description {
+    margin: 20px 0 10px;
+}
+
+.search-results-container .search-result .disease-name {
+    text-transform: capitalize;
+    display: inline-block;
+}
+
+.search-by-disease .search-result .find-drug-button {
+    float: right;
 }
 
 /* drug info page */
