@@ -61,9 +61,9 @@ class MainContainer extends React.Component {
                         this.props.searchResults && this.props.searchResults.map((result, index) => {
                             return (
                                 <div key={index} className={"search-result search-result"+index}>
-                                    <Link to={`/${result}`} className="drug-name-link">{result.properties.openfda.brand_name ? result.properties.openfda.brand_name : "Unknown Brand Name"}</Link>
+                                    <Link to={`/${result.properties.openfda.product_ndc[0]}`} className="drug-name-link">{result.properties.openfda.brand_name ? result.properties.openfda.brand_name : "Unknown Brand Name"}</Link>
                                     <p className="drug-description">{result.properties.indications_and_usage}</p>
-                                    <Link to={`/${result}`} className="learn-more-link">Learn more</Link>
+                                    <Link to={`/${result.properties.openfda.product_ndc[0]}`} className="learn-more-link">Learn more</Link>
                                 </div>
                             )
                         })
@@ -87,9 +87,9 @@ class MainContainer extends React.Component {
                             console.log(result);
                             return (
                                 <div key={index} className={"search-result search-result"+index}>
-                                    <Link to={`/${result}`} className="drug-name-link">{result.properties.openfda.brand_name}</Link>
-                                    <p className="drug-description">{result.properties.indications_and_usage}</p>
-                                    <Link to={`/${result}`} className="learn-more-link">Learn more</Link>
+                                    <Link to={`/${result.properties.openfda.product_ndc[0]}`} className="drug-name-link">{result.properties.openfda.brand_name}</Link>
+                                    <p className="drug-description">{result.properties.warnings_and_cautions ? result.properties.warnings_and_cautions : result.properties.warnings}</p>
+                                    <Link to={`/${result.properties.openfda.product_ndc[0]}`} className="learn-more-link">Learn more</Link>
                                 </div>
                             )
                         })
@@ -123,7 +123,7 @@ const dispatchToPropertyMapper = (dispatch) => {
                     dispatch(findDrugsByDiseaseAction(drugs));
                 }),
         getDrugSideEffects: (drugName) =>
-            DrugService.getDrugSideEffects(drugName)
+            DrugService.findAllDrugsByName(drugName)
                 .then(sideEffects => {
                     dispatch(getDrugSideEffectsAction(sideEffects));
                 })
