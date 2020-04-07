@@ -9,8 +9,20 @@ import {findDrugsByNameAction, findDrugsByDiseaseAction, getDrugSideEffectsActio
 class MainContainer extends React.Component {
 
     state = {
-        searchTerm: "",
+        searchTerm: this.props.search ? this.props.search : "",
     };
+
+    componentDidMount() {
+        if(this.props.searchByName) {
+            this.props.findDrugsByName(this.props.search);
+        }
+        if(this.props.searchByDisease) {
+            this.props.findDrugsByDisease(this.props.search);
+        }
+        if(this.props.searchSideEffects) {
+            this.props.getDrugSideEffects(this.props.search);
+        }
+    }
 
     handleSearchTermChange = (term) => {
         this.setState({
@@ -22,9 +34,6 @@ class MainContainer extends React.Component {
         return (
             <div className="react-container">
                 <NavBarComponent
-                    findDrugsByName={this.props.findDrugsByName}
-                    findDrugsByDisease={this.props.findDrugsByDisease}
-                    getDrugSideEffects={this.props.getDrugSideEffects}
                     handleSearchTermChange={this.handleSearchTermChange}
                     searchTerm={this.state.searchTerm}
                 />
@@ -56,7 +65,6 @@ class MainContainer extends React.Component {
                 {this.props.findSideEffects && <div className="search-results-container search-side-effects">
                     {
                         this.props.searchResults && this.props.searchResults.map((result, index) => {
-                            console.log(result);
                             return (
                                 <div key={index} className={"search-result search-result"+index}>
                                     <Link to={`/${result.properties.openfda.product_ndc[0]}`} className="drug-name-link">{result.properties.openfda.brand_name}</Link>
@@ -73,7 +81,6 @@ class MainContainer extends React.Component {
 }
 
 const stateToPropertyMapper = (state) => {
-    console.log(state);
     return ({
         searchResults: state.main.searchResults,
         findByName: state.main.findByName,

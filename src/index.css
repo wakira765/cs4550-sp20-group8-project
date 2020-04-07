@@ -40,8 +40,10 @@ code {
     margin: 10px 0;
 }
 
-.nav-bar .cta-container button {
+.nav-bar .cta-container .search-button {
     display: block;
+    text-decoration: none;
+    text-align: center;
     width: 100%;
     margin: 10px 0;
     background-color: transparent;
@@ -54,9 +56,9 @@ code {
     line-height: 1.2;
 }
 
-.nav-bar .cta-container button:hover,
-.nav-bar .cta-container button:focus,
-.nav-bar .cta-container button:active {
+.nav-bar .cta-container .search-button:hover,
+.nav-bar .cta-container .search-button:focus,
+.nav-bar .cta-container .search-button:active {
     background-color: #138496;
     border-color: #117a8b;
 }

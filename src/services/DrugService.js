@@ -47,8 +47,8 @@ export const findSideEffectsByNdc = (ndc) => {
 };
 
 export default {
-    findAllDrugsByName,
     findDrugByNdc,
+    findAllDrugsByName,
     findAllTreatmentsByDiseaseName,
     findSideEffectsByNdc
 }

@@ -35,14 +35,13 @@ class DrugComponent extends React.Component {
                   items.unshift(array);
               }
             }
-            console.log(items[0][1]);
         }
 
         return (
             <div className="drug-component">
                 {this.props.drugInfo.properties && <div className="drug-container">
                     <nav className="drug-header-bar">
-                        <button onClick={() => this.props.history.push("/")} className="close-button">
+                        <button onClick={() => this.props.history.goBack()} className="close-button">
                             <FontAwesomeIcon icon={faTimes}></FontAwesomeIcon>
                         </button>
                         <h2 className="drug-name">{this.props.drugInfo.properties.openfda.brand_name}</h2>
@@ -108,7 +107,6 @@ class DrugComponent extends React.Component {
 }
 
 const stateToPropertyMapper = (state) => {
-    console.log(state.drug.drugInfo.properties);
     return ({
         drugInfo: state.drug.drugInfo
     })

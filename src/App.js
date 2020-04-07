@@ -22,6 +22,42 @@ function App() {
                    exact={true}
                    component={MainContainer}
             />
+            <Route path="/search/drug_name/:drugName"
+                   exact={true}
+                   render={(props) =>
+                       <MainContainer
+                           {...props}
+                           search={props.match.params.drugName}
+                           searchByName={true}
+                           searchByDisease={false}
+                           searchSideEffects={false}
+                       />
+                   }
+            />
+            <Route path="/search/side_effect/:drugName"
+                   exact={true}
+                   render={(props) =>
+                       <MainContainer
+                           {...props}
+                           search={props.match.params.drugName}
+                           searchByName={false}
+                           searchByDisease={false}
+                           searchSideEffects={true}
+                       />
+                   }
+            />
+            <Route path="/search/disease_name/:disease"
+                   exact={true}
+                   render={(props) =>
+                       <MainContainer
+                           {...props}
+                           search={props.match.params.disease}
+                           searchByName={false}
+                           searchByDisease={true}
+                           searchSideEffects={false}
+                       />
+                   }
+            />
             <Route path="/:drugName"
                    exact={true}
                    render={(props) =>
