@@ -116,58 +116,69 @@ code {
     padding: 20px;
 }
 
-.drug-component .drug-information-container h3 {
-    padding-bottom: 5px;
-    border-bottom: 1px solid #000000;
-    margin-bottom: 15px;
-}
-
-.drug-component .drug-information-container p {
-    margin-bottom: 10px;
-}
-
-.drug-component .drug-information-container p,
-.drug-component .drug-information-container li,
-.drug-component .drug-information-container strong {
-    font-size: 14px;
-}
-
-.drug-component .drug-information-container .drug-information {
-    margin: 0 auto 20px;
-}
-
-.drug-component .drug-information-container .drug-information .section-information h3 {
+.drug-component .drug-information-container .label {
+    font-weight: 700;
+    text-transform: capitalize;
     font-size: 20px;
-    border-bottom: none;
-    margin: 20px 0 0;
 }
 
+.drug-component .drug-information-container .list-of-items .label {
+    font-size: 16px;
+}
+
+.drug-component .drug-information-container .item {
+    padding: 10px 0;
+    border-bottom: 1px solid #000000;
+    margin: 10px 0;
+}
+
+.drug-component .drug-information-container .item .item {
+    border-bottom: none;
+    padding: 0;
+}
+
+.drug-component .drug-information-container .item .item-information-container *:first-child {
+    margin: 15px 0;
+}
+
+.drug-component .drug-information-container .item .table {
+    margin: 15px 0;
+}
+
+.drug-component .drug-information-container .item .table td {
+    padding: .75rem;
+    vertical-align: top;
+    border: 1px solid #dee2e6;
+}
 
 /* media queries (desktop styles) */
 @media screen and (min-width: 768px) {
-  .nav-bar .nav-search-bar {
-      display: inline-block;
-      width: 50%;
-      margin-right: 2%;
-  }
+    .nav-bar .nav-search-bar {
+        display: inline-block;
+        width: 50%;
+        margin-right: 2%;
+    }
 
-  .nav-bar .cta-container {
-      width: 48%;
-      display: inline-block;
-  }
+    .nav-bar .cta-container {
+        width: 48%;
+        display: inline-block;
+    }
 
-  .nav-bar .cta-container .button-container {
-      display: flex;
-      justify-content: space-around;
-  }
+    .nav-bar .cta-container .button-container {
+        display: flex;
+        justify-content: space-around;
+    }
 
-  .nav-bar .cta-container button {
-      width: 30%;
-      padding: 10px;
-  }
+    .nav-bar .cta-container button {
+        width: 30%;
+        padding: 10px;
+    }
 
-  /* drug info page */
-  .drug-component .drug-information-container .drug-information {
-      width: 75%;
-  }
+    .search-results-container,
+    .drug-information-container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    /* drug info page */
+
 }

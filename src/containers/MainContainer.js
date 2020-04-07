@@ -10,9 +10,6 @@ class MainContainer extends React.Component {
 
     state = {
         searchTerm: "",
-//        findByName: false,
-//        findByDisease: false,
-//        findSideEffects: false
     };
 
     handleSearchTermChange = (term) => {
@@ -20,31 +17,6 @@ class MainContainer extends React.Component {
             searchTerm: term
         })
     };
-//
-//
-//    findByName = () => {
-//        this.setState({
-//            findByName: true,
-//            findByDisease: false,
-//            findSideEffects: false
-//        });
-//    }
-//
-//    findByDisease = () => {
-//        this.setState({
-//            findByName: false,
-//            findByDisease: true,
-//            findSideEffects: false
-//        });
-//    }
-//
-//    findSideEffects = () => {
-//        this.setState({
-//            findByName: false,
-//            findByDisease: false,
-//            findSideEffects: true
-//        });
-//    }
 
     render() {
         return (
@@ -62,7 +34,7 @@ class MainContainer extends React.Component {
                             return (
                                 <div key={index} className={"search-result search-result"+index}>
                                     <Link to={`/${result.properties.openfda.product_ndc[0]}`} className="drug-name-link">{result.properties.openfda.brand_name ? result.properties.openfda.brand_name : "Unknown Brand Name"}</Link>
-                                    <p className="drug-description">{result.properties.indications_and_usage}</p>
+                                    <p className="drug-description">{result.properties.indications_and_usage[0].toLowerCase().includes("uses") ? result.properties.indications_and_usage[0].slice(4) : result.properties.indications_and_usage[0]}</p>
                                     <Link to={`/${result.properties.openfda.product_ndc[0]}`} className="learn-more-link">Learn more</Link>
                                 </div>
                             )
