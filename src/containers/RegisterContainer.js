@@ -13,12 +13,14 @@ class RegisterContainer extends React.Component {
         this.setState(state);
     }
 
-    registerUser = () => {
+    handleRegisterUser = () => {
         if (this.state.password === this.state.verifyPassword) {
             UserService.registerUser({
                 userName: this.state.userName,
                 password: this.state.password
             }).then(response => this.props.history.push("/home"))
+        } else {
+            alert("passwords do not match!")
         }
     }
 
@@ -26,7 +28,6 @@ class RegisterContainer extends React.Component {
         return (
             <div class="wbdv-register-container container">
                   <h1>Sign Up</h1>
-                  <form class="wbdv-register-form" action="/profile/profile.template.client.html">
                     <div class="form-group row wbdv-username-container">
                       <label for="username" class="col-sm-2 col-form-label">
                         Username </label>
@@ -66,10 +67,12 @@ class RegisterContainer extends React.Component {
                     </div>
                     <div class="form-group row wbdv-cta-container">
                       <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary btn-block wbdv-button wbdv-register">Sign up</button>
+                        <button type="submit" class="btn btn-primary btn-block wbdv-button wbdv-register"
+                                onClick={this.handleRegisterUser}
+                        >Sign up</button>
                         <div class="row">
                           <div class="col-6 wbdv-login-container">
-                            <a class="wbdv-link wbdv-login" href="../login/login.template.client.html">Login</a>
+                            <a class="wbdv-link wbdv-login" href="/login">Login</a>
                           </div>
                           <div class="col-6 cancel-container">
                             <a class="cancel-link" href="../index.html">Cancel</a>
@@ -77,7 +80,6 @@ class RegisterContainer extends React.Component {
                         </div>
                       </div>
                     </div>
-                  </form>
                 </div>
         )
     }
