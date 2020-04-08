@@ -11,7 +11,7 @@
 import {LOCALHOST_API} from "../constants";
 
 export const registerUser = (user) => {
-    return fetch(`${LOCALHOST_API}/users`, {
+    return fetch(`${LOCALHOST_API}/register`, {
         method: 'POST',
         body: JSON.stringify(user),
         credentials: 'include',
@@ -57,8 +57,26 @@ export const findUserProfile = () => {
     }).then(response => response.json())
 };
 
+/**
+ * Checks whether a user with given credentials exists.
+ * Returns 1 for success and 0 if not found.
+ * @param username
+ * @param password
+ * @returns {Promise<any>}
+ */
+export const findUserByCredentials = (username, password) => {
+    return fetch(`${LOCALHOST_API}/login`, {
+        method: 'POST',
+        body: JSON.stringify({username, password}),
+        headers: {
+            'content-type': 'application/json'
+        }
+    }).then(response => response.json())
+};
+
 export default {
     registerUser,
     updateUser,
-    findUserProfile
+    findUserProfile,
+    findUserByCredentials
 }
