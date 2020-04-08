@@ -19,6 +19,56 @@ code {
     color: #007bff;
 }
 
+/* login styles */
+.wbdv-login-container {
+  margin-top: 50px;
+}
+
+.wbdv-login-container h1 {
+  margin-bottom: 25px;
+}
+
+.wbdv-login-container .wbdv-cta-container {
+  justify-content: flex-end;
+}
+
+.wbdv-login-container .wbdv-login {
+  margin-bottom: 0.5rem;
+}
+
+.wbdv-login-container .wbdv-register-container {
+  text-align: right;
+}
+
+.wbdv-login-container .cancel-container {
+  margin-top: 15px;
+}
+
+/* register styles */
+.wbdv-register-container {
+  margin-top: 50px;
+}
+
+.wbdv-register-container h1 {
+  margin-bottom: 25px;
+}
+
+.wbdv-register-container .wbdv-cta-container {
+  justify-content: flex-end;
+}
+
+.wbdv-register-container .wbdv-register {
+  margin-bottom: 0.5rem;
+}
+
+.wbdv-register-container .wbdv-register-container {
+  text-align: right;
+}
+
+.wbdv-register-container .cancel-container {
+  text-align: right;
+}
+
 /* nav bar styles */
 .nav-bar {
     padding: 20px 10px;

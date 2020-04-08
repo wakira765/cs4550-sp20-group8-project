@@ -1,5 +1,8 @@
 import React from 'react';
 import MainContainer from "./containers/MainContainer";
+import LoginContainer from "./containers/LoginContainer";
+import RegisterContainer from "./containers/RegisterContainer";
+import HomeContainer from "./containers/HomeContainer";
 import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import MainReducer from "./reducers/MainReducer";
@@ -18,7 +21,7 @@ function App() {
   return (
     <Provider store={store}>
         <Router>
-            <Route path="/"
+            <Route path="/search"
                    exact={true}
                    component={MainContainer}
             />
@@ -58,7 +61,7 @@ function App() {
                        />
                    }
             />
-            <Route path="/:drugName"
+            <Route path="/drugs/:drugName"
                    exact={true}
                    render={(props) =>
                        <DrugComponent
@@ -66,6 +69,22 @@ function App() {
                            drugName={props.match.params.drugName}
                        />
                    }
+            />
+            <Route path="/login"
+                   exact={true}
+                   component={LoginContainer}
+            />
+            <Route path="/register"
+                   exact={true}
+                   render={(props) =>
+                      <RegisterContainer
+                          {...props}
+                      />
+                   }
+            />
+            <Route path="/home"
+                   exact={true}
+                   component={HomeContainer}
             />
         </Router>
     </Provider>
