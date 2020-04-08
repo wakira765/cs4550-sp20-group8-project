@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import UserService from "../services/UserService";
 
 class RegisterContainer extends React.Component {
@@ -26,13 +27,13 @@ class RegisterContainer extends React.Component {
 
     render() {
         return (
-            <div class="wbdv-register-container container">
+            <div className="wbdv-register-container container">
                   <h1>Sign Up</h1>
-                    <div class="form-group row wbdv-username-container">
-                      <label for="username" class="col-sm-2 col-form-label">
+                    <div className="form-group row wbdv-username-container">
+                      <label htmlFor="username" className="col-sm-2 col-form-label">
                         Username </label>
-                      <div class="col-sm-10">
-                        <input class="form-control wbdv-field wbdv-username"
+                      <div className="col-sm-10">
+                        <input className="form-control wbdv-field wbdv-username"
                                id="username"
                                placeholder="Username"
                                onChange={(e) => {
@@ -41,11 +42,11 @@ class RegisterContainer extends React.Component {
                                }}/>
                       </div>
                     </div>
-                    <div class="form-group row wbdv-password-container">
-                      <label for="password" class="col-sm-2 col-form-label">
+                    <div className="form-group row wbdv-password-container">
+                      <label htmlFor="password" className="col-sm-2 col-form-label">
                         Password </label>
-                      <div class="col-sm-10">
-                        <input type="password" class="form-control wbdv-field wbdv-password"
+                      <div className="col-sm-10">
+                        <input type="password" className="form-control wbdv-field wbdv-password"
                                id="password" placeholder="Password"
                                onChange={(e) => {
                                   const state = {...this.state, password: e.target.value};
@@ -53,11 +54,11 @@ class RegisterContainer extends React.Component {
                                }}/>
                       </div>
                     </div>
-                    <div class="form-group row wbdv-password-verify-container">
-                      <label for="password-verify" class="col-sm-2 col-form-label">
+                    <div className="form-group row wbdv-password-verify-container">
+                      <label htmlFor="password-verify" className="col-sm-2 col-form-label">
                         Verify Password </label>
-                      <div class="col-sm-10">
-                        <input type="password" class="form-control wbdv-field wbdv-password-verify"
+                      <div className="col-sm-10">
+                        <input type="password" className="form-control wbdv-field wbdv-password-verify"
                                id="password-verify" placeholder="Verify Password"
                                onChange={(e) => {
                                   const state = {...this.state, verifyPassword: e.target.value};
@@ -65,17 +66,17 @@ class RegisterContainer extends React.Component {
                                }}/>
                       </div>
                     </div>
-                    <div class="form-group row wbdv-cta-container">
-                      <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary btn-block wbdv-button wbdv-register"
+                    <div className="form-group row wbdv-cta-container">
+                      <div className="col-sm-10">
+                        <button type="submit" className="btn btn-primary btn-block wbdv-button wbdv-register"
                                 onClick={this.handleRegisterUser}
                         >Sign up</button>
-                        <div class="row">
-                          <div class="col-6 wbdv-login-container">
-                            <a class="wbdv-link wbdv-login" href="/login">Login</a>
+                        <div className="row">
+                          <div className="col-6 wbdv-login-container">
+                            <Link className="wbdv-link wbdv-login" to="/login">Login</Link>
                           </div>
-                          <div class="col-6 cancel-container">
-                            <a class="cancel-link" href="../index.html">Cancel</a>
+                          <div className="col-6 cancel-container">
+                            <Link className="cancel-link" to="/">Cancel</Link>
                           </div>
                         </div>
                       </div>

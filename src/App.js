@@ -82,7 +82,7 @@ function App() {
                       />
                    }
             />
-            <Route path="/home"
+            <Route path={["/","/home"]}
                    exact={true}
                    component={HomeContainer}
             />
