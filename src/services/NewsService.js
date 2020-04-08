@@ -1,7 +1,7 @@
-import {LOCALHOST_API} from "../constants";
+import {HEROKU_API} from "../constants";
 
 export const findLatestNews = () => {
-    return fetch(`${LOCALHOST_API}/news`)
+    return fetch(`${HEROKU_API}/news`)
         .then(response => response.json())
 };
 

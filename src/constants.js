@@ -10,3 +10,5 @@ export const RX_CLASS_DRUG_URL = "https://rxnav.nlm.nih.gov/REST/rxclass";
 export const NHS_DRUG_URL = "https://api.nhs.uk/medicines"
 export const NHS_KEY = "186d0815e1a2455480a935137956078a"
 export const LOCALHOST_API = "http://localhost:8080/api"
+
+export const HEROKU_API = "https://cs4550-project-server.herokuapp.com/api/"
