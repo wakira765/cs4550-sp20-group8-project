@@ -125,7 +125,7 @@ class MainContainer extends React.Component {
                                 <div key={index} className={"search-result search-result"+index}>
                                     <Link to={`/drugs/${result.properties.openfda.product_ndc[0]}`} className="drug-name-link">{result.properties.openfda.brand_name}</Link>
                                     <label htmlFor={"compare-checkbox-" + index} className="compare-checkbox-label">
-                                        <input type="checkbox" id={"compare-checkbox-" + index} className="compare-checkbox" name="compare-drug" onClick={(e) => this.handleCheckForCompare(result.properties.openfda.product_ndc[0])}/>
+                                        <input type="checkbox" id={"compare-checkbox-" + index} className="compare-checkbox" name="compare-drug" onClick={(e) => this.handleCheckForCompare(e, result.properties.openfda.product_ndc[0])}/>
                                         Check to compare
                                     </label>
                                     <p className="drug-description">{result.properties.warnings_and_cautions ? result.properties.warnings_and_cautions : result.properties.warnings}</p>
