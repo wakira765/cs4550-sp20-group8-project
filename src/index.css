@@ -19,6 +19,56 @@ code {
     color: #007bff;
 }
 
+/* login styles */
+.wbdv-login-container {
+  margin-top: 50px;
+}
+
+.wbdv-login-container h1 {
+  margin-bottom: 25px;
+}
+
+.wbdv-login-container .wbdv-cta-container {
+  justify-content: flex-end;
+}
+
+.wbdv-login-container .wbdv-login {
+  margin-bottom: 0.5rem;
+}
+
+.wbdv-login-container .wbdv-register-container {
+  text-align: right;
+}
+
+.wbdv-login-container .cancel-container {
+  margin-top: 15px;
+}
+
+/* register styles */
+.wbdv-register-container {
+  margin-top: 50px;
+}
+
+.wbdv-register-container h1 {
+  margin-bottom: 25px;
+}
+
+.wbdv-register-container .wbdv-cta-container {
+  justify-content: flex-end;
+}
+
+.wbdv-register-container .wbdv-register {
+  margin-bottom: 0.5rem;
+}
+
+.wbdv-register-container .wbdv-register-container {
+  text-align: right;
+}
+
+.wbdv-register-container .cancel-container {
+  text-align: right;
+}
+
 /* nav bar styles */
 .nav-bar {
     padding: 20px 10px;
@@ -40,8 +90,10 @@ code {
     margin: 10px 0;
 }
 
-.nav-bar .cta-container button {
+.nav-bar .cta-container .search-button {
     display: block;
+    text-decoration: none;
+    text-align: center;
     width: 100%;
     margin: 10px 0;
     background-color: transparent;
@@ -54,9 +106,9 @@ code {
     line-height: 1.2;
 }
 
-.nav-bar .cta-container button:hover,
-.nav-bar .cta-container button:focus,
-.nav-bar .cta-container button:active {
+.nav-bar .cta-container .search-button:hover,
+.nav-bar .cta-container .search-button:focus,
+.nav-bar .cta-container .search-button:active {
     background-color: #138496;
     border-color: #117a8b;
 }
@@ -72,6 +124,11 @@ code {
     border-bottom: 1px solid #000000;
 }
 
+.search-results-container .search-result:first-of-type {
+    margin: 0;
+    padding: 65px 10px 40px;
+}
+
 .search-results-container .search-result .drug-name-link {
     font-size: 20px;
 }
@@ -85,12 +142,98 @@ code {
     display: inline-block;
 }
 
+.search-results-container .compare-drugs-button {
+    background-color: #273746;
+    padding: 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    font-weight: 700;
+    border: none;
+    float: right;
+    margin-right: 10px;
+    height: 45px;
+}
+
+.search-results-container .compare-checkbox-label {
+    float: right;
+}
+
+.search-results-container .compare-checkbox-label .compare-checkbox {
+    margin-right: 5px;
+}
+
 .search-by-disease .search-result .find-drug-button {
     float: right;
 }
 
+/* Modal Styles */
+.modal-overlay {
+    width: 100%;
+    position: fixed;
+    margin: 0 auto;
+    background-color: rgba(0,0,0,0.3);
+    display: block;
+    height: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.modal-overlay .modal-header {
+    display: inline-block;
+    align-items: unset;
+    justify-content: unset;
+    padding: 0 10px;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+}
+
+.modal-overlay .modal-container {
+    background-color: #ffffff;
+    padding: 20px 10px;
+}
+
+.modal-overlay .close-button {
+    color: #273746;
+    border: none;
+    font-size: 24px;
+    background-color: transparent;
+    float: right;
+    height: 40px;
+    padding: 0 10px;
+}
+
+.modal-overlay .modal-content {
+    margin-top: 25px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: #ffffff;
+    border: none;
+    overflow: auto;
+    height: calc(100vh - 60px);
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.compare-modal .drug-information-container {
+    min-width: 280px;
+    max-width: 50%;
+}
+
+.compare-modal .drug-information-container .section {
+    margin: 0 10px;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 5px;
+    padding: 10px;
+}
+
 /* drug info page */
-.drug-component a {
+.drug-component .drug-information-container a {
     color: #000000;
 }
 
@@ -116,58 +259,88 @@ code {
     padding: 20px;
 }
 
-.drug-component .drug-information-container h3 {
-    padding-bottom: 5px;
-    border-bottom: 1px solid #000000;
-    margin-bottom: 15px;
-}
-
-.drug-component .drug-information-container p {
-    margin-bottom: 10px;
-}
-
-.drug-component .drug-information-container p,
-.drug-component .drug-information-container li,
-.drug-component .drug-information-container strong {
-    font-size: 14px;
-}
-
-.drug-component .drug-information-container .drug-information {
-    margin: 0 auto 20px;
-}
-
-.drug-component .drug-information-container .drug-information .section-information h3 {
+.drug-information-container .label {
+    font-weight: 700;
+    text-transform: capitalize;
     font-size: 20px;
-    border-bottom: none;
-    margin: 20px 0 0;
 }
 
+.drug-information-container .list-of-items .label {
+    font-size: 16px;
+}
+
+.drug-information-container .item {
+    padding: 10px 0;
+    border-bottom: 1px solid #000000;
+    margin: 10px 0;
+}
+
+.drug-information-container .item .item {
+    border-bottom: none;
+    padding: 0;
+}
+
+.drug-information-container .item .item-information-container *:first-child {
+    margin: 15px 0;
+}
+
+.drug-information-container .item .table {
+    margin: 15px 0;
+}
+
+.drug-information-container .item .table td {
+    padding: .75rem;
+    vertical-align: top;
+    border: 1px solid #dee2e6;
+}
 
 /* media queries (desktop styles) */
 @media screen and (min-width: 768px) {
-  .nav-bar .nav-search-bar {
-      display: inline-block;
-      width: 50%;
-      margin-right: 2%;
-  }
+    .nav-bar .nav-search-bar {
+        display: inline-block;
+        width: 50%;
+        margin-right: 2%;
+    }
 
-  .nav-bar .cta-container {
-      width: 48%;
-      display: inline-block;
-  }
+    .nav-bar .cta-container {
+        width: 48%;
+        display: inline-block;
+    }
 
-  .nav-bar .cta-container .button-container {
-      display: flex;
-      justify-content: space-around;
-  }
+    .nav-bar .cta-container .button-container {
+        display: flex;
+        justify-content: space-around;
+    }
 
-  .nav-bar .cta-container button {
-      width: 30%;
-      padding: 10px;
-  }
+    .nav-bar .cta-container .search-button {
+        width: 30%;
+        padding: 10px;
+    }
 
-  /* drug info page */
-  .drug-component .drug-information-container .drug-information {
-      width: 75%;
-  }
+    .search-results-container,
+    .drug-component .drug-information-container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    /* Modal styles */
+    .modal-overlay {
+        display: flex;
+        align-items: middle;
+    }
+
+    .modal-overlay .modal-container {
+        background-color: #ffffff;
+        width: 90%;
+        height: 90%;
+        display: block;
+        margin: auto;
+    }
+
+    .modal-overlay .modal-content {
+        height: 85%;
+    }
+
+    /* drug info page */
+
 }

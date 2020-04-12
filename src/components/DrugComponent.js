@@ -1,4 +1,5 @@
-import React from "react"
+import React from "react";
+import DrugInformationComponent from "./DrugInformationComponent";
 import DrugService from "../services/DrugService";
 import {connect} from "react-redux";
 import {findDrugDataAction} from "../actions/DrugActions";
@@ -15,24 +16,15 @@ class DrugComponent extends React.Component {
     render() {
         return (
             <div className="drug-component">
-                <nav className="drug-header-bar">
-                    <button onClick={() => this.props.history.push("/")} className="close-button">
-                      <FontAwesomeIcon icon={faTimes}></FontAwesomeIcon>
-                    </button>
-                    <h2 className="drug-name">{this.props.drugInfo.name}</h2>
-                </nav>
-                <div className="drug-information-container">
-                    {
-                        this.props.drugInfo.drugInfo && this.props.drugInfo.drugInfo.map((page, index) => {
-                            return <div key={index} className="drug-information">
-                                <h3 className="section-title">{page.headline}</h3>
-                                <div className="section-information">
-                                    <div dangerouslySetInnerHTML={{ __html: page.info }}></div>
-                                </div>
-                            </div>
-                        })
-                    }
-                </div>
+                {this.props.drugInfo.properties && <div className="drug-container">
+                    <nav className="drug-header-bar">
+                        <button onClick={() => this.props.history.goBack()} className="close-button">
+                            <FontAwesomeIcon icon={faTimes}></FontAwesomeIcon>
+                        </button>
+                        <h2 className="drug-name">{this.props.drugInfo.properties.openfda.brand_name}</h2>
+                    </nav>
+                    <DrugInformationComponent drugInfo={this.props.drugInfo}/>
+                </div>}
             </div>
         )
     }
@@ -47,7 +39,7 @@ const stateToPropertyMapper = (state) => {
 const dispatchToPropertyMapper = (dispatch) => {
     return ({
         findDrugData: (drugName) =>
-            DrugService.findDrugData(drugName)
+            DrugService.findDrugByNdc(drugName)
                 .then(infos => dispatch(findDrugDataAction(infos)))
     })
 };

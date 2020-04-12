@@ -1,4 +1,9 @@
-import { FDA_ALERT_URL, NEWS_URL} from "../constants";
+import {HEROKU_API, FDA_ALERT_URL} from "../constants";
+
+export const findLatestNews = () => {
+    return fetch(`${HEROKU_API}/news`)
+        .then(response => response.json())
+};
 
 export const getAlerts = async () => {
     const response = await fetch(FDA_ALERT_URL, {
@@ -10,13 +15,6 @@ export const getAlerts = async () => {
     return await response.json();
 }
 
-export const getNews = async () => {
-    const response = await fetch(NEWS_URL)
-    return await response.json();
-}
-
-
 export default {
-    getAlerts,
-    getNews
+    findLatestNews
 }

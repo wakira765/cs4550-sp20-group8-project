@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import HomeNavBarComponent from "../components/HomePageComponents/HomeNavBarComponent"
 
 class HomeContainer extends Component {
@@ -22,14 +21,4 @@ class HomeContainer extends Component {
     }
 }
 
-const stateToPropertyMapper = (state) => {
-    return ({})
-}
-
-const dispatchToPropertyMapper = (dispatch) => {
-    return({})
-}
-export default connect(
-    stateToPropertyMapper,
-    dispatchToPropertyMapper
-)(HomeContainer)
+export default HomeContainer

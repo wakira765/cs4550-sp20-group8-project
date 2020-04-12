@@ -1,8 +1,8 @@
 import React from "react"
+import {Link} from "react-router-dom";
 
-const NavBarComponent = ({findDrugsByName, findDrugsByDisease, getDrugSideEffects, handleSearchTermChange, searchTerm}) => {
+const NavBarComponent = ({handleSearchTermChange, searchTerm}) => {
     return (
-
         <nav className="nav-bar">
             <label className="search-bar-label" htmlFor="nav-search-bar">
                 Search for information here:
@@ -10,25 +10,14 @@ const NavBarComponent = ({findDrugsByName, findDrugsByDisease, getDrugSideEffect
             <input id="nav-search-bar"
                    className="nav-search-bar"
                    placeholder="Search Here"
+                   value={searchTerm}
                    onChange={(e) => handleSearchTermChange(e.target.value)}
             />
             <div className="cta-container">
                 <div className="button-container">
-                    <button className="find-name-button"
-                            type="submit"
-                            onClick={() => findDrugsByName(searchTerm)}>
-                        Find Drug
-                    </button>
-                    <button className="find-disease-button"
-                            type="submit"
-                            onClick={() => findDrugsByDisease(searchTerm)}>
-                        Find Treatments
-                    </button>
-                    <button className="find-side-effects-button"
-                            type="submit"
-                            onClick={() => getDrugSideEffects(searchTerm)}>
-                        Get Side effects
-                    </button>
+                    <Link className="search-button find-name-button" to={`/search/drug_name/${searchTerm}`}>Find Drug</Link>
+                    <Link className="search-button find-disease-button" to={`/search/disease_name/${searchTerm}`}>Find Disease</Link>
+                    <Link className="search-button find-side-button" to={`/search/side_effect/${searchTerm}`}>Get Side Effects</Link>
                 </div>
             </div>
         </nav>

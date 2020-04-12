@@ -1,4 +1,4 @@
-import {LOCALHOST_API} from "../constants";
+import {HEROKU_API} from "../constants";
 
 /**
  * Finds an array of drugs matching the given drug name.
@@ -8,7 +8,7 @@ import {LOCALHOST_API} from "../constants";
  * @returns {Promise<any>}
  */
 export const findAllDrugsByName = (drugName) => {
-    return fetch(`${LOCALHOST_API}/${drugName}`)
+    return fetch(`${HEROKU_API}/${drugName}`)
         .then(response => response.json())
 };
 
@@ -22,7 +22,7 @@ export const findAllDrugsByName = (drugName) => {
  * @returns {Promise<any>}
  */
 export const findDrugByNdc = (ndc) => {
-    return fetch(`${LOCALHOST_API}/drugs/${ndc}`)
+    return fetch(`${HEROKU_API}/drugs/${ndc}`)
         .then(response => response.json())
 };
 
@@ -32,7 +32,7 @@ export const findDrugByNdc = (ndc) => {
  * @returns {Promise<any>}
  */
 export const findAllTreatmentsByDiseaseName = (diseaseName) => {
-    return fetch(`${LOCALHOST_API}/treatments/${diseaseName}`)
+    return fetch(`${HEROKU_API}/treatments/${diseaseName}`)
         .then(response => response.json())
 };
 
@@ -42,13 +42,13 @@ export const findAllTreatmentsByDiseaseName = (diseaseName) => {
  * @returns {Promise<any>}
  */
 export const findSideEffectsByNdc = (ndc) => {
-    return fetch(`${LOCALHOST_API}/side_effects/${ndc}`)
+    return fetch(`${HEROKU_API}/side_effects/${ndc}`)
         .then(response => response.json())
 };
 
 export default {
-    findAllDrugsByName,
     findDrugByNdc,
+    findAllDrugsByName,
     findAllTreatmentsByDiseaseName,
     findSideEffectsByNdc
 }
