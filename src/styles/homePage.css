@@ -1,0 +1,26 @@
+.home-nav-bar {
+    background-color: darkviolet;
+    padding-bottom: 2%;
+
+}
+.home-logo {
+    color: white;
+    float: left;
+}
+
+.home-navbar-buttons {
+    float: right
+}
+.home-button {
+    color: white;
+}
+
+#home-search-bar {
+    margin: 0% 0% 0% 5%;
+}
+
+.fa-capsules {}
+.fa-exclamation-circle {color: orange}
+.fa-portrait {}
+.fa-edit {}
+.fa-newspaper{}

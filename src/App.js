@@ -7,6 +7,8 @@ import {BrowserRouter as Router, Route} from "react-router-dom";
 import DrugComponent from "./components/DrugComponent";
 import DrugReducer from "./reducers/DrugReducer";
 
+import HomeContainer from "./containers/HomeContainer";
+
 const rootReducer = combineReducers({
     main: MainReducer,
     drug: DrugReducer
@@ -30,6 +32,10 @@ function App() {
                            drugName={props.match.params.drugName}
                        />
                    }
+            />
+            <Route path="/home-page/home"
+                   exact={true}
+                   component={HomeContainer}
             />
         </Router>
     </Provider>
