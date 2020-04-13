@@ -16,5 +16,6 @@ export const getAlerts = async () => {
 }
 
 export default {
-    findLatestNews
+    findLatestNews,
+    getAlerts
 }

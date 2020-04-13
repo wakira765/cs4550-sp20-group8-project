@@ -1,20 +1,26 @@
 import React, { Component } from "react";
+import "../../styles/News.css"
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, CardHeader } from 'reactstrap';
 
-const NewsCardComponent = (news) => {
-    return(
-        <div class="my-2">
-            <div class="card-img" align="center">
-                <img
-                    src={news['news']['urlToImage']}
-                    width="200"
-                    alt="news-article-img">
-                </img>
-            </div>
-            <div class="card-title pointer">
-                <a href={news['news']['url']}>{news['news']['title']}</a>
-            </div>
-        </div>
-    )
+
+class NewsCardComponent extends Component {
+    render() {
+        const article = this.props.article;
+        return (
+            <li class="news-card">
+                <Card>
+                <CardHeader><h5>{article['sourceName']}</h5></CardHeader>
+                    <CardBody>
+                        <CardText>{article['description']}</CardText>
+                        <a href={article['url']}>
+                            <CardImg src={article['urlToImage']}></CardImg>
+                            <CardTitle><h5>{article['title']}</h5></CardTitle>
+                        </a>
+                    </CardBody>
+                </Card>
+            </li>
+        )
+    }
 }
 
 export default NewsCardComponent;

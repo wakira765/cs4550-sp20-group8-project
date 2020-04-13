@@ -10,8 +10,6 @@ import {BrowserRouter as Router, Route} from "react-router-dom";
 import DrugComponent from "./components/DrugComponent";
 import DrugReducer from "./reducers/DrugReducer";
 
-import HomeContainer from "./containers/HomeContainer";
-
 const rootReducer = combineReducers({
     main: MainReducer,
     drug: DrugReducer

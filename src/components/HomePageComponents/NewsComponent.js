@@ -1,28 +1,24 @@
 import React, { Component } from "react";
 import NewsCard from "./NewsCardComponent.js";
-import homeServices from "../../services/HomePageService";
-
+import NewsService from "../../services/NewsService";
+import "../../styles/News.css"
 class NewsComponent extends Component {
     state = {
-        news_arr: []
+        articles: []
     }
 
     componentDidMount = async () => {
-        const results = await homeServices.getNews();
-        this.setState({
-            news_arr: results['articles']
-        })
+        NewsService.findLatestNews()
+            .then( articles => this.setState({articles: articles}))
     }
 
     render() {
         return (
-            <div className="row mx-0">
-                {this.state.news_arr.map(news => (
-                    <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                        <NewsCard news={news}></NewsCard>
-                    </div>
+            <ul id="news-cards-list">
+                {this.state.articles.map(article => (
+                    <NewsCard article={article}></NewsCard>
                 ))}
-            </div>
+            </ul>
         )
     }
 

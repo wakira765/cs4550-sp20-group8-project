@@ -1,0 +1,23 @@
+.news-card {
+    background-color: white;
+    list-style-type: none;
+    margin-bottom: 2%;
+}
+
+.card-descript {
+    padding: 1%
+}
+
+.card-source {
+    background-color: dimgrey;
+    color: white
+}
+
+.card-title {
+    color: black;
+    font-weight: bold;
+}
+
+.link-to-article:link:hover {
+    font-size: 150%;
+}

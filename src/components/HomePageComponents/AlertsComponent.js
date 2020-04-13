@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import AlertRow from "./AlertRowComponent.js";
-import homeServices from "../../services/HomePageService";
+import newsService from "../../services/NewsService";
 
 class AlertsComponent extends Component {
     state = {
@@ -8,7 +8,7 @@ class AlertsComponent extends Component {
     }
 
     componentDidMount = async () => {
-        const result = await homeServices.getAlerts();
+        const result = await newsService.getAlerts();
         this.setState( {
             alerts: result['results']
         })
@@ -16,13 +16,14 @@ class AlertsComponent extends Component {
     render() {
         return (
             <div>
-                <table class="table table-hover">
+                <table className="table table-hover">
                     <thead>
                         <tr>
                             <th scope="col">Alert</th>
                             <th scope="col">Class</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Location</th>
+                            <th scope="col">City</th>
+                            <th scope="col">State</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">Date</th>
                             <th scope="col">Status</th>

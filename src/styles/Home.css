@@ -1,0 +1,53 @@
+.home-nav-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding-bottom: 2%;
+    z-index: 1;
+}
+.home-logo {
+    color: white;
+    float: left;
+}
+
+#home-navbar-buttons {
+    float: right
+}
+
+.home-navbar-button {
+    color: white;
+}
+
+.home-collapsed-button {
+    color: teal;
+}
+
+#home-search-bar {
+    margin: 0% 0% 0% 5%;
+}
+
+#home-center{
+    margin: auto
+}
+
+#home-displayed-content {
+    background-color: lightcyan;
+    margin-top: 100px;
+}
+
+#home-buttons-collapsed {
+    position: fixed;
+    top: 85%;
+    right: 10%;
+
+}
+
+
+.fa-capsules {}
+.fa-exclamation-circle {color: orange}
+.fa-portrait {}
+.fa-edit {}
+.fa-newspaper{}
+.fa-ellipsis-v {
+    color: teal;
+}
