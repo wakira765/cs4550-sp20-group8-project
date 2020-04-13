@@ -1,7 +1,12 @@
-import {HEROKU_API, FDA_ALERT_URL} from "../constants";
+import {LOCALHOST_API, FDA_ALERT_URL} from "../constants";
 
 export const findLatestNews = () => {
-    return fetch(`${HEROKU_API}/news`)
+    return fetch(`${LOCALHOST_API}/news`)
+        .then(response => response.json())
+};
+
+export const findNewsForUserConditions = (userId) => {
+    return fetch(`${LOCALHOST_API}/users/${userId}/news`)
         .then(response => response.json())
 };
 
@@ -17,5 +22,6 @@ export const getAlerts = async () => {
 
 export default {
     findLatestNews,
-    getAlerts
+    getAlerts,
+    findNewsForUserConditions
 }
