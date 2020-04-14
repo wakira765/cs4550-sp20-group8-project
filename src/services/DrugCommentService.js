@@ -21,6 +21,12 @@ export const createDrugComment = (comment) => {
     }).then(response => response.json())
 };
 
+export const findDrugCommentsByUsername = (username) => {
+    return fetch(`${LOCALHOST_API}/users/${username}/comments`)
+        .then(response => response.json())
+};
+
 export default {
-    createDrugComment
+    createDrugComment,
+    findDrugCommentsByUsername
 }
