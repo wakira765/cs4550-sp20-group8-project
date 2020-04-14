@@ -29,8 +29,8 @@ export const registerUser = (user) => {
  * - lastName
  * - email
  * - dob (date of birth)
- * - gender
- * - height
+ * - gender: gender can be one of MALE/FEMALE/UNDEFINED
+ * - height: height is represented in centimeters
  * NOTE: names of fields must match
  *
  * @param userId
