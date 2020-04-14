@@ -74,9 +74,15 @@ export const findUserByCredentials = (username, password) => {
     }).then(response => response.json())
 };
 
+export const findUserByUsername = (username) => {
+    return fetch(`${LOCALHOST_API}/users/{userId}`)
+        .then(response => response.json())
+};
+
 export default {
     registerUser,
     updateUser,
     findUserProfile,
-    findUserByCredentials
+    findUserByCredentials,
+    findUserByUsername
 }

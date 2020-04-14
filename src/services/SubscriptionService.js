@@ -22,3 +22,8 @@ export const findSubscriptionsByUserId = (userId) => {
     return fetch(`${LOCALHOST_API}/users/${userId}/subscriptions`)
         .then(response => response.json())
 };
+
+export default {
+    createDrugSubscription,
+    findSubscriptionsByUserId
+}
