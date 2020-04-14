@@ -29,6 +29,8 @@ export const registerUser = (user) => {
  * - lastName
  * - email
  * - dob (date of birth)
+ * - gender
+ * - height
  * NOTE: names of fields must match
  *
  * @param userId
