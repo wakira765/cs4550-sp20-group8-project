@@ -1,3 +1,6 @@
+
+import {LOCALHOST_API} from "../constants";
+
 /**
  * Sends a registration request.
  * The minimum data required to register a user are:
@@ -8,8 +11,6 @@
  * The new user created is returned.
  * @param user
  */
-import {LOCALHOST_API} from "../constants";
-
 export const registerUser = (user) => {
     return fetch(`${LOCALHOST_API}/register`, {
         method: 'POST',
@@ -28,8 +29,6 @@ export const registerUser = (user) => {
  * - lastName
  * - email
  * - dob (date of birth)
- * - isDoctor
- * - medicalId (the medical id of the user if it is a doctor)
  * NOTE: names of fields must match
  *
  * @param userId
