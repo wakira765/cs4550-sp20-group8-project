@@ -1,7 +1,7 @@
-import {HEROKU_API, FDA_ALERT_URL} from "../constants";
+import {SOURCE, FDA_ALERT_URL} from "../constants";
 
 export const findLatestNews = () => {
-    return fetch(`${HEROKU_API}/news`)
+    return fetch(`${SOURCE}/news`)
         .then(response => response.json())
 };
 

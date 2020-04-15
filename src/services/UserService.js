@@ -8,10 +8,10 @@
  * The new user created is returned.
  * @param user
  */
-import {HEROKU_API} from "../constants";
+import {SOURCE} from "../constants";
 
 export const registerUser = (user) => {
-    return fetch(`${HEROKU_API}/register`, {
+    return fetch(`${SOURCE}/register`, {
         method: 'POST',
         body: JSON.stringify(user),
         credentials: 'include',
@@ -37,7 +37,7 @@ export const registerUser = (user) => {
  * @returns {Promise<any>}
  */
 export const updateUser = (userId, user) => {
-    return fetch(`${HEROKU_API}/users/${userId}`, {
+    return fetch(`${SOURCE}/users/${userId}`, {
         method: 'PUT',
         body: JSON.stringify(user),
         headers: {
@@ -51,7 +51,7 @@ export const updateUser = (userId, user) => {
  * @returns {Promise<any>}
  */
 export const findUserProfile = () => {
-    return fetch(`${HEROKU_API}/profile`, {
+    return fetch(`${SOURCE}/profile`, {
         method: 'POST',
         credentials: 'include'
     }).then(response => response.json())
@@ -65,7 +65,7 @@ export const findUserProfile = () => {
  * @returns {Promise<any>}
  */
 export const findUserByCredentials = (username, password) => {
-    return fetch(`${HEROKU_API}/login`, {
+    return fetch(`${SOURCE}/login`, {
         method: 'POST',
         body: JSON.stringify({username, password}),
         headers: {
