@@ -5,17 +5,18 @@ export const findLatestNews = () => {
         .then(response => response.json())
 };
 
-export const getAlerts = async () => {
-    const response = await fetch(FDA_ALERT_URL, {
-        headers: {
-            'content-type': 'application/json'
-        }
-    })
+export const findNewsForUserConditions = (userId) => {
+    return fetch(`${SOURCE}/users/${userId}/news`)
+        .then(response => response.json())
+};
 
-    return await response.json();
-}
+export const getLatestRecalls = () => {
+    return fetch(`${SOURCE}/recalls`)
+        .then(response => response.json())
+};
 
 export default {
     findLatestNews,
-    getAlerts
+    getLatestRecalls,
+    findNewsForUserConditions
 }

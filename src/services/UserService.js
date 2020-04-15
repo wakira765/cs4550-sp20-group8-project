@@ -1,3 +1,4 @@
+import {SOURCE} from "../constants";
 /**
  * Sends a registration request.
  * The minimum data required to register a user are:
@@ -8,7 +9,7 @@
  * The new user created is returned.
  * @param user
  */
-import {SOURCE} from "../constants";
+
 
 export const registerUser = (user) => {
     return fetch(`${SOURCE}/register`, {
@@ -28,8 +29,8 @@ export const registerUser = (user) => {
  * - lastName
  * - email
  * - dob (date of birth)
- * - isDoctor
- * - medicalId (the medical id of the user if it is a doctor)
+ * - gender: gender can be one of MALE/FEMALE/UNDEFINED
+ * - height: height is represented in centimeters
  * NOTE: names of fields must match
  *
  * @param userId
@@ -67,16 +68,23 @@ export const findUserProfile = () => {
 export const findUserByCredentials = (username, password) => {
     return fetch(`${SOURCE}/login`, {
         method: 'POST',
-        body: JSON.stringify({username, password}),
+        body: JSON.stringify({userName: username, password: password}),
+        credentials: 'include',
         headers: {
             'content-type': 'application/json'
         }
     }).then(response => response.json())
 };
 
+export const findUserByUsername = (username) => {
+    return fetch(`${SOURCE}/users/{userId}`)
+        .then(response => response.json())
+};
+
 export default {
     registerUser,
     updateUser,
     findUserProfile,
-    findUserByCredentials
+    findUserByCredentials,
+    findUserByUsername
 }
