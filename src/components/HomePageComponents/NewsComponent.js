@@ -14,11 +14,18 @@ class NewsComponent extends Component {
 
     render() {
         return (
-            <ul id="news-cards-list">
-                {this.state.articles.map(article => (
-                    <NewsCard article={article}></NewsCard>
-                ))}
-            </ul>
+            <>
+            <div id="news-header">
+                <h1 align="left">Recent News</h1>
+            </div>
+            <div id="news-body">
+                <ul id="news-cards-list">
+                    {this.state.articles.map(article => (
+                        <NewsCard article={article}></NewsCard>
+                    ))}
+                </ul>
+            </div>
+            </>
         )
     }
 

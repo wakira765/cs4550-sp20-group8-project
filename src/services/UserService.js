@@ -53,7 +53,7 @@ export const updateUser = (userId, user) => {
  */
 export const findUserProfile = () => {
     return fetch(`${SOURCE}/profile`, {
-        method: 'POST',
+        method: 'GET',
         credentials: 'include'
     }).then(response => response.json())
 };

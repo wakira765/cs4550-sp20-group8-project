@@ -10,6 +10,9 @@ import {BrowserRouter as Router, Route} from "react-router-dom";
 import DrugComponent from "./components/DrugComponent";
 import DrugReducer from "./reducers/DrugReducer";
 
+import ProfileContainer from './containers/ProfileContainer';
+import { findUserProfile } from "./services/UserService"
+
 const rootReducer = combineReducers({
     main: MainReducer,
     drug: DrugReducer
@@ -84,8 +87,12 @@ function App() {
             />
             <Route path={["/","/home"]}
                    exact={true}
-                   component={HomeContainer}
+                   render={(props) => <HomeContainer {...props}/>}
             />
+            <Route path={"/profile"}
+                   exact={true}
+                   render={(props) => <ProfileContainer {...props} user={findUserProfile()}/>}
+            ></Route>
         </Router>
     </Provider>
   );

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../../styles/News.css"
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, CardHeader } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, CardHeader} from 'reactstrap';
+import { NEWS_API_URL, NEWS_API_CREDIT } from "../../constants";
 
 
 class NewsCardComponent extends Component {
@@ -16,6 +17,9 @@ class NewsCardComponent extends Component {
                             <CardImg src={article['urlToImage']}></CardImg>
                             <CardTitle><h5>{article['title']}</h5></CardTitle>
                         </a>
+                        <CardSubtitle>
+                            <a className="news-credit" href={NEWS_API_URL}>{NEWS_API_CREDIT}</a>
+                        </CardSubtitle>
                     </CardBody>
                 </Card>
             </li>

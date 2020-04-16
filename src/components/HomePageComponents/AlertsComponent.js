@@ -8,7 +8,7 @@ class AlertsComponent extends Component {
     }
 
     componentDidMount = async () => {
-        const result = await newsService.getAlerts();
+        const result = await newsService.getLatestRecalls();
         this.setState( {
             alerts: result['results']
         })

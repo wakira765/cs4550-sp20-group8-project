@@ -2,15 +2,16 @@
     position: fixed;
     top: 0;
     width: 100%;
-    padding-bottom: 2%;
+    height: 10%;
     z-index: 1;
 }
 .home-logo {
+    position: relative;
     color: white;
     float: left;
 }
 
-#home-navbar-buttons {
+.home-navbar-dropdowns {
     float: right
 }
 
@@ -23,7 +24,8 @@
 }
 
 #home-search-bar {
-    margin: 0% 0% 0% 5%;
+    position: relative;
+    left: 2%;
 }
 
 #home-center{
@@ -31,17 +33,34 @@
 }
 
 #home-displayed-content {
-    background-color: lightcyan;
-    margin-top: 100px;
+    margin-top: 75px;
 }
 
 #home-buttons-collapsed {
     position: fixed;
     top: 85%;
     right: 10%;
-
 }
 
+.home-web-name {
+    font-size: xx-large;
+}
+
+.home-dropdown-link {
+    color: teal;
+}
+
+.home-navbar-link {
+    color: white;
+}
+
+#home-welcome-section {
+    margin: 10%;
+}
+
+.home-left {
+    position: relative;
+}
 
 .fa-capsules {}
 .fa-exclamation-circle {color: orange}

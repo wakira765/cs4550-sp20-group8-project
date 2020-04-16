@@ -7,7 +7,6 @@ export const DISPLAY_NEWS = "DISPLAY_NEWS";
 export const DISPLAY_ALERTS = "DISPLAY_ALERTS";
 export const WRITING_POST = "WRITING_POST";
 
-<<<<<<< HEAD
 // todo: move to back end server
 // constant for getting FDA recall alerts
 export const FDA_ALERT_URL = "https://api.fda.gov/drug/enforcement.json?search=report_date:[20180101+TO+20191231]&limit=7"
@@ -19,6 +18,9 @@ export const HEROKU_API = "https://cs4550-project-server.herokuapp.com/api/"
 
 
 export const SOURCE = LOCALHOST_API;
-=======
-export const HEROKU_API = "https://cs4550-project-server.herokuapp.com/api/";
->>>>>>> e837ebebec5df8adac8169c3e83d02b0c80016f1
+
+export const NEWS_API_CREDIT = "powered by NewsAPI.org";
+export const NEWS_API_URL = "https://newsapi.org/";
+
+// name of the webapp in the works
+export const WEBAPP_NAME ="PharmaNETx"

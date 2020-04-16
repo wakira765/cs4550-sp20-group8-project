@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import UserService from "../services/UserService";
+import "../index.css"
 
 class RegisterContainer extends React.Component {
 
@@ -19,7 +20,7 @@ class RegisterContainer extends React.Component {
             UserService.registerUser({
                 userName: this.state.userName,
                 password: this.state.password
-            }).then(response => this.props.history.push("/home"))
+            }).then(response => this.props.history.push("/profile"))
         } else {
             alert("passwords do not match!")
         }
@@ -68,15 +69,15 @@ class RegisterContainer extends React.Component {
                     </div>
                     <div className="form-group row wbdv-cta-container">
                       <div className="col-sm-10">
-                        <button type="submit" className="btn btn-primary btn-block wbdv-button wbdv-register"
+                        <button type="submit" className="btn btn-info btn-block wbdv-button wbdv-register"
                                 onClick={this.handleRegisterUser}
                         >Sign up</button>
                         <div className="row">
                           <div className="col-6 wbdv-login-container">
-                            <Link className="wbdv-link wbdv-login" to="/login">Login</Link>
+                            <Link className="wbdv-link wbdv-login register-link" to="/login">Login</Link>
                           </div>
-                          <div className="col-6 cancel-container">
-                            <Link className="cancel-link" to="/">Cancel</Link>
+                          <div className="col-6 cancel-container ">
+                            <Link className="cancel-link register-link" to="/">Cancel</Link>
                           </div>
                         </div>
                       </div>
