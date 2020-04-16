@@ -1,16 +1,44 @@
 import React from "react";
 import DrugInformationComponent from "./DrugInformationComponent";
 import DrugService from "../services/DrugService";
+import DrugCommentService from "../services/DrugCommentService";
 import {connect} from "react-redux";
-import {findDrugDataAction} from "../actions/DrugActions";
+import {findDrugDataAction, findDrugCommentsAction, createDrugCommentAction} from "../actions/DrugActions";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 class DrugComponent extends React.Component {
 
+    state = {
+        comment: ""
+    }
+
     componentDidMount() {
         this.props.findDrugData(this.props.drugName);
+        this.props.findDrugCommentsByNdc(this.props.drugName);
+    }
+
+    updateForm = (newState) => {
+        this.setState(newState);
+    }
+
+    createDrugComment = (text) => {
+        let today = new Date();
+        const dd = today.getDate();
+        const mm = today.getMonth()+1;
+        const yyyy = today.getFullYear();
+
+        today = mm+'/'+dd+'/'+yyyy;
+        const newComment = {
+            text: text,
+            date: today,
+            author: "Test",
+            productNdc: this.props.drugName
+        };
+
+        this.setState({comment: ""});
+        this.props.createDrugComment(newComment);
     }
 
     render() {
@@ -23,7 +51,34 @@ class DrugComponent extends React.Component {
                         </button>
                         <h2 className="drug-name">{this.props.drugInfo.properties.openfda.brand_name}</h2>
                     </nav>
+                    <button className="subscribe-button">Subscribe</button>
                     <DrugInformationComponent drugInfo={this.props.drugInfo}/>
+                    <div className="comments-section">
+                        <h3 className="comments-section-header">Comments Section</h3>
+                        {
+                            this.props.comments && this.props.comments.length > 0 && this.props.comments.map((comment, index) => {
+                                return (
+                                    <div key={index} className={"comment comment-"+index}>
+                                        <p className="comment-author">{comment.author}</p>
+                                        <p className="comment-date">Posted: {comment.date}</p>
+                                        <p className="comment-text">{comment.text}</p>
+                                    </div>
+                                )
+                            })
+                        }
+                        <div className="post-comment-section">
+                            <label className="post-comment-label" htmlFor="post-comment-input">Post a comment</label>
+                            <textarea className="post-comment-textfield"
+                              id="post-comment-input"
+                              onChange={(e) => this.updateForm({
+                                comment: e.target.value
+                              })}
+                              value={this.state.comment}>
+                            </textarea>
+                            <button onClick={() => this.createDrugComment(this.state.comment)} className="post-comment-button">Post Comment</button>
+                        </div>
+                    </div>
+
                 </div>}
             </div>
         )
@@ -32,7 +87,8 @@ class DrugComponent extends React.Component {
 
 const stateToPropertyMapper = (state) => {
     return ({
-        drugInfo: state.drug.drugInfo
+        drugInfo: state.drug.drugInfo,
+        comments: state.drug.comments
     })
 };
 
@@ -40,7 +96,13 @@ const dispatchToPropertyMapper = (dispatch) => {
     return ({
         findDrugData: (drugName) =>
             DrugService.findDrugByNdc(drugName)
-                .then(infos => dispatch(findDrugDataAction(infos)))
+                .then(infos => dispatch(findDrugDataAction(infos))),
+        findDrugCommentsByNdc: (ndc) =>
+            DrugService.findDrugCommentsByNdc(ndc)
+                .then(comments => dispatch(findDrugCommentsAction(comments))),
+        createDrugComment: (comment) =>
+            DrugCommentService.createDrugComment(comment)
+                .then(newComment => dispatch(createDrugCommentAction(newComment)))
     })
 };
 

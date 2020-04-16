@@ -104,7 +104,7 @@ class MainContainer extends React.Component {
                 {this.props.findByName && <div className="search-results-container search-by-name">
                     {this.props.searchResults && this.props.searchResults.length > 0 && <button onClick={this.compareDrugs} className="compare-drugs-button">Compare Drugs</button>}
                     {
-                        this.props.searchResults && this.props.searchResults.length > 0 && this.props.searchResults && this.props.searchResults.map((result, index) => {
+                        this.props.searchResults && this.props.searchResults.length > 0 && this.props.searchResults.map((result, index) => {
                             return (
                                 <div key={index} className={"search-result search-result"+index}>
                                     <Link to={`/drugs/${result.properties.openfda.product_ndc[0]}`} className="drug-name-link">{result.properties.openfda.brand_name ? result.properties.openfda.brand_name : "Unknown Brand Name"}</Link>
@@ -122,7 +122,7 @@ class MainContainer extends React.Component {
                 </div>}
                 {this.props.findByDisease && <div className="search-results-container search-by-disease">
                     {
-                        this.props.searchResults && this.props.searchResults.length > 0 &&this.props.searchResults.map((result, index) => {
+                        this.props.searchResults && this.props.searchResults.length > 0 && this.props.searchResults.map((result, index) => {
                             return (
                                 <div key={index} className={"search-result search-result"+index}>
                                     <p className="disease-name">{result}</p>
