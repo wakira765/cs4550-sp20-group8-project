@@ -1,14 +1,11 @@
 import {LOCALHOST_API, FDA_ALERT_URL} from "../constants";
 
 export const findLatestNews = () => {
-    return fetch(`${LOCALHOST_API}/news`)
-        .then(response => response.json())
+    return fetch(`${LOCALHOST_API}/news`, {
+        credentials: 'include'
+    }).then(response => response.json())
 };
 
-export const findNewsForUserConditions = (userId) => {
-    return fetch(`${LOCALHOST_API}/users/${userId}/news`)
-        .then(response => response.json())
-};
 
 export const getLatestRecalls = () => {
     return fetch(`${LOCALHOST_API}/recalls`)
@@ -17,6 +14,5 @@ export const getLatestRecalls = () => {
 
 export default {
     findLatestNews,
-    getLatestRecalls,
-    findNewsForUserConditions
+    getLatestRecalls
 }

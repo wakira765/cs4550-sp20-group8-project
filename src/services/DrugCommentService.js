@@ -6,7 +6,7 @@ import {LOCALHOST_API} from "../constants";
  * - text: the text of the comment
  * - date: the string version of the date
  * - productNdc: the product ndc that the comment refers to
- * - author: the author of the post
+ * The author of the post will be set in the back-end
  * NOTE: the field names have to match the above.
  * @param comment
  * @returns {Promise<any>}
@@ -15,6 +15,7 @@ export const createDrugComment = (comment) => {
     return fetch(`${LOCALHOST_API}/comments`, {
         method: 'POST',
         body: JSON.stringify(comment),
+        credentials: 'include',
         headers: {
             'content-type': 'application/json'
         }

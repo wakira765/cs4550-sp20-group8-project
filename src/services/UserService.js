@@ -41,6 +41,7 @@ export const updateUser = (userId, user) => {
     return fetch(`${LOCALHOST_API}/users/${userId}`, {
         method: 'PUT',
         body: JSON.stringify(user),
+        credentials: 'include',
         headers: {
             'content-type': 'application/json'
         }
@@ -77,7 +78,7 @@ export const findUserByCredentials = (username, password) => {
 };
 
 export const findUserByUsername = (username) => {
-    return fetch(`${LOCALHOST_API}/users/{userId}`)
+    return fetch(`${LOCALHOST_API}/users/${username}`)
         .then(response => response.json())
 };
 
