@@ -3,7 +3,8 @@ import DrugInformationComponent from "./DrugInformationComponent";
 import DrugService from "../services/DrugService";
 import DrugCommentService from "../services/DrugCommentService";
 import {connect} from "react-redux";
-import {findDrugDataAction, findDrugCommentsAction, createDrugCommentAction} from "../actions/DrugActions";
+import {findDrugDataAction, findDrugCommentsAction, createDrugCommentAction, subscribeToDrugAction} from "../actions/DrugActions";
+import SubscriptionService from "../services/SubscriptionService";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -33,12 +34,18 @@ class DrugComponent extends React.Component {
         const newComment = {
             text: text,
             date: today,
-            author: "Test",
             productNdc: this.props.drugName
         };
 
         this.setState({comment: ""});
         this.props.createDrugComment(newComment);
+    }
+
+    subscribeToDrug = () => {
+        const subscribeObject = {
+            productNdc: this.props.drugName
+        };
+        this.props.subscribeToDrug(subscribeObject);
     }
 
     render() {
@@ -51,7 +58,7 @@ class DrugComponent extends React.Component {
                         </button>
                         <h2 className="drug-name">{this.props.drugInfo.properties.openfda.brand_name}</h2>
                     </nav>
-                    <button className="subscribe-button">Subscribe</button>
+                    <button className="subscribe-button" disabled={this.props.subscriptions.includes(this.props.drugName)} onClick={() => this.subscribeToDrug()}>{this.props.subscriptions.includes(this.props.drugName) ? "Subscribed" : "Subscribe"}</button>
                     <DrugInformationComponent drugInfo={this.props.drugInfo}/>
                     <div className="comments-section">
                         <h3 className="comments-section-header">Comments Section</h3>
@@ -88,7 +95,8 @@ class DrugComponent extends React.Component {
 const stateToPropertyMapper = (state) => {
     return ({
         drugInfo: state.drug.drugInfo,
-        comments: state.drug.comments
+        comments: state.drug.comments,
+        subscriptions: state.drug.subscriptions
     })
 };
 
@@ -102,7 +110,10 @@ const dispatchToPropertyMapper = (dispatch) => {
                 .then(comments => dispatch(findDrugCommentsAction(comments))),
         createDrugComment: (comment) =>
             DrugCommentService.createDrugComment(comment)
-                .then(newComment => dispatch(createDrugCommentAction(newComment)))
+                .then(newComment => dispatch(createDrugCommentAction(newComment))),
+        subscribeToDrug: (ndc) =>
+            SubscriptionService.createDrugSubscription(ndc)
+                .then(subscription => dispatch(subscribeToDrugAction(subscription)))
     })
 };
 

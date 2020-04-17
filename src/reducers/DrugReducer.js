@@ -1,8 +1,9 @@
-import {FIND_DRUG_DATA, FIND_DRUG_COMMENTS, CREATE_DRUG_COMMENT} from "../actions/DrugActions";
+import {FIND_DRUG_DATA, FIND_DRUG_COMMENTS, CREATE_DRUG_COMMENT, SUBSCRIBE_TO_DRUG} from "../actions/DrugActions";
 
 const initialState = {
     drugInfo: [],
-    comments: []
+    comments: [],
+    subscriptions: []
 };
 
 const DrugReducer = (state = initialState, action) => {
@@ -23,6 +24,14 @@ const DrugReducer = (state = initialState, action) => {
                 comments: [
                     ...state.comments,
                     action.comment
+                ]
+            }
+        case SUBSCRIBE_TO_DRUG:
+            return {
+                ...state,
+                subscriptions: [
+                    ...state.subscriptions,
+                    action.subscription.productNdc
                 ]
             }
         default:
