@@ -33,7 +33,7 @@ class HomeContainer extends Component {
         const loggedIn = this.state.user !== null;
         return (
             <>
-            <HomeNavBar {...this.props} loggedIn={loggedIn}></HomeNavBar>
+            <HomeNavBar {...this.props} user={this.state.user}></HomeNavBar>
             <div id="home-displayed-content" className="container-fluid">
                 {!loggedIn && (
                     <div id="home-welcome-section" className="flex-row">
