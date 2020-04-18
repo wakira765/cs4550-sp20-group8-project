@@ -3,7 +3,7 @@ import DrugInformationComponent from "./DrugInformationComponent";
 import DrugService from "../services/DrugService";
 import DrugCommentService from "../services/DrugCommentService";
 import {connect} from "react-redux";
-import {findDrugDataAction, findDrugCommentsAction, createDrugCommentAction, subscribeToDrugAction} from "../actions/DrugActions";
+import {findDrugDataAction, findDrugCommentsAction, createDrugCommentAction, subscribeToDrugAction, userSubscriptionsAction} from "../actions/DrugActions";
 import SubscriptionService from "../services/SubscriptionService";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,7 +18,13 @@ class DrugComponent extends React.Component {
     componentDidMount() {
         this.props.findDrugData(this.props.drugName);
         this.props.findDrugCommentsByNdc(this.props.drugName);
+        this.props.findCurrentUserSubscriptions();
     }
+
+//    componentDidUpdate() {
+//        console.log("update");
+//        this.props.findCurrentUserSubscriptions();
+//    }
 
     updateForm = (newState) => {
         this.setState(newState);
@@ -93,6 +99,7 @@ class DrugComponent extends React.Component {
 }
 
 const stateToPropertyMapper = (state) => {
+    console.log(state.drug.subscriptions)
     return ({
         drugInfo: state.drug.drugInfo,
         comments: state.drug.comments,
@@ -113,7 +120,10 @@ const dispatchToPropertyMapper = (dispatch) => {
                 .then(newComment => dispatch(createDrugCommentAction(newComment))),
         subscribeToDrug: (ndc) =>
             SubscriptionService.createDrugSubscription(ndc)
-                .then(subscription => dispatch(subscribeToDrugAction(subscription)))
+                .then(subscription => dispatch(subscribeToDrugAction(subscription))),
+        findCurrentUserSubscriptions: () =>
+            SubscriptionService.findCurrentUserSubscriptions()
+                .then(subscriptions => {dispatch(userSubscriptionsAction(subscriptions));console.log(subscriptions);})
     })
 };
 
