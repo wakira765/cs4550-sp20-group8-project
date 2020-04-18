@@ -23,7 +23,13 @@ export const findSubscriptionsByUserId = (userId) => {
         .then(response => response.json())
 };
 
+export const findCurrentUserSubscriptions = () => {
+    return fetch(`${LOCALHOST_API}/subscriptions`)
+        .then(response => response.json())
+};
+
 export default {
     createDrugSubscription,
-    findSubscriptionsByUserId
+    findSubscriptionsByUserId,
+    findCurrentUserSubscriptions
 }
