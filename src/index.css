@@ -266,6 +266,10 @@ code {
     float: right;
 }
 
+.drug-component .subscribe-button[disabled] {
+    background-color: #546E7A;
+}
+
 .drug-component .drug-information-container {
     padding: 0 20px;
     margin: 20px 0;
@@ -296,7 +300,7 @@ code {
 }
 
 .drug-component .post-comment-section .post-comment-button {
-    background-color: #546E7A;
+    background-color: #2874A6;
     border: none;
     border-radius: 5px;
     padding: 10px;
