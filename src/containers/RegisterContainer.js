@@ -8,7 +8,8 @@ class RegisterContainer extends React.Component {
     state = {
         userName: "",
         password: "",
-        verifyPassword: ""
+        verifyPassword: "",
+        isDoctor: false
     }
 
     handleInputChange = (state) => {
@@ -19,8 +20,14 @@ class RegisterContainer extends React.Component {
         if (this.state.password === this.state.verifyPassword) {
             UserService.registerUser({
                 userName: this.state.userName,
+<<<<<<< HEAD
                 password: this.state.password
             }).then(response => this.props.history.push("/profile"))
+=======
+                password: this.state.password,
+                isDoctor: this.state.isDoctor
+            }).then(response => this.props.history.push("/home"))
+>>>>>>> fe05e898b8867b31ab89054f24e4f41d1e08af05
         } else {
             alert("passwords do not match!")
         }
@@ -29,43 +36,74 @@ class RegisterContainer extends React.Component {
     render() {
         return (
             <div className="wbdv-register-container container">
-                  <h1>Sign Up</h1>
-                    <div className="form-group row wbdv-username-container">
-                      <label htmlFor="username" className="col-sm-2 col-form-label">
-                        Username </label>
-                      <div className="col-sm-10">
-                        <input className="form-control wbdv-field wbdv-username"
-                               id="username"
-                               placeholder="Username"
-                               onChange={(e) => {
-                                  const state = {...this.state, userName: e.target.value};
-                                  this.handleInputChange(state);
-                               }}/>
+                <h1>Sign Up</h1>
+                <div className="form-group row wbdv-username-container">
+                  <label htmlFor="username" className="col-sm-2 col-form-label">
+                    Username
+                  </label>
+                  <div className="col-sm-10">
+                    <input className="form-control wbdv-field wbdv-username"
+                           id="username"
+                           placeholder="Username"
+                           onChange={(e) => {
+                              const state = {...this.state, userName: e.target.value};
+                              this.handleInputChange(state);
+                           }}/>
+                  </div>
+                </div>
+                <div className="form-group row wbdv-password-container">
+                  <label htmlFor="password" className="col-sm-2 col-form-label">
+                    Password
+                  </label>
+                  <div className="col-sm-10">
+                    <input type="password" className="form-control wbdv-field wbdv-password"
+                           id="password" placeholder="Password"
+                           onChange={(e) => {
+                              const state = {...this.state, password: e.target.value};
+                              this.handleInputChange(state);
+                           }}/>
+                  </div>
+                </div>
+                <div className="form-group row wbdv-password-verify-container">
+                  <label htmlFor="password-verify" className="col-sm-2 col-form-label">
+                    Verify Password
+                  </label>
+                  <div className="col-sm-10">
+                    <input type="password" className="form-control wbdv-field wbdv-password-verify"
+                           id="password-verify" placeholder="Verify Password"
+                           onChange={(e) => {
+                              const state = {...this.state, verifyPassword: e.target.value};
+                              this.handleInputChange(state);
+                           }}/>
+                  </div>
+                </div>
+                <div className="form-group row wbdv-password-verify-container">
+                  <label htmlFor="is-doctor" className="col-sm-2 col-form-label">
+                    Are you a doctor?
+                  </label>
+                  <div className="col-sm-10">
+                    <select id="is-doctor"
+                        className="form-control wbdv-field is-doctor-select"
+                        onChange={(e) => {
+                           const state = {...this.state, isDoctor: e.target.value};
+                           this.handleInputChange(state);
+                        }}
+                        value={this.state.isDoctor}>
+                      <option value={false}>No</option>
+                      <option value={true}>Yes</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="form-group row wbdv-cta-container">
+                  <div className="col-sm-10">
+                    <button type="submit" className="btn btn-primary btn-block wbdv-button wbdv-register"
+                            onClick={this.handleRegisterUser}
+                    >Sign up</button>
+                    <div className="row">
+                      <div className="col-6 wbdv-login-container">
+                        <Link className="wbdv-link wbdv-login" to="/login">Login</Link>
                       </div>
-                    </div>
-                    <div className="form-group row wbdv-password-container">
-                      <label htmlFor="password" className="col-sm-2 col-form-label">
-                        Password </label>
-                      <div className="col-sm-10">
-                        <input type="password" className="form-control wbdv-field wbdv-password"
-                               id="password" placeholder="Password"
-                               onChange={(e) => {
-                                  const state = {...this.state, password: e.target.value};
-                                  this.handleInputChange(state);
-                               }}/>
-                      </div>
-                    </div>
-                    <div className="form-group row wbdv-password-verify-container">
-                      <label htmlFor="password-verify" className="col-sm-2 col-form-label">
-                        Verify Password </label>
-                      <div className="col-sm-10">
-                        <input type="password" className="form-control wbdv-field wbdv-password-verify"
-                               id="password-verify" placeholder="Verify Password"
-                               onChange={(e) => {
-                                  const state = {...this.state, verifyPassword: e.target.value};
-                                  this.handleInputChange(state);
-                               }}/>
-                      </div>
+<<<<<<< HEAD
                     </div>
                     <div className="form-group row wbdv-cta-container">
                       <div className="col-sm-10">
@@ -80,9 +118,15 @@ class RegisterContainer extends React.Component {
                             <Link className="cancel-link register-link" to="/">Cancel</Link>
                           </div>
                         </div>
+=======
+                      <div className="col-6 cancel-container">
+                        <Link className="cancel-link" to="/">Cancel</Link>
+>>>>>>> fe05e898b8867b31ab89054f24e4f41d1e08af05
                       </div>
                     </div>
+                  </div>
                 </div>
+            </div>
         )
     }
 }

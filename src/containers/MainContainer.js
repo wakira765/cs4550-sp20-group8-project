@@ -29,6 +29,20 @@ class MainContainer extends React.Component {
         }
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevProps.search !== this.props.search) {
+            if(this.props.searchByName) {
+                this.props.findDrugsByName(this.props.search);
+            }
+            if(this.props.searchByDisease) {
+                this.props.findDrugsByDisease(this.props.search);
+            }
+            if(this.props.searchSideEffects) {
+                this.props.getDrugSideEffects(this.props.search);
+            }
+        }
+    }
+
     handleSearchTermChange = (term) => {
         this.setState({
             searchTerm: term
@@ -88,9 +102,9 @@ class MainContainer extends React.Component {
                     searchTerm={this.state.searchTerm}
                 />
                 {this.props.findByName && <div className="search-results-container search-by-name">
-                    <button onClick={this.compareDrugs} className="compare-drugs-button">Compare Drugs</button>
+                    {this.props.searchResults && this.props.searchResults.length > 0 && <button onClick={this.compareDrugs} className="compare-drugs-button">Compare Drugs</button>}
                     {
-                        this.props.searchResults && this.props.searchResults.map((result, index) => {
+                        this.props.searchResults && this.props.searchResults.length > 0 && this.props.searchResults.map((result, index) => {
                             return (
                                 <div key={index} className={"search-result search-result"+index}>
                                     <Link to={`/drugs/${result.properties.openfda.product_ndc[0]}`} className="drug-name-link">{result.properties.openfda.brand_name ? result.properties.openfda.brand_name : "Unknown Brand Name"}</Link>
@@ -104,10 +118,11 @@ class MainContainer extends React.Component {
                             )
                         })
                     }
+                    {this.props.searchResults && this.props.searchResults.length === 0 && <p className="no-results-text">No search results found for {this.state.searchTerm}</p>}
                 </div>}
                 {this.props.findByDisease && <div className="search-results-container search-by-disease">
                     {
-                        this.props.searchResults && this.props.searchResults.map((result, index) => {
+                        this.props.searchResults && this.props.searchResults.length > 0 && this.props.searchResults.map((result, index) => {
                             return (
                                 <div key={index} className={"search-result search-result"+index}>
                                     <p className="disease-name">{result}</p>
@@ -116,11 +131,12 @@ class MainContainer extends React.Component {
                             )
                         })
                     }
+                    {this.props.searchResults && this.props.searchResults.length === 0 && <p className="no-results-text">No search results found for {this.state.searchTerm}</p>}
                 </div>}
                 {this.props.findSideEffects && <div className="search-results-container search-side-effects">
-                    <button onClick={this.compareDrugs} className="compare-drugs-button">Compare Drugs</button>
+                    {this.props.searchResults && this.props.searchResults.length > 0 && <button onClick={this.compareDrugs} className="compare-drugs-button">Compare Drugs</button>}
                     {
-                        this.props.searchResults && this.props.searchResults.map((result, index) => {
+                        this.props.searchResults && this.props.searchResults.length > 0 && this.props.searchResults.map((result, index) => {
                             return (
                                 <div key={index} className={"search-result search-result"+index}>
                                     <Link to={`/drugs/${result.properties.openfda.product_ndc[0]}`} className="drug-name-link">{result.properties.openfda.brand_name}</Link>
@@ -134,6 +150,7 @@ class MainContainer extends React.Component {
                             )
                         })
                     }
+                    {this.props.searchResults && this.props.searchResults.length === 0 && <p className="no-results-text">No search results found for {this.state.searchTerm}</p>}
                 </div>}
             </div>
         )
@@ -142,7 +159,7 @@ class MainContainer extends React.Component {
 
 const stateToPropertyMapper = (state) => {
     return ({
-        searchResults: state.main.searchResults,
+        searchResults: Array.isArray(state.main.searchResults) ? state.main.searchResults : [],
         findByName: state.main.findByName,
         findByDisease: state.main.findByDisease,
         findSideEffects: state.main.findSideEffects

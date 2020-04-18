@@ -6,14 +6,14 @@ import {LOCALHOST_API} from "../constants";
  * The record object requires the following fields:
  * - searchText: the search text
  * - valueType: can be one of DRUG or CONDITION
- * @param userId
  * @param record
  * @returns {Promise<any>}
  */
-export const createSearchRecord = (userId, record) => {
-    return fetch(`${LOCALHOST_API}/users/${userId}/searches`, {
+export const createSearchRecord = (record) => {
+    return fetch(`${LOCALHOST_API}/searches`, {
         method: "POST",
         body: JSON.stringify(record),
+        credentials: 'include',
         headers: {
             "content-type": "application/json"
         }
