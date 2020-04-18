@@ -35,9 +35,15 @@ const DrugReducer = (state = initialState, action) => {
                 ]
             }
         case USER_SUBSCRIPTIONS:
+            let arr = []
+            if(Array.isArray(action.subscriptions)) {
+                for(let subscription of action.subscriptions) {
+                    arr.push(subscription.productNdc)
+                }
+            }
             return {
                 ...state,
-                subscriptions: Array.isArray(action.subscriptions) ? action.subscriptions : []
+                subscriptions: arr
             }
         default:
             return state

@@ -16,15 +16,11 @@ class DrugComponent extends React.Component {
     }
 
     componentDidMount() {
+        console.log(this.props.history);
         this.props.findDrugData(this.props.drugName);
         this.props.findDrugCommentsByNdc(this.props.drugName);
         this.props.findCurrentUserSubscriptions();
     }
-
-//    componentDidUpdate() {
-//        console.log("update");
-//        this.props.findCurrentUserSubscriptions();
-//    }
 
     updateForm = (newState) => {
         this.setState(newState);
@@ -99,7 +95,6 @@ class DrugComponent extends React.Component {
 }
 
 const stateToPropertyMapper = (state) => {
-    console.log(state.drug.subscriptions)
     return ({
         drugInfo: state.drug.drugInfo,
         comments: state.drug.comments,
@@ -123,7 +118,7 @@ const dispatchToPropertyMapper = (dispatch) => {
                 .then(subscription => dispatch(subscribeToDrugAction(subscription))),
         findCurrentUserSubscriptions: () =>
             SubscriptionService.findCurrentUserSubscriptions()
-                .then(subscriptions => {dispatch(userSubscriptionsAction(subscriptions));console.log(subscriptions);})
+                .then(subscriptions => dispatch(userSubscriptionsAction(subscriptions)))
     })
 };
 
