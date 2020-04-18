@@ -24,7 +24,9 @@ export const findSubscriptionsByUserId = (userId) => {
 };
 
 export const findCurrentUserSubscriptions = () => {
-    return fetch(`${LOCALHOST_API}/subscriptions`)
+    return fetch(`${LOCALHOST_API}/subscriptions`, {
+        credentials: 'include'
+    })
         .then(response => response.json())
 };
 
