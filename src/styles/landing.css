@@ -1,0 +1,36 @@
+
+
+@media screen and (min-width: 768px) {
+
+    #landing-logo {
+        position: relative;
+        top: 85%;
+    }
+
+}
+
+#to-privacy-policy {
+    color: black;
+}
+
+#to-home-page {
+    color: black;
+}
+
+#landing-logo {
+    text-align: center;
+}
+
+#icon {
+    margin:auto
+}
+
+#buttons {
+    margin:auto
+}
+
+#infographic {
+    position: absolute;
+    top: 90%;
+    right: 48%;
+}

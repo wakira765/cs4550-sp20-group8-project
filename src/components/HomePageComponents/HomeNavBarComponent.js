@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCapsules, faUser, faCog, faEdit, faNewspaper, faSearch, faExclamationCircle, faEllipsisV} from "@fortawesome/free-solid-svg-icons";
+import { faCapsules, faUser, faPrescription, faInfoCircle, faInfo} from "@fortawesome/free-solid-svg-icons";
 import { WEBAPP_NAME } from "../../constants";
 import { UncontrolledButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem , Button, ButtonDropdown, ButtonGroup} from "reactstrap";
 import "../../styles/Home.css"
@@ -11,7 +11,7 @@ class HomeNavBarComponent extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.user !== null && prevState.user !== this.state.user) {
+        if (this.props.user !== null && prevState.user.username !== this.state.user.username) {
             this.setState({
                 user: this.props.user
             })
@@ -20,7 +20,7 @@ class HomeNavBarComponent extends Component {
 
 
     render() {
-        const loggedIn = this.state.user !== null;
+        const loggedIn = this.state.user.username !== '';
         return (
             <nav className="nav-bar home-nav-bar">
                 <div className="home-logo">
@@ -31,10 +31,13 @@ class HomeNavBarComponent extends Component {
                 </div>
                 <div className="home-navbar-dropdowns">
                     <ButtonGroup>
+                        <Button color="info">
+                            <FontAwesomeIcon icon={faPrescription} size="2x" onClick={() => this.props.history.push("/search")}></FontAwesomeIcon>
+                        </Button>
                         {
                             loggedIn ?
                             <UncontrolledButtonDropdown>
-                                <DropdownToggle color="info" caret>Profile</DropdownToggle>
+                                <DropdownToggle color="info" caret><FontAwesomeIcon size="2x" icon={faUser}></FontAwesomeIcon></DropdownToggle>
                                 <DropdownMenu>
                                     <DropdownItem onClick={() => this.props.history.push("/profile")}>Your Profile</DropdownItem>
                                     <DropdownItem>Log Out</DropdownItem>
@@ -50,10 +53,16 @@ class HomeNavBarComponent extends Component {
                             </UncontrolledButtonDropdown>
                         }
                         <UncontrolledButtonDropdown>
-                            <DropdownToggle color="info" caret>About</DropdownToggle>
+                            <DropdownToggle color="info" caret>
+                                <FontAwesomeIcon icon={faInfoCircle} size="2x"></FontAwesomeIcon>
+                            </DropdownToggle>
                             <DropdownMenu>
-                                <DropdownItem>About the Site</DropdownItem>
-                                <DropdownItem>Our Privacy Policy</DropdownItem>
+                                <DropdownItem onClick = {() => this.props.history.push("/about")}>
+                                    About the Site
+                                </DropdownItem>
+                                <DropdownItem onClick = {() => this.props.history.push("/privacy")}>
+                                    Our Privacy Policy
+                                </DropdownItem>
                                 <DropdownItem>About the Developers</DropdownItem>
                             </DropdownMenu>
                         </UncontrolledButtonDropdown>

@@ -13,6 +13,8 @@ import DrugReducer from "./reducers/DrugReducer";
 import ProfileContainer from './containers/ProfileContainer';
 import { findUserProfile } from "./services/UserService"
 
+import { DISPLAY_NEWS, DISPLAY_LANDING_PAGE } from "./constants";
+
 const rootReducer = combineReducers({
     main: MainReducer,
     drug: DrugReducer
@@ -87,7 +89,11 @@ function App() {
             />
             <Route path={["/","/home"]}
                    exact={true}
-                   render={(props) => <HomeContainer {...props}/>}
+                   render={(props) => <HomeContainer {...props} display={DISPLAY_LANDING_PAGE}/>}
+            />
+            <Route path="/home/news_feed"
+                   exact={true}
+                   render={(props) => <HomeContainer {...props} display={DISPLAY_NEWS}/>}
             />
             <Route path={"/profile"}
                    exact={true}

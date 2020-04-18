@@ -78,11 +78,7 @@ export const findUserByCredentials = (username, password) => {
 };
 
 export const findUserByUsername = (username) => {
-<<<<<<< HEAD
     return fetch(`${SOURCE}/users/{userId}`)
-=======
-    return fetch(`${LOCALHOST_API}/users/${username}`)
->>>>>>> fe05e898b8867b31ab89054f24e4f41d1e08af05
         .then(response => response.json())
 };
 

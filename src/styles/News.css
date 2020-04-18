@@ -27,6 +27,10 @@
     color: grey;
 }
 
+#news-search-bar {
+    border-radius: 3%;
+    border: 2px solid teal;
+}
 #news-body {
     overflow-y: scroll;
     padding: 5%;

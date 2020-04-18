@@ -20,14 +20,9 @@ class RegisterContainer extends React.Component {
         if (this.state.password === this.state.verifyPassword) {
             UserService.registerUser({
                 userName: this.state.userName,
-<<<<<<< HEAD
-                password: this.state.password
-            }).then(response => this.props.history.push("/profile"))
-=======
                 password: this.state.password,
                 isDoctor: this.state.isDoctor
-            }).then(response => this.props.history.push("/home"))
->>>>>>> fe05e898b8867b31ab89054f24e4f41d1e08af05
+            }).then(response => this.props.history.push("/profile"))
         } else {
             alert("passwords do not match!")
         }
@@ -103,25 +98,8 @@ class RegisterContainer extends React.Component {
                       <div className="col-6 wbdv-login-container">
                         <Link className="wbdv-link wbdv-login" to="/login">Login</Link>
                       </div>
-<<<<<<< HEAD
-                    </div>
-                    <div className="form-group row wbdv-cta-container">
-                      <div className="col-sm-10">
-                        <button type="submit" className="btn btn-info btn-block wbdv-button wbdv-register"
-                                onClick={this.handleRegisterUser}
-                        >Sign up</button>
-                        <div className="row">
-                          <div className="col-6 wbdv-login-container">
-                            <Link className="wbdv-link wbdv-login register-link" to="/login">Login</Link>
-                          </div>
-                          <div className="col-6 cancel-container ">
-                            <Link className="cancel-link register-link" to="/">Cancel</Link>
-                          </div>
-                        </div>
-=======
                       <div className="col-6 cancel-container">
                         <Link className="cancel-link" to="/">Cancel</Link>
->>>>>>> fe05e898b8867b31ab89054f24e4f41d1e08af05
                       </div>
                     </div>
                   </div>
