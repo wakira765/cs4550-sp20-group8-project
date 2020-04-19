@@ -1,0 +1,55 @@
+.profile-nav-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 10%;
+    z-index: 1;
+}
+.profile-logo {
+    position: relative;
+    color: white;
+    float: left;
+}
+
+.profile-navbar-dropdowns {
+    float: right
+}
+
+.profile-navbar-button {
+    color: white;
+}
+
+.profile-collapsed-button {
+    color: teal;
+}
+
+.to-home {
+    color: white;
+    font-size: 150%;
+}
+
+.profile {
+    position: relative;
+    top: 100px;
+}
+
+.username {
+    font-size: 300%;
+    margin-right: 1%;
+}
+
+.profile-username-img {
+    text-align: center;
+    border: 1px solid black;
+}
+
+.condition-add-btn {
+    color: white;
+    font-size: 100%;
+    font-style: bold;
+
+}
+
+.subscription-list {
+    list-style-type: none;
+}

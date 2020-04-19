@@ -4,21 +4,23 @@
 
     #landing-logo {
         position: relative;
-        top: 85%;
+        top: 40%;
     }
 
 }
 
 #to-privacy-policy {
-    color: black;
+    color: white;
 }
 
 #to-home-page {
-    color: black;
+    color: white;
 }
 
 #landing-logo {
     text-align: center;
+    position: relative;
+    top: 40%;
 }
 
 #icon {
@@ -32,5 +34,22 @@
 #infographic {
     position: absolute;
     top: 90%;
-    right: 48%;
+    right: 45%;
+}
+
+#to-about-page {
+    color: black;
+}
+
+#landing-page-img {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 5%;
+    left: 30%;
+}
+
+.top-links {
+    background-color: #5bc0de;
+    width: 100%;
 }

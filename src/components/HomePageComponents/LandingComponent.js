@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPrescriptionBottleAlt } from "@fortawesome/free-solid-svg-icons";
 import { Collapse, Button, ButtonGroup} from "reactstrap";
+import AboutComponent from "./AboutComponent";
 
 
 import "../../styles/landing.css";
@@ -18,14 +19,16 @@ class LandingComponent extends Component {
     }
     render() {
         return (
-            <div className="container">
-                <div className="d-flex row justify-content-between">
-                    <div className="p-2"><a id="to-privacy-policy">Our Policies on Privacy</a></div>
-                    <div className="p-2"><a id="to-home-page" href="/home/news_feed">Home Page</a></div>
+            <div className="container-fluid">
+                <div className="top-links d-flex row justify-content-between">
+                    <div className="p-2 landing-page-link"><a id="to-privacy-policy" href="/privacy">Our Policies on Privacy</a></div>
+                    <div className="p-2 landing-page-link"><a id="to-home-page" href="/home/news_feed">Home Page</a></div>
                 </div>
                 <div className="row">
-                    <div className="d-none d-xl-block col-lg-6">image</div>
-                    <div className="col-sm-12 col-md-12 col-lg-6">
+                    <div className="d-none d-xl-block col-lg-5">
+                        <img id="landing-page-img" src="landing-page-img.jpg"></img>
+                    </div>
+                    <div className="col-sm-12 col-md-12 col-lg-7">
                         <div id="landing-logo" className="flex-row">
                             <div id="icon">
                                 <FontAwesomeIcon icon={faPrescriptionBottleAlt} size="5x" color="#5bc0de"></FontAwesomeIcon>
@@ -33,47 +36,15 @@ class LandingComponent extends Component {
                             </div>
                             <div id="buttons">
                             <ButtonGroup vertical size="lg">
-                                <Button color="info">Start Searching</Button>
-                                <Button color="info">Sign Up</Button>
+                                <Button color="info" onClick={() => this.props.history.push("/search")}>Start Searching</Button>
+                                <Button color="info" onClick={() => this.props.history.push("/register")}>Sign Up</Button>
                             </ButtonGroup>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div id="infographic">
-                    <div className="d-flex justify-content-center">
-                        <a onClick={this.toggleInfographic}>Learn More</a>
-                    </div>
-                    <div>
-                        <Collapse isOpen={this.state.showInfographic}>
-                                <div className="row">
-                                    <div className="col-6">
-                                        <p>first paragraph</p>
-                                    </div>
-                                    <div className="col-6">
-                                        <p>first image</p>
-                                    </div>
-                                    <div className="col-6">
-                                        <p>second paragraph</p>
-                                    </div>
-                                    <div className="col-6">
-                                        <p>second image</p>
-                                    </div>
-                                    <div className="col-6">
-                                        <p>third paragraph</p>
-                                    </div>
-                                    <div className="col-6">
-                                        <p>third image</p>
-                                    </div>
-                                    <div className="col-6">
-                                        <p>fourth paragraph</p>
-                                    </div>
-                                    <div className="col-6">
-                                        <p>fourth image</p>
-                                    </div>
-                                </div>
-                        </Collapse>
-                    </div>
+                <div id="infographic" className="d-flex justify-content-center">
+                    <a className="landing-page-link" id="to-about-page" href="/about">Learn More</a>
                 </div>
             </div>
 

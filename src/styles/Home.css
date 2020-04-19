@@ -62,6 +62,18 @@
     position: relative;
 }
 
+#about-header {
+    background-color: #5bc0de;
+    color: white;
+    width: 100%;
+    padding: 3%;
+    text-align: center;
+}
+
+#link-to-home {
+    float: right;
+    color: black;
+}
 
 
 .fa-capsules {}

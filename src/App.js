@@ -10,6 +10,8 @@ import {BrowserRouter as Router, Route} from "react-router-dom";
 import DrugComponent from "./components/DrugComponent";
 import DrugReducer from "./reducers/DrugReducer";
 
+import AboutContainer from "./containers/AboutContainer";
+
 import ProfileContainer from './containers/ProfileContainer';
 import { findUserProfile } from "./services/UserService"
 
@@ -94,6 +96,10 @@ function App() {
             <Route path="/home/news_feed"
                    exact={true}
                    render={(props) => <HomeContainer {...props} display={DISPLAY_NEWS}/>}
+            />
+            <Route path="/about"
+                   exact={true}
+                   render={(props) => <AboutContainer {...props}/>}
             />
             <Route path={"/profile"}
                    exact={true}

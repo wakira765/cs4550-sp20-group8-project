@@ -23,3 +23,10 @@ export const NEWS_API_URL = "https://newsapi.org/";
 
 // name of the webapp in the works
 export const WEBAPP_NAME ="PharmaNETx"
+
+
+// about page
+export const GET_INFORMED_PARA="Through our site you can search up the name of drugs and medicine, their brand names or generic names, and retrieve detailed information on their use cases, side effects, ingredients and much more!";
+export const ITS_PERSONAL_PARA="Drugs, unfortunately, are not 'one-size fits all'. They work for some, but won't work for others. That's because everyone's unique, so of course our biology is too! Signing up let's you personalize your experience with us. The more personalized your account is the easier it'll be to find someone who with a similar experience.";
+export const NET_EFFECT_PARA="It takes time to develop a drug. Even then, it won't work for everyone. Some people will have to experiment with a few to find the right one. We try to make your journey a bit easier, by letting users connect with those who are similar to each other and share their experiences. A 50 year old male is obviously biologically different from a female in her early 20's. How could we expect their experience to be the same?";
+export const FIND_WHATS_RIGHT_PARA="Remember, you're not alone. We may be unique, but we also share some similarities. There's a good chance, the road your on has already been traveled or there could be others traveling it with you. We just make it easier to connect with those people.";

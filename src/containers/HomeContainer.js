@@ -5,7 +5,7 @@ import HomeNavBar from "../components/HomePageComponents/HomeNavBarComponent";
 import LandingComponent from "../components/HomePageComponents/LandingComponent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCapsules, faEdit, faNewspaper, faExclamationCircle, faEllipsisV} from "@fortawesome/free-solid-svg-icons";
-import { DISPLAY_LANDING_PAGE, DISPLAY_NEWS, WEBAPP_NAME } from "../constants";
+import { DISPLAY_LANDING_PAGE, DISPLAY_NEWS, WEBAPP_NAME, DISPLAY_ABOUT_US} from "../constants";
 import "../styles/Home.css"
 import { UncontrolledCollapse } from 'reactstrap';
 import { findUserProfile } from "../services/UserService";
@@ -24,6 +24,12 @@ class HomeContainer extends Component {
                 user: this.state.user
             })
         }
+
+        if (prevState.display !== this.state.display) {
+            this.setState({
+                display: this.state.display
+            })
+        }
     }
 
 
@@ -37,10 +43,11 @@ class HomeContainer extends Component {
         const loggedIn = this.state.user.username !== '';
         return (
             <>
-                {this.state.display === DISPLAY_LANDING_PAGE ? (
+                {this.state.display === DISPLAY_LANDING_PAGE && (
                         <LandingComponent {...this.props}></LandingComponent>
-                    ) : (
-                        <>
+                    )}
+                {this.state.display === DISPLAY_NEWS && (
+                    <>
                         <HomeNavBar {...this.props} user={this.state.user}></HomeNavBar>
                         <div id="home-displayed-content" className="container-fluid">
                             {!loggedIn && (
@@ -64,8 +71,8 @@ class HomeContainer extends Component {
                                 </div>
                             </div>
                         </div>
-                        </>
-                    )}
+                    </>
+                )}
             </>
         )
     }
