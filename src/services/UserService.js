@@ -82,10 +82,23 @@ export const findUserByUsername = (username) => {
         .then(response => response.json())
 };
 
+/**
+ * Logs out the current user.
+ * Returns an error if no user is logged in.
+ * Returns true if successful
+ */
+export const logout = () => {
+    return fetch(`${LOCALHOST_API}/logout`), {
+        method: 'POST',
+        credentials: 'include'
+    }.then(response => response.json())
+};
+
 export default {
     registerUser,
     updateUser,
     findUserProfile,
     findUserByCredentials,
-    findUserByUsername
+    findUserByUsername,
+    logout
 }
