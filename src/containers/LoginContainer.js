@@ -51,17 +51,12 @@ class LoginContainer extends React.Component {
                 <div className="form-group row wbdv-cta-container">
                   <div className="col-sm-10">
                     <button type="submit" className="btn btn-primary btn-block wbdv-button wbdv-login">Sign in</button>
-                    <div className="row">
-                      <div className="col-6 wbdv-forgot-password-container">
-                        <Link className="wbdv-link wbdv-forgot-password" to="/">Forgot Password?</Link>
-                      </div>
-                      <div className="col-6 wbdv-register-container">
-                        <Link className="wbdv-link wbdv-register float-right" to="/register">Sign up</Link>
-                      </div>
-                    </div>
-                    <div className="row">
+                    <div className="row link-container">
                       <div className="col-6 cancel-container">
                         <Link className="cancel-link" to="/">Cancel</Link>
+                      </div>
+                      <div className="col-6 register-link-container">
+                        <Link className="wbdv-link wbdv-register float-right" to="/register">Sign up</Link>
                       </div>
                     </div>
                   </div>

@@ -40,8 +40,8 @@ code {
   text-align: right;
 }
 
-.wbdv-login-container .cancel-container {
-  margin-top: 15px;
+.wbdv-login-container .link-container {
+  margin-top: 25px;
 }
 
 /* register styles */
@@ -309,10 +309,23 @@ code {
     margin-left: calc(100% - 135px);
 }
 
+.drug-component .comments-section .user-icon {
+    margin-right: 10px;
+}
+
+.drug-component .comments-section .plus-icon {
+    margin-left: 10px;
+    color: #E74C3C;
+    border: 1px solid #000000;
+    border-radius: 2px;
+    padding: 1px;
+}
+
 .drug-component .comments-section .comment-author {
     font-weight: 700;
     font-size: 20px;
     display: inline-block;
+    text-transform: capitalize;
 }
 
 .drug-information-container .label {

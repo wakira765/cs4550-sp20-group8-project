@@ -8,7 +8,8 @@ class RegisterContainer extends React.Component {
         userName: "",
         password: "",
         verifyPassword: "",
-        isDoctor: false
+        isDoctor: false,
+        medicalID: ""
     }
 
     handleInputChange = (state) => {
@@ -20,7 +21,8 @@ class RegisterContainer extends React.Component {
             UserService.registerUser({
                 userName: this.state.userName,
                 password: this.state.password,
-                isDoctor: this.state.isDoctor
+                isDoctor: this.state.isDoctor,
+                medicalID: this.state.medicalID
             }).then(response => this.props.history.push("/home"))
         } else {
             alert("passwords do not match!")
@@ -79,7 +81,7 @@ class RegisterContainer extends React.Component {
                     <select id="is-doctor"
                         className="form-control wbdv-field is-doctor-select"
                         onChange={(e) => {
-                           const state = {...this.state, isDoctor: e.target.value};
+                           const state = {...this.state, isDoctor: e.target.value === 'true' ? true : false, medicalID: e.target.value === 'false' ? "" : this.state.medicalID};
                            this.handleInputChange(state);
                         }}
                         value={this.state.isDoctor}>
@@ -88,13 +90,26 @@ class RegisterContainer extends React.Component {
                     </select>
                   </div>
                 </div>
+                {this.state.isDoctor === true && <div className="form-group row wbdv-medical-id-container">
+                  <label htmlFor="medical-id" className="col-sm-2 col-form-label">
+                    Medical ID
+                  </label>
+                  <div className="col-sm-10">
+                    <input type="text" className="form-control wbdv-field wbdv-medical-id"
+                           id="medical-id" placeholder="Medical ID"
+                           onChange={(e) => {
+                              const state = {...this.state, medicalID: e.target.value};
+                              this.handleInputChange(state);
+                           }}/>
+                  </div>
+                </div>}
                 <div className="form-group row wbdv-cta-container">
                   <div className="col-sm-10">
                     <button type="submit" className="btn btn-primary btn-block wbdv-button wbdv-register"
                             onClick={this.handleRegisterUser}
                     >Sign up</button>
                     <div className="row">
-                      <div className="col-6 wbdv-login-container">
+                      <div className="col-6 login-link-container">
                         <Link className="wbdv-link wbdv-login" to="/login">Login</Link>
                       </div>
                       <div className="col-6 cancel-container">
