@@ -99,5 +99,6 @@ export default {
     updateUser,
     findUserProfile,
     findUserByCredentials,
-    findUserByUsername
+    findUserByUsername,
+    logout
 }
