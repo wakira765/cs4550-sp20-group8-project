@@ -88,7 +88,7 @@ export const findUserByUsername = (userName) => {
  * Returns true if successful
  */
 export const logout = () => {
-    return fetch(`${LOCALHOST_API}/logout`), {
+    return fetch(`${SOURCE}/logout`), {
         method: 'POST',
         credentials: 'include'
     }.then(response => response.json())

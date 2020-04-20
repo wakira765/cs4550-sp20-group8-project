@@ -22,14 +22,8 @@ class RegisterContainer extends React.Component {
             UserService.registerUser({
                 userName: this.state.userName,
                 password: this.state.password,
-<<<<<<< HEAD
                 isDoctor: this.state.isDoctor
             }).then(response => this.props.history.push("/profile"))
-=======
-                isDoctor: this.state.isDoctor,
-                medicalID: this.state.medicalID
-            }).then(response => this.props.history.push("/home"))
->>>>>>> 962c507903b27088d166aa2fb2d708d13a2c3d43
         } else {
             alert("passwords do not match!")
         }

@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import ProfileNavBarComponent from "../components/ProfileComponents/ProfileNavBarComponent";
 import ProfilePrivateComponent from "../components/ProfileComponents/ProfilePrivateComponent";
 import ProfilePublicComponent from "../components/ProfileComponents/ProfilePublicComponent";
-import { findUserProfile, findUserByUsername } from "../services/UserService"
+import { findUserProfile, findUserByUsername } from "../services/UserService";
+import { findSubscriptionsByUserId } from "../services/SubscriptionService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faUserCircle, faPlus, faUserMd, faUser} from "@fortawesome/free-solid-svg-icons";
 import { UncontrolledCollapse, Button, ButtonGroup, Form, FormGroup, Label, InputGroup, InputGroupAddon, InputGroupText, Input } from "reactstrap";
 import { updateUser } from "../services/UserService";
-import { findSubscriptionsByUserId } from "../services/SubscriptionService";
 import { findDrugByNdc, findAllDrugsByName } from "../services/DrugService";
 import "../styles/Profile.css"
 class ProfileContainer extends Component {
@@ -42,7 +42,7 @@ class ProfileContainer extends Component {
                         <div className="profile-username-img">
                             <div className="profile-username">
                                 <span className="username">
-                                    { this.state.private_view ? this.state.user.userName : this.props.match.params.userName}
+                                    {this.state.private_view ? this.state.user.userName : this.props.match.params.userName}
                                 </span>
                             </div>
                             <div className="profile-img">
@@ -57,7 +57,11 @@ class ProfileContainer extends Component {
 
                     <div className="profile-botton">
                         { this.state.private_view ? (
-                            <ProfilePrivateComponent {...this.props}></ProfilePrivateComponent>
+                            <ProfilePrivateComponent
+                                {...this.props}
+                                subscriptions={findSubscriptionsByUserId(this.state.user.id)}>
+
+                            </ProfilePrivateComponent>
                         ) : (
                             <ProfilePublicComponent {...this.props} profileUser={findUserByUsername(this.props.match.params.userName)}></ProfilePublicComponent>
                         )}

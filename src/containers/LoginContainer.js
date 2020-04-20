@@ -22,7 +22,7 @@ class LoginContainer extends React.Component {
         return (
             <div className="wbdv-login-container container">
               <h1>Sign In</h1>
-              <form className="wbdv-login-form" action="/profile/profile.template.client.html">
+              <form className="wbdv-login-form" action="/profile">
                 <div className="form-group row wbdv-username-container">
                   <label htmlFor="username" className="col-sm-2 col-form-label">
                     Username </label>

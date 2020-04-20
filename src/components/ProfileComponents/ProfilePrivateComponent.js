@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { findUserProfile, updateUser } from "../../services/UserService"
+import { findUserByUsername, updateUser, findUserProfile} from "../../services/UserService"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faUserCircle, faPlus, faUserMd, faUser} from "@fortawesome/free-solid-svg-icons";
 import { UncontrolledCollapse, Button, ButtonGroup, Form, FormGroup, Label, InputGroup, InputGroupAddon, InputGroupText, Input } from "reactstrap";
@@ -18,7 +18,7 @@ class ProfilePrivateComponent extends Component {
         gender: this.props.user.gender,
         conditions: [],
         newCondition: "",
-        userSubscriptions: [{id: "43742-0721"}, {id: "50090-3390"}, {id: "50090-3390"}],
+        userSubscriptions: this.props.subscriptions,
         editting: false,
     }
 
@@ -52,15 +52,19 @@ class ProfilePrivateComponent extends Component {
             height: this.state.height,
             gender: this.state.gender,
             isDoctor: this.state.user.isDoctor,
-            medicalID: this.state.medicalID
+            medicalID: this.state.medicalID,
+            conditions: this.state.conditions
         }
         this.toggleEditting();
         const response = await updateUser(this.state.user.id, updatedUser);
     }
 
     addNewCondition = () => {
+        var addCondition = {
+            name: this.state.newCondition
+        }
         this.setState({
-            conditions: [...this.state.conditions, this.state.newCondition],
+            conditions: [...this.state.conditions, addCondition],
             newCondition: ""
         })
     }
