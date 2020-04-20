@@ -3,11 +3,12 @@ import DrugInformationComponent from "./DrugInformationComponent";
 import DrugService from "../services/DrugService";
 import DrugCommentService from "../services/DrugCommentService";
 import {connect} from "react-redux";
-import {findDrugDataAction, findDrugCommentsAction, createDrugCommentAction, subscribeToDrugAction} from "../actions/DrugActions";
+import {findDrugDataAction, findDrugCommentsAction, createDrugCommentAction, subscribeToDrugAction, userSubscriptionsAction} from "../actions/DrugActions";
 import SubscriptionService from "../services/SubscriptionService";
+import UserService from "../services/UserService";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faTimes, faPlus, faUser, faUserMd } from "@fortawesome/free-solid-svg-icons";
 
 class DrugComponent extends React.Component {
 
@@ -16,8 +17,11 @@ class DrugComponent extends React.Component {
     }
 
     componentDidMount() {
+        console.log(this.props.history);
         this.props.findDrugData(this.props.drugName);
         this.props.findDrugCommentsByNdc(this.props.drugName);
+        this.props.findCurrentUserSubscriptions();
+        this.props.findCurrentUser();
     }
 
     updateForm = (newState) => {
@@ -66,7 +70,9 @@ class DrugComponent extends React.Component {
                             this.props.comments && this.props.comments.length > 0 && this.props.comments.map((comment, index) => {
                                 return (
                                     <div key={index} className={"comment comment-"+index}>
-                                        <p className="comment-author">{comment.author}</p>
+                                        {comment.isDoctor ? <FontAwesomeIcon className="user-doctor-icon user-icon" icon={faUserMd}></FontAwesomeIcon> : <FontAwesomeIcon className="user-icon" icon={faUser}></FontAwesomeIcon>}
+                                        <p className="comment-author">{comment.isDoctor ? "Dr. " : ""}{comment.author}</p>
+                                        {comment.isDoctor && <FontAwesomeIcon className="plus-icon" icon={faPlus}></FontAwesomeIcon>}
                                         <p className="comment-date">Posted: {comment.date}</p>
                                         <p className="comment-text">{comment.text}</p>
                                     </div>
@@ -113,7 +119,13 @@ const dispatchToPropertyMapper = (dispatch) => {
                 .then(newComment => dispatch(createDrugCommentAction(newComment))),
         subscribeToDrug: (ndc) =>
             SubscriptionService.createDrugSubscription(ndc)
-                .then(subscription => dispatch(subscribeToDrugAction(subscription)))
+                .then(subscription => dispatch(subscribeToDrugAction(subscription))),
+        findCurrentUserSubscriptions: () =>
+            SubscriptionService.findCurrentUserSubscriptions()
+                .then(subscriptions => dispatch(userSubscriptionsAction(subscriptions))),
+        findCurrentUser: () =>
+            UserService.findUserProfile()
+                .then(user => console.log(user))
     })
 };
 

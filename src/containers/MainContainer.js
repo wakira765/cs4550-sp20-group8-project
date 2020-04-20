@@ -5,6 +5,7 @@ import ModalComponent from "../components/ModalComponent";
 import DrugInformationComponent from "../components/DrugInformationComponent";
 import {connect} from "react-redux";
 import DrugService from "../services/DrugService";
+import UserService from "../services/UserService";
 import {Link} from "react-router-dom";
 import {findDrugsByNameAction, findDrugsByDiseaseAction, getDrugSideEffectsAction} from "../actions/MainActions";
 
@@ -27,6 +28,7 @@ class MainContainer extends React.Component {
         if(this.props.searchSideEffects) {
             this.props.getDrugSideEffects(this.props.search);
         }
+        this.props.findCurrentUser();
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -182,7 +184,10 @@ const dispatchToPropertyMapper = (dispatch) => {
             DrugService.findAllDrugsByName(drugName)
                 .then(sideEffects => {
                     dispatch(getDrugSideEffectsAction(sideEffects));
-                })
+                }),
+        findCurrentUser: () =>
+                    UserService.findUserProfile()
+                        .then(user => console.log(user))
     })
 };
 
