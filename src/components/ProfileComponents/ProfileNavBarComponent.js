@@ -11,7 +11,7 @@ class ProfileNavBarComponent extends Component {
         return(
             <nav className="nav-bar profile-nav-bar">
                 <div className="profile-logo">
-                    <h1 className="profile--web-name">
+                    <h1 className="profile-web-name">
                         <FontAwesomeIcon icon={faCapsules}></FontAwesomeIcon>
                         {WEBAPP_NAME}
                     </h1>

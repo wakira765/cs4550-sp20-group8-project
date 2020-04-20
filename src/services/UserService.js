@@ -77,8 +77,8 @@ export const findUserByCredentials = (username, password) => {
     }).then(response => response.json())
 };
 
-export const findUserByUsername = (username) => {
-    return fetch(`${SOURCE}/users/{userId}`)
+export const findUserByUsername = (userName) => {
+    return fetch(`${SOURCE}/users/${userName}`)
         .then(response => response.json())
 };
 

@@ -5,7 +5,7 @@ import HomeNavBar from "../components/HomePageComponents/HomeNavBarComponent";
 import LandingComponent from "../components/HomePageComponents/LandingComponent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCapsules, faEdit, faNewspaper, faExclamationCircle, faEllipsisV} from "@fortawesome/free-solid-svg-icons";
-import { DISPLAY_LANDING_PAGE, DISPLAY_NEWS, WEBAPP_NAME, DISPLAY_ABOUT_US} from "../constants";
+import { DISPLAY_LANDING_PAGE, DISPLAY_NEWS, WEBAPP_NAME, DISPLAY_ABOUT_US, ABOUT_US_HOME} from "../constants";
 import "../styles/Home.css"
 import { UncontrolledCollapse } from 'reactstrap';
 import { findUserProfile } from "../services/UserService";
@@ -56,18 +56,17 @@ class HomeContainer extends Component {
                                         <FontAwesomeIcon icon={faCapsules}></FontAwesomeIcon>
                                         {WEBAPP_NAME}
                                     </h1>
-                                    <p> About us </p>
+                                    <p>{ABOUT_US_HOME}</p>
                                 </div>
                             )}
                             <div id="home-main-content" className="row">
-                                <div id="home-left" className="col-6">
+                                <div id="home-left" className="col-2">
+                                </div>
+                                <div id="home-center" className="col-7">
                                     <NewsComponent></NewsComponent>
                                 </div>
-                                <div id="home-right" className="col-6">
-                                    <div className=" featured-article row">
-                                        <div>Space for featured article</div>
-                                    </div>
-                                    <AlertsComponent></AlertsComponent>
+                                <div id="home-right" className="col-3">
+                                    <AlertsComponent {...this.props}></AlertsComponent>
                                 </div>
                             </div>
                         </div>

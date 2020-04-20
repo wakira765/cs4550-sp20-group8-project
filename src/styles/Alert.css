@@ -9,3 +9,21 @@
 .class-three {
     color: red
 }
+
+.alerts-table {
+    vertical-align: middle;
+}
+
+
+.alerts-header {
+    background-color: #5bc0de;
+    color: white;
+}
+
+.alerts-div {
+    overflow-y: auto;
+}
+
+.alert-details {
+    text-align: left;
+}

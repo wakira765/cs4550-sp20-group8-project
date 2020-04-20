@@ -8,7 +8,9 @@ export const findLatestNews = () => {
 
 
 export const getLatestRecalls = () => {
-    return fetch(`${SOURCE}/recalls`)
+    return fetch(`${SOURCE}/recalls`, {
+        credentials: 'include'
+    })
         .then(response => response.json())
 };
 

@@ -31,11 +31,8 @@
     border-radius: 3%;
     border: 2px solid teal;
 }
-#news-body {
-    overflow-y: scroll;
-    padding: 5%;
-    height: 5%;
-    border-style: solid;
-    border-width: 1px;
-    border-color: teal;
+
+#news-header {
+    position: relative;
+    left: 5%;
 }

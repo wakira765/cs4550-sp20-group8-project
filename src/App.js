@@ -89,11 +89,11 @@ function App() {
                       />
                    }
             />
-            <Route path={["/","/home"]}
+            <Route path={["/"]}
                    exact={true}
                    render={(props) => <HomeContainer {...props} display={DISPLAY_LANDING_PAGE}/>}
             />
-            <Route path="/home/news_feed"
+            <Route path={["/home", "/home/news_feed"]}
                    exact={true}
                    render={(props) => <HomeContainer {...props} display={DISPLAY_NEWS}/>}
             />
@@ -101,7 +101,7 @@ function App() {
                    exact={true}
                    render={(props) => <AboutContainer {...props}/>}
             />
-            <Route path={"/profile"}
+            <Route path={["/profile", "/profile/:userName"]}
                    exact={true}
                    render={(props) => <ProfileContainer {...props} user={findUserProfile()}/>}
             ></Route>

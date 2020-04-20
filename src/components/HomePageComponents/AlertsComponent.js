@@ -9,30 +9,27 @@ class AlertsComponent extends Component {
 
     componentDidMount = async () => {
         const result = await newsService.getLatestRecalls();
+        console.log(result);
         this.setState( {
-            alerts: result['results']
+            alerts: result
         })
     }
     render() {
         return (
-            <div>
-                <table className="table table-hover">
-                    <thead>
+            <div className="alerts-div">
+                <h3>Recall Alerts</h3>
+                <table className="table table-hover alerts-table">
+                    <thead className="alerts-header">
                         <tr>
                             <th scope="col">Alert</th>
                             <th scope="col">Class</th>
                             <th scope="col">Name</th>
-                            <th scope="col">City</th>
-                            <th scope="col">State</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Status</th>
                         </tr>
                     </thead>
                     {this.state.alerts !== undefined && this.state.alerts.length > 0 && (
                         <tbody>
                             {this.state.alerts.map(alert => (
-                                <AlertRow alert={alert}></AlertRow>
+                                <AlertRow {...this.props} alert={alert['properties']}></AlertRow>
                             ))}
                         </tbody>
                     )}

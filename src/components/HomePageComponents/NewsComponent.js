@@ -34,28 +34,22 @@ class NewsComponent extends Component {
 
     render() {
         return (
-            <>
-            <div id="news-header">
-                <h1 align="left">Recent News</h1>
-                <input id="news-search-bar"
-                       placeholder="Search the news!"
-                       value={this.state.newsSearchTerm}
-                       onChange={(e) => this.handleSearchTermChange(e.target.value)}
-                ></input>
-                <FontAwesomeIcon type="button" icon={faSearch} onClick={this.handleNewsSearch}></FontAwesomeIcon>
-            </div>
-            <div id="news-body">
-                <ul id="news-cards-list">
-                {
-                    this.state.articles.length > 0 &&
-                    this.state.articles.map(article => (
-                        <NewsCard article={article}></NewsCard>
-                    ))
-                }
+            <div id="news">
+                <div id="news-header">
+                    <h1 align="left">Recent News</h1>
+                </div>
+                <div id="news-body">
+                    <ul id="news-cards-list">
+                    {
+                        this.state.articles.length > 0 &&
+                        this.state.articles.map(article => (
+                            <NewsCard article={article}></NewsCard>
+                        ))
+                    }
 
-                </ul>
+                    </ul>
+                </div>
             </div>
-            </>
         )
     }
 
