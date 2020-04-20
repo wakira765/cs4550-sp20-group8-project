@@ -1,4 +1,4 @@
-import {FIND_DRUGS_BY_NAME, FIND_DRUGS_BY_DISEASE, GET_DRUG_SIDE_EFFECTS} from "../actions/MainActions";
+import {FIND_DRUGS_BY_NAME, FIND_DRUGS_BY_DISEASE, GET_DRUG_SIDE_EFFECTS, USER} from "../actions/MainActions";
 
 const initialState = {
     searchResults: [],
@@ -33,6 +33,11 @@ const MainReducer = (state = initialState, action) => {
                 findByDisease: false,
                 findSideEffects: true
             };
+        case USER:
+            return {
+                ...state,
+                user: action.user
+            }
         default:
             return state
     }

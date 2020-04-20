@@ -1,4 +1,4 @@
-import {FIND_DRUG_DATA, FIND_DRUG_COMMENTS, CREATE_DRUG_COMMENT, SUBSCRIBE_TO_DRUG, USER_SUBSCRIPTIONS} from "../actions/DrugActions";
+import {FIND_DRUG_DATA, FIND_DRUG_COMMENTS, CREATE_DRUG_COMMENT, SUBSCRIBE_TO_DRUG, USER, USER_SUBSCRIPTIONS} from "../actions/DrugActions";
 
 const initialState = {
     drugInfo: [],
@@ -33,6 +33,11 @@ const DrugReducer = (state = initialState, action) => {
                     ...state.subscriptions,
                     action.subscription.productNdc
                 ]
+            }
+        case USER:
+            return {
+                ...state,
+                user: action.user
             }
         case USER_SUBSCRIPTIONS:
             let arr = []

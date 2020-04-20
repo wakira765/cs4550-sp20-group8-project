@@ -1,6 +1,7 @@
 export const FIND_DRUGS_BY_NAME = "FIND_DRUGS_BY_NAME";
 export const FIND_DRUGS_BY_DISEASE = "FIND_DRUGS_BY_DISEASE";
 export const GET_DRUG_SIDE_EFFECTS = "GET_DRUG_SIDE_EFFECTS";
+export const USER = "USER";
 
 export const findDrugsByNameAction = (drugs) => ({
     type: FIND_DRUGS_BY_NAME,
@@ -16,4 +17,10 @@ export const getDrugSideEffectsAction = (sideEffects) => ({
     type: GET_DRUG_SIDE_EFFECTS,
     sideEffects: sideEffects
 });
+
+export const userAction = (user) => ({
+    type: USER,
+    user: user
+});
+
 
