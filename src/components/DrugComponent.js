@@ -3,7 +3,7 @@ import DrugInformationComponent from "./DrugInformationComponent";
 import DrugService from "../services/DrugService";
 import DrugCommentService from "../services/DrugCommentService";
 import {connect} from "react-redux";
-import {findDrugDataAction, findDrugCommentsAction, createDrugCommentAction, subscribeToDrugAction, userSubscriptionsAction} from "../actions/DrugActions";
+import {findDrugDataAction, findDrugCommentsAction, createDrugCommentAction, subscribeToDrugAction, userAction, userSubscriptionsAction} from "../actions/DrugActions";
 import SubscriptionService from "../services/SubscriptionService";
 import UserService from "../services/UserService";
 
@@ -17,7 +17,6 @@ class DrugComponent extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props.history);
         this.props.findDrugData(this.props.drugName);
         this.props.findDrugCommentsByNdc(this.props.drugName);
         this.props.findCurrentUserSubscriptions();
@@ -62,7 +61,7 @@ class DrugComponent extends React.Component {
                         </button>
                         <h2 className="drug-name">{this.props.drugInfo.properties.openfda.brand_name}</h2>
                     </nav>
-                    <button className="subscribe-button" disabled={this.props.subscriptions.includes(this.props.drugName)} onClick={() => this.subscribeToDrug()}>{this.props.subscriptions.includes(this.props.drugName) ? "Subscribed" : "Subscribe"}</button>
+                    {this.props.user.userName && <button className="subscribe-button" disabled={this.props.subscriptions.includes(this.props.drugName)} onClick={() => this.subscribeToDrug()}>{this.props.subscriptions.includes(this.props.drugName) ? "Subscribed" : "Subscribe"}</button>}
                     <DrugInformationComponent drugInfo={this.props.drugInfo}/>
                     <div className="comments-section">
                         <h3 className="comments-section-header">Comments Section</h3>
@@ -79,7 +78,7 @@ class DrugComponent extends React.Component {
                                 )
                             })
                         }
-                        <div className="post-comment-section">
+                        {this.props.user.userName && <div className="post-comment-section">
                             <label className="post-comment-label" htmlFor="post-comment-input">Post a comment</label>
                             <textarea className="post-comment-textfield"
                               id="post-comment-input"
@@ -89,7 +88,7 @@ class DrugComponent extends React.Component {
                               value={this.state.comment}>
                             </textarea>
                             <button onClick={() => this.createDrugComment(this.state.comment)} className="post-comment-button">Post Comment</button>
-                        </div>
+                        </div>}
                     </div>
 
                 </div>}
@@ -102,7 +101,8 @@ const stateToPropertyMapper = (state) => {
     return ({
         drugInfo: state.drug.drugInfo,
         comments: state.drug.comments,
-        subscriptions: state.drug.subscriptions
+        subscriptions: state.drug.subscriptions,
+        user: state.drug.user
     })
 };
 
@@ -125,7 +125,7 @@ const dispatchToPropertyMapper = (dispatch) => {
                 .then(subscriptions => dispatch(userSubscriptionsAction(subscriptions))),
         findCurrentUser: () =>
             UserService.findUserProfile()
-                .then(user => console.log(user))
+                .then(user => dispatch(userAction(user)))
     })
 };
 

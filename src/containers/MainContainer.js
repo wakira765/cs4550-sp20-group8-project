@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 import DrugService from "../services/DrugService";
 import UserService from "../services/UserService";
 import {Link} from "react-router-dom";
-import {findDrugsByNameAction, findDrugsByDiseaseAction, getDrugSideEffectsAction} from "../actions/MainActions";
+import {findDrugsByNameAction, findDrugsByDiseaseAction, getDrugSideEffectsAction, userAction} from "../actions/MainActions";
 
 class MainContainer extends React.Component {
 
@@ -104,16 +104,16 @@ class MainContainer extends React.Component {
                     searchTerm={this.state.searchTerm}
                 />
                 {this.props.findByName && <div className="search-results-container search-by-name">
-                    {this.props.searchResults && this.props.searchResults.length > 0 && <button onClick={this.compareDrugs} className="compare-drugs-button">Compare Drugs</button>}
+                    {this.props.searchResults && this.props.searchResults.length > 0 && this.props.user.userName && <button onClick={this.compareDrugs} className="compare-drugs-button">Compare Drugs</button>}
                     {
                         this.props.searchResults && this.props.searchResults.length > 0 && this.props.searchResults.map((result, index) => {
                             return (
                                 <div key={index} className={"search-result search-result"+index}>
                                     <Link to={`/drugs/${result.properties.openfda.product_ndc[0]}`} className="drug-name-link">{result.properties.openfda.brand_name ? result.properties.openfda.brand_name : "Unknown Brand Name"}</Link>
-                                    <label htmlFor={"compare-checkbox-" + index} className="compare-checkbox-label">
+                                    {this.props.user.userName && <label htmlFor={"compare-checkbox-" + index} className="compare-checkbox-label">
                                         <input type="checkbox" id={"compare-checkbox-" + index} className="compare-checkbox" name="compare-drug" onClick={(e) => this.handleCheckForCompare(e, result.properties.openfda.product_ndc[0])}/>
                                         Check to compare
-                                    </label>
+                                    </label>}
                                     <p className="drug-description">{result.properties.indications_and_usage[0].toLowerCase().includes("uses") ? result.properties.indications_and_usage[0].slice(4) : result.properties.indications_and_usage[0]}</p>
                                     <Link to={`/${result.properties.openfda.product_ndc[0]}`} className="learn-more-link">Learn more</Link>
                                 </div>
@@ -136,16 +136,16 @@ class MainContainer extends React.Component {
                     {this.props.searchResults && this.props.searchResults.length === 0 && <p className="no-results-text">No search results found for {this.state.searchTerm}</p>}
                 </div>}
                 {this.props.findSideEffects && <div className="search-results-container search-side-effects">
-                    {this.props.searchResults && this.props.searchResults.length > 0 && <button onClick={this.compareDrugs} className="compare-drugs-button">Compare Drugs</button>}
+                    {this.props.searchResults && this.props.searchResults.length > 0 && this.props.user.userName && <button onClick={this.compareDrugs} className="compare-drugs-button">Compare Drugs</button>}
                     {
                         this.props.searchResults && this.props.searchResults.length > 0 && this.props.searchResults.map((result, index) => {
                             return (
                                 <div key={index} className={"search-result search-result"+index}>
                                     <Link to={`/drugs/${result.properties.openfda.product_ndc[0]}`} className="drug-name-link">{result.properties.openfda.brand_name}</Link>
-                                    <label htmlFor={"compare-checkbox-" + index} className="compare-checkbox-label">
+                                    {this.props.user.userName && <label htmlFor={"compare-checkbox-" + index} className="compare-checkbox-label">
                                         <input type="checkbox" id={"compare-checkbox-" + index} className="compare-checkbox" name="compare-drug" onClick={(e) => this.handleCheckForCompare(e, result.properties.openfda.product_ndc[0])}/>
                                         Check to compare
-                                    </label>
+                                    </label>}
                                     <p className="drug-description">{result.properties.warnings_and_cautions ? result.properties.warnings_and_cautions : result.properties.warnings}</p>
                                     <Link to={`/${result.properties.openfda.product_ndc[0]}`} className="learn-more-link">Learn more</Link>
                                 </div>
@@ -164,7 +164,8 @@ const stateToPropertyMapper = (state) => {
         searchResults: Array.isArray(state.main.searchResults) ? state.main.searchResults : [],
         findByName: state.main.findByName,
         findByDisease: state.main.findByDisease,
-        findSideEffects: state.main.findSideEffects
+        findSideEffects: state.main.findSideEffects,
+        user: state.main.user
     })
 };
 
@@ -186,8 +187,8 @@ const dispatchToPropertyMapper = (dispatch) => {
                     dispatch(getDrugSideEffectsAction(sideEffects));
                 }),
         findCurrentUser: () =>
-                    UserService.findUserProfile()
-                        .then(user => console.log(user))
+            UserService.findUserProfile()
+                .then(user => dispatch(userAction(user)))
     })
 };
 
