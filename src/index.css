@@ -20,6 +20,10 @@ code {
 }
 
 /* login styles */
+.wbdv-login-container {
+    margin-top: 50px;
+}
+
 .wbdv-login-container h1 {
   margin-bottom: 25px;
 }
@@ -73,6 +77,14 @@ code {
 .nav-bar {
     padding: 20px 10px;
     background-color: #17a2b8;
+}
+
+.nav-bar .home-button-link {
+    color: #ffffff;
+    display: block;
+    text-align: right;
+    padding: 0 10px;
+
 }
 
 .nav-bar .search-bar-label {

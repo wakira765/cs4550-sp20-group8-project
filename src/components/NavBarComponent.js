@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 const NavBarComponent = ({handleSearchTermChange, searchTerm}) => {
     return (
         <nav className="nav-bar">
+            <Link className="home-button-link" to={`/home`}>Home Page</Link>
             <label className="search-bar-label" htmlFor="nav-search-bar">
                 Search for information here:
             </label>
