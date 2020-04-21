@@ -8,7 +8,7 @@ class NewsCardComponent extends Component {
     render() {
         const article = this.props.article;
         return (
-            <li class="news-card">
+            <li className="news-card">
                 <Card>
                 <CardHeader><h5>{article['sourceName']}</h5></CardHeader>
                     <CardBody>
