@@ -35,7 +35,6 @@ class ProfileNavBarComponent extends Component {
                                 <DropdownItem onClick = {() => this.props.history.push("/privacy")}>
                                     Our Privacy Policy
                                 </DropdownItem>
-                                <DropdownItem>About the Developers</DropdownItem>
                             </DropdownMenu>
                         </UncontrolledButtonDropdown>
                     </ButtonGroup>
