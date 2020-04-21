@@ -142,6 +142,10 @@ code {
     display: inline-block;
 }
 
+.search-results-container .learn-more-link {
+    display: block;
+}
+
 .search-results-container .compare-drugs-button {
     background-color: #273746;
     padding: 10px;

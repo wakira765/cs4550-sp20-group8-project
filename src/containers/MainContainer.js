@@ -114,8 +114,8 @@ class MainContainer extends React.Component {
                                         <input type="checkbox" id={"compare-checkbox-" + index} className="compare-checkbox" name="compare-drug" onClick={(e) => this.handleCheckForCompare(e, result.properties.openfda.product_ndc[0])}/>
                                         Check to compare
                                     </label>}
-                                    <p className="drug-description">{result.properties.indications_and_usage[0].toLowerCase().includes("uses") ? result.properties.indications_and_usage[0].slice(4) : result.properties.indications_and_usage[0]}</p>
-                                    <Link to={`/${result.properties.openfda.product_ndc[0]}`} className="learn-more-link">Learn more</Link>
+                                    {result.properties.indications_and_usage && <p className="drug-description">{result.properties.indications_and_usage[0].toLowerCase().includes("uses") ? result.properties.indications_and_usage[0].slice(4) : result.properties.indications_and_usage[0]}</p>}
+                                    <Link to={`/drugs/${result.properties.openfda.product_ndc[0]}`} className="learn-more-link">Learn more</Link>
                                 </div>
                             )
                         })
@@ -147,7 +147,7 @@ class MainContainer extends React.Component {
                                         Check to compare
                                     </label>}
                                     <p className="drug-description">{result.properties.warnings_and_cautions ? result.properties.warnings_and_cautions : result.properties.warnings}</p>
-                                    <Link to={`/${result.properties.openfda.product_ndc[0]}`} className="learn-more-link">Learn more</Link>
+                                    <Link to={`/drugs/${result.properties.openfda.product_ndc[0]}`} className="learn-more-link">Learn more</Link>
                                 </div>
                             )
                         })
