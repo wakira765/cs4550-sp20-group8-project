@@ -68,7 +68,7 @@
     position: relative;
 }
 
-#about-header {
+.about-header {
     background-color: #5bc0de;
     color: white;
     width: 100%;
@@ -76,11 +76,22 @@
     text-align: center;
 }
 
-#link-to-home {
+.privacy-header {
+    background-color: teal;
+    color: white;
+    width: 100%;
+    padding: 3%;
+    text-align: center;
+}
+
+.link-to-home {
     float: right;
     color: black;
 }
 
+.policies {
+    padding: 30px;
+}
 
 .fa-capsules {}
 .fa-exclamation-circle {color: orange}

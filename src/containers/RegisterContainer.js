@@ -106,9 +106,14 @@ class RegisterContainer extends React.Component {
                 </div>}
                 <div className="form-group row wbdv-cta-container">
                   <div className="col-sm-10">
-                    <button type="submit" className="btn btn-theme btn-block wbdv-button wbdv-register"
+                    <button type="submit" className="btn btn-info btn-block wbdv-button wbdv-register"
                             onClick={this.handleRegisterUser}
                     >Sign up</button>
+                    <div className="row">
+                      <div className="col-6 link-to-privacy">
+                        <Link to="/privacy">Read our privacy policy before registering!</Link>
+                      </div>
+                    </div>
                     <div className="row">
                       <div className="col-6 login-link-container">
                         <Link className="wbdv-link wbdv-login" to="/login">Login</Link>

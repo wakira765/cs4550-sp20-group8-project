@@ -198,6 +198,12 @@ class ProfilePrivateComponent extends Component {
                 </UncontrolledCollapse>
                 <UncontrolledCollapse toggler="#toggleConditions">
                     <label>Conditions</label>
+                    <div className="conditions">
+                        {this.state.conditions && this.state.conditions.length > 0 && (this.state.conditions.map(condition => (
+                            <span className="row">{condition.name}</span>
+                        )))}
+                    </div>
+
                     <InputGroup>
                         <Input type="text" name="condition" id="condition" placeholder="acne"
                                 onChange={(e) => {

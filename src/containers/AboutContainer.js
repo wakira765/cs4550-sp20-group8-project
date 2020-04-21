@@ -12,7 +12,7 @@ class AboutContainer extends Component {
         return(
             <>
             <div>
-                <h1 id="about-header">What is { WEBAPP_NAME }?</h1>
+                <h1 className="about-header">What is { WEBAPP_NAME }?</h1>
             </div>
             <div className="about-container container">
                 <div className="about-row row">
@@ -54,7 +54,7 @@ class AboutContainer extends Component {
                         <FontAwesomeIcon icon={faCapsules} size="10x" style={{color: "#5bc0de"}}></FontAwesomeIcon>
                     </div>
                 </div>
-                <a href="/home/news_feed" id="link-to-home">Go home</a>
+                <a href="/home/news_feed" className="link-to-home">Go home</a>
             </div>
             </>
         )

@@ -12,7 +12,7 @@ class AboutComponent extends Component {
         return(
             <>
             <div>
-                <h1 id="about-header">What is { WEBAPP_NAME }?</h1>
+                <h1 className="about-header">What is { WEBAPP_NAME }?</h1>
             </div>
             <div className="container">
                 <div className="row">
