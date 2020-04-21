@@ -15,6 +15,7 @@ class ProfilePrivateComponent extends Component {
         email: '',
         height: '',
         gender: '',
+        medicalID: '',
         conditions: '',
         newCondition: '',
         userSubscriptions: [],
@@ -49,6 +50,7 @@ class ProfilePrivateComponent extends Component {
                         email: profile.email,
                         height: profile.height,
                         gender: profile.gender,
+                        medicalID: profile.medicalID,
                         conditions: profile.conditions,
                         userSubscriptions: subscriptions
                     })), () => this.props.history.push("/register"))
@@ -59,24 +61,31 @@ class ProfilePrivateComponent extends Component {
     }
 
     submitChanges = async () => {
-        var genderDoc = document.getElementById("gender")
-        const updatedUser = {
-            id: this.state.user.id,
-            userName: this.state.user.isDoctor,
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            dob: this.state.dob,
-            email: this.state.email,
-            height: this.state.height,
-            gender: genderDoc.options[genderDoc.selectedIndex].text,
-            isDoctor: this.state.user.isDoctor,
-            medicalID: this.state.medicalID,
-            conditions: this.state.conditions
+        var genderDoc = document.getElementById("gender");
+        if((/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.state.email)) && this.state.height > 0) {
+            const updatedUser = {
+                id: this.state.user.id,
+                userName: this.state.user.isDoctor,
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                dob: this.state.dob,
+                email: this.state.email,
+                height: this.state.height,
+                gender: genderDoc.options[genderDoc.selectedIndex].text,
+                isDoctor: this.state.user.isDoctor,
+                medicalID: this.state.medicalID,
+                conditions: this.state.conditions
+            }
+            this.toggleEditting();
+            const response = await updateUser(this.state.user.id, updatedUser);
+            window.location.reload();
         }
-        this.toggleEditting();
-        const response = await updateUser(this.state.user.id, updatedUser);
-        window.location.reload();
-
+        if(!(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.state.email))) {
+            alert("Please enter valid email");
+        }
+        if(this.state.height <= 0) {
+            alert("Please enter a valid height");
+        }
     }
 
     addNewCondition = () => {
@@ -96,6 +105,7 @@ class ProfilePrivateComponent extends Component {
     }
 
     render() {
+        console.log(this.state.user)
         return (
             <div className="private-profile">
                 <ButtonGroup className="d-flex flex-row justify-content-between">
@@ -175,6 +185,23 @@ class ProfilePrivateComponent extends Component {
                                 )}
                             </div>
                         </div>
+                        { this.state.user.isDoctor && (
+                            <div className="form-group row">
+                                <label className="col-sm-2 col-form-label">Medical ID</label>
+                            <div className="col-sm-10">
+                                {!this.state.editting ? (this.state.user.medicalID ? this.state.user.medicalID : "None") : (
+                                    <input type="number" className="form-control"
+                                           id="medID" value={this.state.medicalID}
+                                           placeholder={this.state.user.medicalID ? this.state.user.medicalID : "12345"}
+                                           onChange={(e) => {
+                                               const state = {...this.state, medicalID: e.target.value};
+                                               this.handleInputChange(state);
+                                           }}
+                                    />
+                                )}
+                            </div>
+                            </div>
+                        )}
                     </form>
                 </UncontrolledCollapse>
                 <UncontrolledCollapse toggler="#togglePhysicalInfo">
