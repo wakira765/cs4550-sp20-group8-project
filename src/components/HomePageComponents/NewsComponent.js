@@ -9,25 +9,9 @@ class NewsComponent extends Component {
         newsSearchTerm: ""
     }
 
-    componentDidMount = async () => {
+    componentDidMount = () => {
         NewsService.findLatestNews()
             .then( articles => this.setState({articles: articles}))
-    }
-
-    handleSearchTermChange = (term) => {
-        this.setState({
-            newsSearchTerm: term
-        })
-    }
-
-    handleNewsSearch = async () => {
-        console.log("hello there")
-        const result = await NewsService.findNewsBySearchTerm(this.state.newsSearchTerm)
-        if (result !== null && result.length > 0) {
-            this.setState({
-                articles: result
-            })
-        }
     }
 
     render() {
