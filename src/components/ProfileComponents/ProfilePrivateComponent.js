@@ -8,16 +8,16 @@ import "../../styles/Profile.css";
 
 class ProfilePrivateComponent extends Component {
     state = {
-        user: this.props.user,
-        firstName: this.props.user.firstName,
-        lastName: this.props.user.lastName,
-        dob: this.props.user.dob,
-        email: this.props.user.email,
-        height: this.props.user.height,
-        gender: this.props.user.gender,
-        conditions: [],
-        newCondition: "",
-        userSubscriptions: this.props.subscriptions,
+        user: {},
+        firstName: '',
+        lastName: '',
+        dob: '',
+        email: '',
+        height: '',
+        gender: '',
+        conditions: '',
+        newCondition: '',
+        userSubscriptions: [],
         editting: false,
     }
 
@@ -40,12 +40,21 @@ class ProfilePrivateComponent extends Component {
     componentDidMount() {
         findUserProfile()
             .then(profile => this.setState({
-                user: profile
-            }))
-        findSubscriptionsByUserId(this.state.user.id)
-            .then(subscriptions => this.setState({
-                userSubscriptions: subscriptions
-            }))
+                user: profile,
+                firstName: profile.firstName,
+                lastName: profile.lastName,
+                dob: profile.dob,
+                email: profile.email,
+                height: profile.height,
+                gender: profile.gender,
+                conditions: profile.conditions,
+            }), this.props.history.push("/register"))
+            .then(
+                findSubscriptionsByUserId(this.state.user.id)
+                    .then(subscriptions => this.setState({
+                        userSubscriptions: subscriptions
+                }))
+            )
     }
 
     handleInputChange = (state) => {
