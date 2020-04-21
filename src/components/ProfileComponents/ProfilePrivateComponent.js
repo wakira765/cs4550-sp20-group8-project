@@ -53,6 +53,7 @@ class ProfilePrivateComponent extends Component {
     }
 
     submitChanges = async () => {
+        var genderDoc = document.getElementById("gender")
         const updatedUser = {
             id: this.state.user.id,
             userName: this.state.user.isDoctor,
@@ -61,7 +62,7 @@ class ProfilePrivateComponent extends Component {
             dob: this.state.dob,
             email: this.state.email,
             height: this.state.height,
-            gender: this.state.gender,
+            gender: genderDoc.options[genderDoc.selectedIndex].text,
             isDoctor: this.state.user.isDoctor,
             medicalID: this.state.medicalID,
             conditions: this.state.conditions
@@ -111,7 +112,7 @@ class ProfilePrivateComponent extends Component {
                             <div className="col-sm-10">
                                 { !this.state.editting ? (this.state.user.firstName ? this.state.user.firstName : "None" ) : (
                                     <input type="text" className="form-control"
-                                        id="firstName" placeholder="Jane"
+                                        id="firstName" placeholder={this.state.user.firstName ? this.state.user.firstName : "Jane"}
                                         value={this.state.firstName}
                                         onChange={(e) => {
                                             const state = {...this.state, firstName: e.target.value};
@@ -126,7 +127,7 @@ class ProfilePrivateComponent extends Component {
                             <div className="col-sm-10">
                                 { !this.state.editting ? (this.state.user.lastName ? this.state.user.lastName : "None" ) : (
                                     <input type="text" className="form-control"
-                                        id="lastName" placeholder="Doe"
+                                        id="lastName" placeholder={this.state.user.lastName ? this.state.user.lastName : "Doe"}
                                         value={this.state.lastName}
                                         onChange={(e) => {
                                             const state = {...this.state, lastName: e.target.value};
@@ -142,6 +143,7 @@ class ProfilePrivateComponent extends Component {
                                 { !this.state.editting ? (this.state.user.dob ? this.state.user.dob : "None" ) : (
                                     <input type="date" className="form-control"
                                         id="dob" value={this.state.dob}
+                                        placeholder={this.state.user.dob ? this.state.user.dob : ""}
                                         onChange={(e) => {
                                             const state = {...this.state, dob: e.target.value};
                                             this.handleInputChange(state);
@@ -156,6 +158,7 @@ class ProfilePrivateComponent extends Component {
                                 { !this.state.editting ? (this.state.user.email ? this.state.user.email : "None" ) : (
                                     <input type="email" className="form-control"
                                         id="email" value={this.state.email}
+                                        placeholder={this.state.user.email ? this.state.user.email : "janedoe@gmail.com"}
                                         onChange={(e) => {
                                             const state = {...this.state, email: e.target.value};
                                             this.handleInputChange(state);
@@ -174,6 +177,7 @@ class ProfilePrivateComponent extends Component {
                                 { !this.state.editting ? (this.state.user.height ? this.state.user.height : "None" ) : (
                                     <input type="number" className="form-control"
                                         id="height" value={this.state.height}
+                                        placeholder={this.state.user.height ? this.state.user.height : "123cm"}
                                         onChange={(e) => {
                                             const state = {...this.state, height: e.target.value};
                                             this.handleInputChange(state);
