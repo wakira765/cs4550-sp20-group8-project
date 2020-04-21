@@ -22,7 +22,8 @@ class PrivacyContainer extends Component {
                         is the ability for the user to personalize a profile and share their experiences by commenting on a drug's page. By doing so,
                         users can determine the relevancy of other users' experiences based on similarity of their profiles. They may find people
                         who are physically similar to them have similar experiences. They may find people who are using a certain drug for a different
-                        condition have vastly different experiences and may not be as good of a reference.
+                        condition have vastly different experiences and may not be as good of a reference. To summarize, with this user information,
+                        our users can better inform themselves of potential drug treatments through anecdotal information.
                     </p>
                     <h2>How the User Provides Us Information.</h2>
                     <p>

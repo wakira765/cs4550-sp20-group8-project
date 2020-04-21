@@ -49,7 +49,7 @@ class LoginContainer extends React.Component {
               </div>
               <div className="form-group row wbdv-cta-container">
                 <div className="col-sm-10">
-                  <button type="submit" onClick={() => this.handleLogin()} className="btn btn-primary btn-block wbdv-button wbdv-login">Sign in</button>
+                  <button type="submit" onClick={() => this.handleLogin()} className="btn btn-info btn-block wbdv-button wbdv-login">Sign in</button>
                   <div className="row link-container">
                     <div className="col-6 cancel-container">
                       <Link className="cancel-link" to="/">Cancel</Link>
