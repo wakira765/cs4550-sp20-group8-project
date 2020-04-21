@@ -2,13 +2,22 @@
     position: fixed;
     top: 0;
     width: 100%;
-    height: 75px;
     z-index: 1;
 }
+
 .profile-logo {
     position: relative;
     color: white;
     float: left;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.collapse form,
+.collapse label {
+    margin: 20px 0;
 }
 
 .profile-navbar-dropdowns {

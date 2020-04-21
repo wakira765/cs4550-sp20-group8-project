@@ -2,13 +2,16 @@
     position: fixed;
     top: 0;
     width: 100%;
-    height: 70px;
     z-index: 1;
 }
 .home-logo {
     position: relative;
     color: white;
     float: left;
+}
+
+#home-main-content {
+    justify-content: center;
 }
 
 .home-navbar-dropdowns {
@@ -26,10 +29,6 @@
 #home-search-bar {
     position: relative;
     left: 2%;
-}
-
-#home-center{
-    margin: auto
 }
 
 #home-displayed-content {
