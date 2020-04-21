@@ -40,7 +40,7 @@ class ProfilePrivateComponent extends Component {
     componentDidMount() {
         findUserProfile()
             .then(profile =>
-                findSubscriptionsByUserId(this.state.user.id)
+                findSubscriptionsByUserId(profile.id)
                     .then(subscriptions => this.setState({
                         user: profile,
                         firstName: profile.firstName,
