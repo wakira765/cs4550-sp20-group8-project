@@ -32,7 +32,7 @@
 }
 
 #home-displayed-content {
-    margin-top: 90px;
+    margin-top: 100px;
 }
 
 #home-buttons-collapsed {
@@ -65,6 +65,14 @@
 }
 
 .about-header {
+    background-color: #5bc0de;
+    color: white;
+    width: 100%;
+    padding: 3%;
+    text-align: center;
+}
+
+.privacy-header {
     background-color: teal;
     color: white;
     width: 100%;
@@ -72,11 +80,14 @@
     text-align: center;
 }
 
-#link-to-home {
+.link-to-home {
     float: right;
     color: black;
 }
 
+.policies {
+    padding: 30px;
+}
 
 .fa-capsules {}
 .fa-exclamation-circle {color: orange}

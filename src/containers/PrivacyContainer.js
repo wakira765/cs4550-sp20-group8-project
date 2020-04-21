@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from "react-router-dom";
 
 class PrivacyContainer extends Component {
 
@@ -6,9 +7,9 @@ class PrivacyContainer extends Component {
         return(
             <>
             <div>
-                <h1 className="about-header">Our Policies on Privacy</h1>
+                <h1 className="privacy-header">Our Policies on Privacy</h1>
             </div>
-            <div className="container">
+            <div className="container policies">
                 <div>
                     <h2>What Data Do We Collect?</h2>
                     <p>
@@ -63,6 +64,7 @@ class PrivacyContainer extends Component {
                         such as advertisements.
                     </p>
                 </div>
+                <Link className="link-to-home" to="/home">Go Home</Link>
             </div>
             </>
         )
