@@ -37,8 +37,6 @@ class HomeNavBarComponent extends Component {
 
     render() {
         const loggedIn = typeof this.state.user !== 'undefined' && this.state.user.hasOwnProperty('userName');
-        console.log(loggedIn)
-        console.log(this.state.user)
         return (
             <nav className="nav-bar home-nav-bar">
                 <div className="home-logo">

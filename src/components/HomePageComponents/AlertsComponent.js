@@ -9,7 +9,6 @@ class AlertsComponent extends Component {
 
     componentDidMount = async () => {
         const result = await newsService.getLatestRecalls();
-        console.log(result);
         this.setState( {
             alerts: result
         })
@@ -28,8 +27,8 @@ class AlertsComponent extends Component {
                     </thead>
                     {this.state.alerts !== undefined && this.state.alerts.length > 0 && (
                         <tbody>
-                            {this.state.alerts.map(alert => (
-                                <AlertRow {...this.props} alert={alert['properties']}></AlertRow>
+                            {this.state.alerts.map((alert, index) => (
+                                <AlertRow key={index} {...this.props} alert={alert['properties']}></AlertRow>
                             ))}
                         </tbody>
                     )}

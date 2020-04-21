@@ -24,8 +24,8 @@ class NewsComponent extends Component {
                     <ul id="news-cards-list">
                     {
                         this.state.articles.length > 0 &&
-                        this.state.articles.map(article => (
-                            <NewsCard article={article}></NewsCard>
+                        this.state.articles.map((article, index) => (
+                            <NewsCard key={index} article={article}></NewsCard>
                         ))
                     }
 
