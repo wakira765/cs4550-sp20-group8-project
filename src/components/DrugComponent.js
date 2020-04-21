@@ -3,6 +3,7 @@ import DrugInformationComponent from "./DrugInformationComponent";
 import DrugService from "../services/DrugService";
 import DrugCommentService from "../services/DrugCommentService";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 import {findDrugDataAction, findDrugCommentsAction, createDrugCommentAction, subscribeToDrugAction, userAction, userSubscriptionsAction} from "../actions/DrugActions";
 import SubscriptionService from "../services/SubscriptionService";
 import UserService from "../services/UserService";
@@ -70,7 +71,7 @@ class DrugComponent extends React.Component {
                                 return (
                                     <div key={index} className={"comment comment-"+index}>
                                         {comment.isDoctor ? <FontAwesomeIcon className="user-doctor-icon user-icon" icon={faUserMd}></FontAwesomeIcon> : <FontAwesomeIcon className="user-icon" icon={faUser}></FontAwesomeIcon>}
-                                        <p className="comment-author">{comment.isDoctor ? "Dr. " : ""}{comment.author}</p>
+                                        <Link to={`/profile/${comment.author}`} className="comment-author">{comment.isDoctor ? "Dr. " : ""}{comment.author}</Link>
                                         {comment.isDoctor && <FontAwesomeIcon className="plus-icon" icon={faPlus}></FontAwesomeIcon>}
                                         <p className="comment-date">Posted: {comment.date}</p>
                                         <p className="comment-text">{comment.text}</p>

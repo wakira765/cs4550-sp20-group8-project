@@ -359,6 +359,7 @@ code {
     font-size: 20px;
     display: inline-block;
     text-transform: capitalize;
+    color: black;
 }
 
 .drug-information-container .label {
