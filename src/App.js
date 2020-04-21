@@ -90,6 +90,10 @@ function App() {
                       />
                    }
             />
+            <Route path={["/landing_page"]}
+                   exact={true}
+                   render={(props) => <HomeContainer {...props} display={DISPLAY_LANDING_PAGE}/>}
+            />
             <Route path={["/", "/home", "/home/news_feed"]}
                    exact={true}
                    render={(props) => <HomeContainer {...props} display={DISPLAY_NEWS}/>}

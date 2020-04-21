@@ -26,6 +26,9 @@ class LandingComponent extends Component {
                                 <button type="button" className="btn btn-info" onClick={() => this.props.history.push("/login")}>Log In</button>
                                 <button type="button" className="btn btn-info" onClick={() => this.props.history.push("/register")}>Sign Up</button>
                             </div>
+                            <div>
+                                <h1>Depreceated to fit home page requirements of the project specification.</h1>
+                            </div>
                         </div>
                     </div>
                 </div>
