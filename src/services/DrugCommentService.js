@@ -1,4 +1,4 @@
-import {LOCALHOST_API} from "../constants";
+import {SOURCE} from "../constants";
 
 /**
  * Creates a new drug comment.
@@ -12,7 +12,7 @@ import {LOCALHOST_API} from "../constants";
  * @returns {Promise<any>}
  */
 export const createDrugComment = (comment) => {
-    return fetch(`${LOCALHOST_API}/comments`, {
+    return fetch(`${SOURCE}/comments`, {
         method: 'POST',
         body: JSON.stringify(comment),
         credentials: 'include',
@@ -23,7 +23,7 @@ export const createDrugComment = (comment) => {
 };
 
 export const findDrugCommentsByUsername = (username) => {
-    return fetch(`${LOCALHOST_API}/users/${username}/comments`)
+    return fetch(`${SOURCE}/users/${username}/comments`)
         .then(response => response.json())
 };
 

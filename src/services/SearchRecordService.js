@@ -1,4 +1,4 @@
-import {LOCALHOST_API} from "../constants";
+import {SOURCE} from "../constants";
 
 
 /**
@@ -10,7 +10,7 @@ import {LOCALHOST_API} from "../constants";
  * @returns {Promise<any>}
  */
 export const createSearchRecord = (record) => {
-    return fetch(`${LOCALHOST_API}/searches`, {
+    return fetch(`${SOURCE}/searches`, {
         method: "POST",
         body: JSON.stringify(record),
         credentials: 'include',
@@ -21,7 +21,7 @@ export const createSearchRecord = (record) => {
 };
 
 export const findSearchRecordsByUserId = (userId) => {
-    return fetch(`${LOCALHOST_API}/users/${userId}/searches`)
+    return fetch(`${SOURCE}/users/${userId}/searches`)
         .then(response => response.json())
 };
 

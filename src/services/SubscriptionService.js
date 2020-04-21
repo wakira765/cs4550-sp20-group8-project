@@ -1,4 +1,4 @@
-import {LOCALHOST_API} from "../constants";
+import {SOURCE} from "../constants";
 
 /**
  * Adds a new drug subscription to the given user id.
@@ -8,7 +8,7 @@ import {LOCALHOST_API} from "../constants";
  * @returns {Promise<any>}
  */
 export const createDrugSubscription = (sub) => {
-    return fetch(`${LOCALHOST_API}/subscriptions`, {
+    return fetch(`${SOURCE}/subscriptions`, {
         method: "POST",
         body: JSON.stringify(sub),
         credentials: 'include',
@@ -19,12 +19,12 @@ export const createDrugSubscription = (sub) => {
 };
 
 export const findSubscriptionsByUserId = (userId) => {
-    return fetch(`${LOCALHOST_API}/users/${userId}/subscriptions`)
+    return fetch(`${SOURCE}/users/${userId}/subscriptions`)
         .then(response => response.json())
 };
 
 export const findCurrentUserSubscriptions = () => {
-    return fetch(`${LOCALHOST_API}/subscriptions`, {
+    return fetch(`${SOURCE}/subscriptions`, {
         credentials: 'include'
     })
         .then(response => response.json())
