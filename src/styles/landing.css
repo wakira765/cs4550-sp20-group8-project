@@ -41,7 +41,10 @@
 }
 
 .top-links {
-    background-color: #5bc0de;
+    background-color: #138496;
     width: 100%;
 }
 
+.btn-landing {
+    background-color: teal;
+}

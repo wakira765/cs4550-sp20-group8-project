@@ -31,12 +31,12 @@ class LandingComponent extends Component {
                     <div className="col-sm-12 col-md-12 col-lg-7">
                         <div id="landing-logo" className="flex-row">
                             <div id="icon">
-                                <FontAwesomeIcon icon={faPrescriptionBottleAlt} size="5x" color="#5bc0de"></FontAwesomeIcon>
+                                <FontAwesomeIcon icon={faPrescriptionBottleAlt} size="5x" color="#138496"></FontAwesomeIcon>
                                 <h5 id="slogan">Find What's Right For You.</h5>
                             </div>
                             <div id="buttons" className="btn-group-vertical" role="group">
-                                <button type="button" class="btn btn-theme" onClick={() => this.props.history.push("/search")}>Start Searching</button>
-                                <button type="button" class="btn btn-theme" onClick={() => this.props.history.push("/register")}>Sign Up</button>
+                                <button type="button" class="btn btn-info" onClick={() => this.props.history.push("/search")}>Start Searching</button>
+                                <button type="button" class="btn btn-info" onClick={() => this.props.history.push("/register")}>Sign Up</button>
                             </div>
                         </div>
                     </div>

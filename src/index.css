@@ -16,7 +16,7 @@ code {
 .button-link {
     background-color: transparent;
     border: none;
-    color: #5bc0de;
+    color: #007bff;
 }
 
 /* login styles */
@@ -66,13 +66,13 @@ code {
 }
 
 .register-link {
-    color: #5bc0de;
+    color: teal;
 }
 
 /* nav bar styles */
 .nav-bar {
     padding: 20px 10px;
-    background-color: #5bc0de;
+    background-color: #17a2b8;
 }
 
 .nav-bar .search-bar-label {
@@ -109,8 +109,8 @@ code {
 .nav-bar .cta-container .search-button:hover,
 .nav-bar .cta-container .search-button:focus,
 .nav-bar .cta-container .search-button:active {
-    background-color: #5bc0de;
-    border-color: #5bc0de;
+    background-color: #138496;
+    border-color: #117a8b;
 }
 
 /* Search page styles */
@@ -426,6 +426,5 @@ code {
 }
 
 .btn-theme {
-    background-color: teal!important;
-    color: white !important;
+    background-color: teal;
 }
