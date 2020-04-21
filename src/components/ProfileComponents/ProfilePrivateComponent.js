@@ -48,7 +48,7 @@ class ProfilePrivateComponent extends Component {
                 height: profile.height,
                 gender: profile.gender,
                 conditions: profile.conditions,
-            }), this.props.history.push("/register"))
+            }), () => this.props.history.push("/register"))
             .then(
                 findSubscriptionsByUserId(this.state.user.id)
                     .then(subscriptions => this.setState({

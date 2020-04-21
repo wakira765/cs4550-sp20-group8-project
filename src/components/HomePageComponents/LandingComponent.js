@@ -7,11 +7,6 @@ class LandingComponent extends Component {
         showInfographic: false
     }
 
-    toggleInfographic = () => {
-        this.setState({
-            showInfographic: !this.state.showInfographic
-        })
-    }
     render() {
         return (
             <div className="landing-page-container container-fluid">
@@ -27,9 +22,9 @@ class LandingComponent extends Component {
                                 <h5 id="slogan">Find What's Right For You.</h5>
                             </div>
                             <div id="buttons" className="btn-group-vertical" role="group">
-                                <button type="button" class="btn btn-info" onClick={() => this.props.history.push("/search")}>Start Searching</button>
-                                <button type="button" class="btn btn-info" onClick={() => this.props.history.push("/login")}>Log In</button>
-                                <button type="button" class="btn btn-info" onClick={() => this.props.history.push("/register")}>Sign Up</button>
+                                <button type="button" className="btn btn-info" onClick={() => this.props.history.push("/search")}>Start Searching</button>
+                                <button type="button" className="btn btn-info" onClick={() => this.props.history.push("/login")}>Log In</button>
+                                <button type="button" className="btn btn-info" onClick={() => this.props.history.push("/register")}>Sign Up</button>
                             </div>
                         </div>
                     </div>
