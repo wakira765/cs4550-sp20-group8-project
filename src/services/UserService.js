@@ -88,10 +88,10 @@ export const findUserByUsername = (userName) => {
  * Returns true if successful
  */
 export const logout = () => {
-    return fetch(`${SOURCE}/logout`), {
+    return fetch(`${SOURCE}/logout`,  {
         method: 'POST',
         credentials: 'include'
-    }.then(response => response.json())
+    }).then(response => response.json())
 };
 
 export default {

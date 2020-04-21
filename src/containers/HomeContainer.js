@@ -12,17 +12,21 @@ import { findUserProfile } from "../services/UserService";
 class HomeContainer extends Component {
     state = {
         searchTerm: this.props.search ? this.props.search : "",
-        user: this.props.user ? this.props.user : {userName: ""},
+        user: this.props.user,
         display: this.props.display
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevState.user.userName !== this.state.user.userName) {
+        if (prevState.user !== this.state.user){
             this.setState({
                 user: this.state.user
             })
         }
-
+        else if (prevProps.hasOwnProperty("user") && prevProps.user !== this.props.user) {
+            this.setState({
+                user: this.props.user
+            })
+        }
         if (prevState.display !== this.state.display) {
             this.setState({
                 display: this.state.display
@@ -45,9 +49,7 @@ class HomeContainer extends Component {
     }
 
     render() {
-        const loggedIn = this.state.user.userName !== "";
-        console.log(loggedIn)
-        console.log(this.state.user);
+        const loggedIn = typeof this.state.user !== 'undefined' && this.state.user.hasOwnProperty('userName');
         return (
             <>
                 {this.state.display === DISPLAY_LANDING_PAGE && (

@@ -106,7 +106,7 @@ class RegisterContainer extends React.Component {
                 </div>}
                 <div className="form-group row wbdv-cta-container">
                   <div className="col-sm-10">
-                    <button type="submit" className="btn btn-primary btn-block wbdv-button wbdv-register"
+                    <button type="submit" className="btn btn-theme btn-block wbdv-button wbdv-register"
                             onClick={this.handleRegisterUser}
                     >Sign up</button>
                     <div className="row">

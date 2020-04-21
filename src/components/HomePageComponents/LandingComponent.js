@@ -34,11 +34,9 @@ class LandingComponent extends Component {
                                 <FontAwesomeIcon icon={faPrescriptionBottleAlt} size="5x" color="#5bc0de"></FontAwesomeIcon>
                                 <h5 id="slogan">Find What's Right For You.</h5>
                             </div>
-                            <div id="buttons">
-                            <ButtonGroup vertical size="lg">
-                                <Button color="info" onClick={() => this.props.history.push("/search")}>Start Searching</Button>
-                                <Button color="info" onClick={() => this.props.history.push("/register")}>Sign Up</Button>
-                            </ButtonGroup>
+                            <div id="buttons" className="btn-group-vertical" role="group">
+                                <button type="button" class="btn btn-theme" onClick={() => this.props.history.push("/search")}>Start Searching</button>
+                                <button type="button" class="btn btn-theme" onClick={() => this.props.history.push("/register")}>Sign Up</button>
                             </div>
                         </div>
                     </div>
