@@ -5,10 +5,7 @@ import ProfilePublicComponent from "../components/ProfileComponents/ProfilePubli
 import { findUserProfile, findUserByUsername } from "../services/UserService";
 import { findSubscriptionsByUserId } from "../services/SubscriptionService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faUserCircle, faPlus, faUserMd, faUser} from "@fortawesome/free-solid-svg-icons";
-import { UncontrolledCollapse, Button, ButtonGroup, Form, FormGroup, Label, InputGroup, InputGroupAddon, InputGroupText, Input } from "reactstrap";
-import { updateUser } from "../services/UserService";
-import { findDrugByNdc, findAllDrugsByName } from "../services/DrugService";
+import { faUserMd, faUser} from "@fortawesome/free-solid-svg-icons";
 import "../styles/Profile.css"
 class ProfileContainer extends Component {
 
@@ -18,7 +15,7 @@ class ProfileContainer extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevState.user.userName !== this.props.user.userName) {
+        if (prevProps.user !== this.props.user) {
             this.setState({
                 user: this.props.user
             })
@@ -33,7 +30,6 @@ class ProfileContainer extends Component {
     }
 
     render() {
-        console.log(this.props.match.params.userName);
         return (
             <>
                 <ProfileNavBarComponent {...this.props}></ProfileNavBarComponent>
@@ -54,7 +50,6 @@ class ProfileContainer extends Component {
                             </div>
                         </div>
                     </div>
-
                     <div className="profile-botton">
                         { this.state.private_view ? (
                             <ProfilePrivateComponent

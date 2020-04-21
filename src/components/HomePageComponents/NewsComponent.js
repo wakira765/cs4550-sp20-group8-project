@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import NewsCard from "./NewsCardComponent.js";
 import NewsService from "../../services/NewsService";
 import "../../styles/News.css"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 class NewsComponent extends Component {
     state = {

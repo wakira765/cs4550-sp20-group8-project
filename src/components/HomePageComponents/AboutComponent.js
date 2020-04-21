@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { WEBAPP_NAME, FIND_WHATS_RIGHT_PARA, GET_INFORMED_PARA, NET_EFFECT_PARA, ITS_PERSONAL_PARA} from "../../constants";
-import "../../styles/Home.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCapsules, faUser, faSearch, faGlobe} from "@fortawesome/free-solid-svg-icons";
+import "../../styles/Home.css";
 
 
 

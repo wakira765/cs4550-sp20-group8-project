@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCapsules, faUser, faPrescription, faInfoCircle, faInfo} from "@fortawesome/free-solid-svg-icons";
+import { faCapsules, faUser, faPrescription, faInfoCircle} from "@fortawesome/free-solid-svg-icons";
 import { WEBAPP_NAME } from "../../constants";
-import { UncontrolledButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem , Button, ButtonDropdown, ButtonGroup} from "reactstrap";
+import { UncontrolledButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem , Button, ButtonGroup} from "reactstrap";
 import UserService from "../../services/UserService";
 import "../../styles/Home.css"
 
@@ -29,6 +29,11 @@ class HomeNavBarComponent extends Component {
         }
     }
 
+    logout = () => {
+        UserService.logout()
+        window.location.reload()
+    }
+
 
     render() {
         const loggedIn = typeof this.state.user !== 'undefined' && this.state.user.hasOwnProperty('userName');
@@ -53,7 +58,7 @@ class HomeNavBarComponent extends Component {
                                 <DropdownToggle color="info" caret><FontAwesomeIcon size="2x" icon={faUser} ></FontAwesomeIcon></DropdownToggle>
                                 <DropdownMenu>
                                     <DropdownItem onClick={() => this.props.history.push("/profile")}>Your Profile</DropdownItem>
-                                    <DropdownItem onClick={() => UserService.logout()}>Log Out</DropdownItem>
+                                    <DropdownItem onClick={() => this.logout()}>Log Out</DropdownItem>
                                 </DropdownMenu>
                             </UncontrolledButtonDropdown>
                             :

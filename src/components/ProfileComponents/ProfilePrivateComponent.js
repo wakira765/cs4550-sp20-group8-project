@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import { findUserByUsername, updateUser, findUserProfile} from "../../services/UserService"
+import {updateUser, findUserProfile} from "../../services/UserService"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faUserCircle, faPlus, faUserMd, faUser} from "@fortawesome/free-solid-svg-icons";
-import { UncontrolledCollapse, Button, ButtonGroup, Form, FormGroup, Label, InputGroup, InputGroupAddon, InputGroupText, Input } from "reactstrap";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { UncontrolledCollapse, Button, ButtonGroup, InputGroup, InputGroupAddon, Input } from "reactstrap";
 import { findSubscriptionsByUserId } from "../../services/SubscriptionService";
-import { findDrugByNdc, findAllDrugsByName } from "../../services/DrugService";
 import "../../styles/Profile.css";
 
 class ProfilePrivateComponent extends Component {
@@ -23,17 +22,29 @@ class ProfilePrivateComponent extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevState.user.username !== this.props.user.username) {
+
+        if (prevProps.user !== this.props.user) {
             this.setState({
                 user: this.props.user
             })
         }
+        if (prevState.userSubscriptions.hasOwnProperty("status")) {
+            findSubscriptionsByUserId(this.state.user.id)
+                .then(subscriptions => this.setState({
+                    userSubscriptions: subscriptions
+                }))
+        }
+
     }
 
     componentDidMount() {
         findUserProfile()
             .then(profile => this.setState({
                 user: profile
+            }))
+        findSubscriptionsByUserId(this.state.user.id)
+            .then(subscriptions => this.setState({
+                userSubscriptions: subscriptions
             }))
     }
 
@@ -57,6 +68,8 @@ class ProfilePrivateComponent extends Component {
         }
         this.toggleEditting();
         const response = await updateUser(this.state.user.id, updatedUser);
+        window.location.reload();
+
     }
 
     addNewCondition = () => {
@@ -76,7 +89,6 @@ class ProfilePrivateComponent extends Component {
     }
 
     render() {
-        console.log(this.state.user)
         return(
             <div className="private-profile">
                 <ButtonGroup className="d-flex flex-row justify-content-between">
@@ -203,8 +215,8 @@ class ProfilePrivateComponent extends Component {
                         {this.state.userSubscriptions && this.state.userSubscriptions.length > 0 && (
                             this.state.userSubscriptions.map(subscription => (
                                 <li id={`${subscription.id}`}>
-                                    <a href={`/drugs/${subscription.id}`} className="subscription-link">
-                                        {subscription.id}
+                                    <a href={`/drugs/${subscription.productNdc}`} className="subscription-link">
+                                        {subscription.productNdc}
                                     </a>
                                 </li>
                             ))

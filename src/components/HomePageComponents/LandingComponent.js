@@ -1,12 +1,7 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPrescriptionBottleAlt } from "@fortawesome/free-solid-svg-icons";
-import { Collapse, Button, ButtonGroup} from "reactstrap";
-import AboutComponent from "./AboutComponent";
-
-
 import "../../styles/landing.css";
-
 class LandingComponent extends Component {
     state = {
         showInfographic: false
@@ -26,7 +21,7 @@ class LandingComponent extends Component {
                 </div>
                 <div className="row">
                     <div className="d-none d-xl-block col-lg-5">
-                        <img id="landing-page-img" src="landing-page-img.jpg"></img>
+                        <img id="landing-page-img" src={process.env.PUBLIC_URL + "landing-page-img.jpg"} alt="landing-img"></img>
                     </div>
                     <div className="col-sm-12 col-md-12 col-lg-7">
                         <div id="landing-logo" className="flex-row">

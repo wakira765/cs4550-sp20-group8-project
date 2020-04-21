@@ -1,10 +1,6 @@
 import React, { Component } from "react";
-import { findUserProfile, updateUser, findUserByUsername } from "../../services/UserService"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faUserCircle, faPlus, faUserMd, faUser} from "@fortawesome/free-solid-svg-icons";
-import { UncontrolledCollapse, Button, ButtonGroup, Form, FormGroup, Label, InputGroup, InputGroupAddon, InputGroupText, Input } from "reactstrap";
-import { findSubscriptionsByUserId } from "../../services/SubscriptionService";
-import { findDrugByNdc, findAllDrugsByName } from "../../services/DrugService";
+import { findUserProfile, findUserByUsername } from "../../services/UserService"
+import { UncontrolledCollapse, Button, ButtonGroup } from "reactstrap";
 import "../../styles/Profile.css";
 
 class ProfilePublicComponent extends Component {

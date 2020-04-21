@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCapsules, faUser, faPrescription, faInfoCircle, faInfo} from "@fortawesome/free-solid-svg-icons";
+import { faCapsules, faPrescription, faInfoCircle} from "@fortawesome/free-solid-svg-icons";
 import { WEBAPP_NAME } from "../../constants";
-import { UncontrolledButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem , Button, ButtonDropdown, ButtonGroup} from "reactstrap";
+import { UncontrolledButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem , Button, ButtonGroup} from "reactstrap";
 import "../../styles/Profile.css";
 
 class ProfileNavBarComponent extends Component {
@@ -11,10 +11,10 @@ class ProfileNavBarComponent extends Component {
         return(
             <nav className="nav-bar profile-nav-bar">
                 <div className="profile-logo">
-                    <h1 className="profile-web-name">
+                    <h2 className="profile-web-name">
                         <FontAwesomeIcon icon={faCapsules}></FontAwesomeIcon>
                         {WEBAPP_NAME}
-                    </h1>
+                    </h2>
                 </div>
                 <div className="profile-navbar-dropdowns">
                     <ButtonGroup>

@@ -4,11 +4,11 @@ import NewsComponent from "../components/HomePageComponents/NewsComponent";
 import HomeNavBar from "../components/HomePageComponents/HomeNavBarComponent";
 import LandingComponent from "../components/HomePageComponents/LandingComponent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCapsules, faEdit, faNewspaper, faExclamationCircle, faEllipsisV} from "@fortawesome/free-solid-svg-icons";
-import { DISPLAY_LANDING_PAGE, DISPLAY_NEWS, WEBAPP_NAME, DISPLAY_ABOUT_US, ABOUT_US_HOME} from "../constants";
-import "../styles/Home.css"
-import { UncontrolledCollapse } from 'reactstrap';
+import { faCapsules } from "@fortawesome/free-solid-svg-icons";
+import { DISPLAY_LANDING_PAGE, DISPLAY_NEWS, WEBAPP_NAME, ABOUT_US_HOME} from "../constants";
 import { findUserProfile } from "../services/UserService";
+import "../styles/Home.css"
+
 class HomeContainer extends Component {
     state = {
         searchTerm: this.props.search ? this.props.search : "",
@@ -69,12 +69,12 @@ class HomeContainer extends Component {
                                 </div>
                             )}
                             <div id="home-main-content" className="row">
-                                <div id="home-left" className="col-2">
+                                <div id="home-left" className="col-lg-2 d-none d-xl-block">
                                 </div>
-                                <div id="home-center" className="col-7">
+                                <div id="home-center" className="col-lg-7 col-md-7">
                                     <NewsComponent></NewsComponent>
                                 </div>
-                                <div id="home-right" className="col-3">
+                                <div id="home-right" className="col-lg-3 col-md-5">
                                     <AlertsComponent {...this.props}></AlertsComponent>
                                 </div>
                             </div>
