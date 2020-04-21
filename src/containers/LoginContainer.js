@@ -14,9 +14,15 @@ class LoginContainer extends React.Component {
     }
 
     handleLogin = () => {
-        UserService.findUserByCredentials(this.state.userName, this.state.password)
-            .then(response => {this.props.history.push("/home");});
-    }
+      UserService.findUserByCredentials(this.state.userName, this.state.password)
+          .then(response => {
+              if(response.userName) {
+                  this.props.history.push("/home");
+              } else {
+                  alert("Invalid username/password");
+              }
+          });
+  }
 
     render() {
         return (

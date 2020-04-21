@@ -5,6 +5,7 @@ import {faEdit} from "@fortawesome/free-solid-svg-icons";
 import {UncontrolledCollapse, Button, ButtonGroup, InputGroup, InputGroupAddon, Input} from "reactstrap";
 import {findSubscriptionsByUserId} from "../../services/SubscriptionService";
 import "../../styles/Profile.css";
+import { isThrowStatement } from "typescript";
 
 class ProfilePrivateComponent extends Component {
     state = {
@@ -29,7 +30,7 @@ class ProfilePrivateComponent extends Component {
                 user: this.props.user
             })
         }
-        if (prevState.userSubscriptions.hasOwnProperty("status")) {
+        if (prevState.userSubscriptions.length > 0 && this.props.subscriptions !== undefined && (prevState.userSubscriptions !== this.props.subscriptions)) {
             findSubscriptionsByUserId(this.state.user.id)
                 .then(subscriptions => this.setState({
                     userSubscriptions: subscriptions

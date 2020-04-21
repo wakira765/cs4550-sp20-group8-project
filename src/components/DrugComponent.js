@@ -90,6 +90,9 @@ class DrugComponent extends React.Component {
                             </textarea>
                             <button onClick={() => this.createDrugComment(this.state.comment)} className="post-comment-button">Post Comment</button>
                         </div>}
+                        {!this.props.user.userName && <div className="login-comment-section">
+                            <Link to={`/login`} className="login-link">Please log in to leave a comment</Link>
+                        </div>}
                     </div>
 
                 </div>}
