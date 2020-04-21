@@ -69,10 +69,6 @@ code {
     color: teal;
 }
 
-.link-to-privacy {
-
-}
-
 /* nav bar styles */
 .nav-bar {
     padding: 20px;
@@ -127,7 +123,7 @@ code {
 
 /* About page styles */
 .about-container {
-    padding: 50px 0;
+    margin: 50px 0;
 }
 
 .about-container .about-row {
@@ -275,7 +271,7 @@ code {
 }
 
 .drug-component .drug-header-bar {
-    background-color: #17a2b8;
+    background-color: #34495E;
     padding: 20px;
     display: flex;
 }
@@ -337,7 +333,7 @@ code {
 }
 
 .drug-component .post-comment-section .post-comment-button {
-    background-color: #17a2b8;
+    background-color: #2874A6;
     border: none;
     border-radius: 5px;
     padding: 10px;
