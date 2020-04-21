@@ -19,10 +19,7 @@ class LandingComponent extends Component {
                     <div className="p-2 landing-page-link"><a id="to-privacy-policy" href="/privacy">Our Policies on Privacy</a></div>
                     <div className="p-2 landing-page-link"><a id="to-home-page" href="/home/news_feed">Home Page</a></div>
                 </div>
-                <div className="row">
-                    <div className="d-none d-xl-block col-lg-5">
-                        <img id="landing-page-img" src={process.env.PUBLIC_URL + "landing-page-img.jpg"} alt="landing-img"></img>
-                    </div>
+                <div className="main-stuff row">
                     <div className="col-sm-12 col-md-12 col-lg-7">
                         <div id="landing-logo" className="flex-row">
                             <div id="icon">
@@ -31,6 +28,7 @@ class LandingComponent extends Component {
                             </div>
                             <div id="buttons" className="btn-group-vertical" role="group">
                                 <button type="button" class="btn btn-info" onClick={() => this.props.history.push("/search")}>Start Searching</button>
+                                <button type="button" class="btn btn-info" onClick={() => this.props.history.push("/login")}>Log In</button>
                                 <button type="button" class="btn btn-info" onClick={() => this.props.history.push("/register")}>Sign Up</button>
                             </div>
                         </div>

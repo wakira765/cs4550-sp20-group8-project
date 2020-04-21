@@ -17,7 +17,7 @@ class AboutContainer extends Component {
             <div className="about-container container">
                 <div className="about-row row">
                     <div className="about-row-column col-6">
-                        <FontAwesomeIcon icon={faSearch} size="10x" style={{color: "#5bc0de"}}></FontAwesomeIcon>
+                        <FontAwesomeIcon icon={faSearch} size="10x" style={{color: "#17a2b8"}}></FontAwesomeIcon>
                     </div>
                     <div className="about-row-column col-6">
                         <h2>Get Informed</h2>
@@ -31,13 +31,13 @@ class AboutContainer extends Component {
                         <p>{ITS_PERSONAL_PARA}</p>
                     </div>
                     <div className="about-row-column col-6">
-                        <FontAwesomeIcon icon={faUser} size="10x" style={{color: "#5bc0de"}}></FontAwesomeIcon>
+                        <FontAwesomeIcon icon={faUser} size="10x" style={{color: "#17a2b8"}}></FontAwesomeIcon>
                     </div>
                 </div>
 
                 <div className="about-row row">
                     <div className="about-row-column col-6">
-                        <FontAwesomeIcon icon={faGlobe} size="10x" style={{color: "#5bc0de"}}></FontAwesomeIcon>
+                        <FontAwesomeIcon icon={faGlobe} size="10x" style={{color: "#17a2b8"}}></FontAwesomeIcon>
                     </div>
                     <div className="about-row-column col-6">
                         <h2>The Network Effect</h2>
@@ -51,7 +51,7 @@ class AboutContainer extends Component {
                         <p>{FIND_WHATS_RIGHT_PARA}</p>
                     </div>
                     <div className="about-row-column col-6">
-                        <FontAwesomeIcon icon={faCapsules} size="10x" style={{color: "#5bc0de"}}></FontAwesomeIcon>
+                        <FontAwesomeIcon icon={faCapsules} size="10x" style={{color: "#17a2b8"}}></FontAwesomeIcon>
                     </div>
                 </div>
                 <a href="/home/news_feed" className="link-to-home">Go home</a>
