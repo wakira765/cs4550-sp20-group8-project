@@ -14,7 +14,7 @@ class LandingComponent extends Component {
     }
     render() {
         return (
-            <div className="container-fluid">
+            <div className="landing-page-container container-fluid">
                 <div className="top-links d-flex row justify-content-between">
                     <div className="p-2 landing-page-link"><a id="to-privacy-policy" href="/privacy">Our Policies on Privacy</a></div>
                     <div className="p-2 landing-page-link"><a id="to-home-page" href="/home/news_feed">Home Page</a></div>

@@ -14,6 +14,10 @@
     justify-content: center;
 }
 
+#home-main-content .d-xl-block{
+    display: none !important;
+}
+
 .home-navbar-dropdowns {
     float: right
 }
@@ -32,7 +36,7 @@
 }
 
 #home-displayed-content {
-    margin-top: 75px;
+    margin-top: 100px;
 }
 
 #home-buttons-collapsed {

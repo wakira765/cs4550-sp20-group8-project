@@ -11,12 +11,17 @@
     float: left;
 }
 
-.form-group {
+.collapse .form-group {
     margin-bottom: 20px;
 }
 
+.collapse .form-group label {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 .collapse form,
-.collapse label {
+.collapse .subscribed-label {
     margin: 20px 0;
 }
 
@@ -51,6 +56,7 @@
 .profile-username-img {
     text-align: center;
     border: 1px solid black;
+    padding: 20px;
 }
 
 .condition-add-btn {

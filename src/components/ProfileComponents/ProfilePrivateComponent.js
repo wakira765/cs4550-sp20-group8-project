@@ -210,7 +210,7 @@ class ProfilePrivateComponent extends Component {
                     </InputGroup>
                 </UncontrolledCollapse>
                 <UncontrolledCollapse toggler="#toggleSubscriptions">
-                    <label>You are currently subscried to:</label>
+                    <label className="subscribed-label">You are currently subscried to:</label>
                     <ul className="subscription-list">
                         {this.state.userSubscriptions && this.state.userSubscriptions.length > 0 && (
                             this.state.userSubscriptions.map(subscription => (
