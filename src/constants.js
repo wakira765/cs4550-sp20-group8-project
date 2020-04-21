@@ -6,7 +6,7 @@ export const LOCALHOST_API = "http://localhost:8080/api";
 export const DISPLAY_NEWS = "DISPLAY_NEWS";
 export const DISPLAY_LANDING_PAGE = "DISPLAY_LANDING_PAGE";
 
-export const HEROKU_API = "https://cs4550-project-server.herokuapp.com/api";
+export const HEROKU_API = "http://cs4550-project-server.herokuapp.com/api";
 
 
 export const SOURCE = HEROKU_API;
