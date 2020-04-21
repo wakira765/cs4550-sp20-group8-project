@@ -65,8 +65,8 @@
     position: relative;
 }
 
-#about-header {
-    background-color: #5bc0de;
+.about-header {
+    background-color: teal;
     color: white;
     width: 100%;
     padding: 3%;

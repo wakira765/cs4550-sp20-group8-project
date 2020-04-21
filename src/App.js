@@ -11,6 +11,7 @@ import DrugComponent from "./components/DrugComponent";
 import DrugReducer from "./reducers/DrugReducer";
 
 import AboutContainer from "./containers/AboutContainer";
+import PrivacyContainer from "./containers/PrivacyContainer"
 
 import ProfileContainer from './containers/ProfileContainer';
 import { findUserProfile } from "./services/UserService"
@@ -104,6 +105,10 @@ function App() {
             <Route path={["/profile", "/profile/:userName"]}
                    exact={true}
                    render={(props) => <ProfileContainer {...props} user={findUserProfile()}/>}
+            ></Route>
+            <Route path="/privacy"
+                   exact={true}
+                   render={(props) => <PrivacyContainer {...props} />}
             ></Route>
         </Router>
     </Provider>
