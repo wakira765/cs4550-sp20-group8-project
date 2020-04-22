@@ -5,7 +5,6 @@ import {faEdit} from "@fortawesome/free-solid-svg-icons";
 import {UncontrolledCollapse, Button, ButtonGroup, InputGroup, InputGroupAddon, Input} from "reactstrap";
 import {findSubscriptionsByUserId} from "../../services/SubscriptionService";
 import "../../styles/Profile.css";
-import { isThrowStatement } from "typescript";
 
 class ProfilePrivateComponent extends Component {
     state = {
