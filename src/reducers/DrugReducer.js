@@ -1,4 +1,4 @@
-import {FIND_DRUG_DATA, FIND_DRUG_COMMENTS, CREATE_DRUG_COMMENT, SUBSCRIBE_TO_DRUG, USER, USER_SUBSCRIPTIONS} from "../actions/DrugActions";
+import {FIND_DRUG_DATA, FIND_DRUG_COMMENTS, CREATE_DRUG_COMMENT, REMOVE_SUBSCRIPTION, SUBSCRIBE_TO_DRUG, USER, USER_SUBSCRIPTIONS} from "../actions/DrugActions";
 
 const initialState = {
     drugInfo: [],
@@ -26,12 +26,19 @@ const DrugReducer = (state = initialState, action) => {
                     action.comment
                 ]
             }
+        case REMOVE_SUBSCRIPTION:
+            return {
+                ...state,
+                subscriptions: state.subscriptions.filter(subscription =>
+                        subscription.id !== action.subId
+                    )
+            }
         case SUBSCRIBE_TO_DRUG:
             return {
                 ...state,
                 subscriptions: [
                     ...state.subscriptions,
-                    action.subscription.productNdc
+                    action.subscription
                 ]
             }
         case USER:
@@ -40,15 +47,9 @@ const DrugReducer = (state = initialState, action) => {
                 user: action.user
             }
         case USER_SUBSCRIPTIONS:
-            let arr = []
-            if(Array.isArray(action.subscriptions)) {
-                for(let subscription of action.subscriptions) {
-                    arr.push(subscription.productNdc)
-                }
-            }
             return {
                 ...state,
-                subscriptions: arr
+                subscriptions: action.subscriptions
             }
         default:
             return state

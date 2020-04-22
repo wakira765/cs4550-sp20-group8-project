@@ -293,7 +293,7 @@ code {
 }
 
 .drug-component .drug-header-bar {
-    background-color: #34495E;
+    background-color: #17a2b8;
     padding: 20px;
     display: flex;
 }
@@ -310,7 +310,8 @@ code {
     color: #FDFEFE;
 }
 
-.drug-component .subscribe-button {
+.drug-component .subscribe-button,
+.drug-component .unsubscribe-button {
     background-color: #FF6F00;
     padding: 10px;
     border: none;
@@ -321,7 +322,7 @@ code {
     float: right;
 }
 
-.drug-component .subscribe-button[disabled] {
+.drug-component .unsubscribe-button {
     background-color: #546E7A;
 }
 
@@ -355,7 +356,7 @@ code {
 }
 
 .drug-component .post-comment-section .post-comment-button {
-    background-color: #2874A6;
+    background-color: #17a2b8;
     border: none;
     border-radius: 5px;
     padding: 10px;

@@ -31,7 +31,7 @@ export const findCurrentUserSubscriptions = () => {
 };
 
 export const deleteDrugSubscription = (subId) => {
-    return fetch(`${SOURCE}/subscription/${subId}`, {
+    return fetch(`${SOURCE}/subscriptions/${subId}`, {
         method: 'DELETE'
     }).then(response => response.json())
 };

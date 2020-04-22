@@ -4,7 +4,7 @@ import DrugService from "../services/DrugService";
 import DrugCommentService from "../services/DrugCommentService";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
-import {findDrugDataAction, findDrugCommentsAction, createDrugCommentAction, subscribeToDrugAction, userAction, userSubscriptionsAction} from "../actions/DrugActions";
+import {findDrugDataAction, findDrugCommentsAction, createDrugCommentAction, removeSubscriptionAction, subscribeToDrugAction, userAction, userSubscriptionsAction} from "../actions/DrugActions";
 import SubscriptionService from "../services/SubscriptionService";
 import UserService from "../services/UserService";
 
@@ -14,7 +14,7 @@ import { faTimes, faPlus, faUser, faUserMd } from "@fortawesome/free-solid-svg-i
 class DrugComponent extends React.Component {
 
     state = {
-        comment: ""
+        comment: "",
     }
 
     componentDidMount() {
@@ -52,6 +52,16 @@ class DrugComponent extends React.Component {
         this.props.subscribeToDrug(subscribeObject);
     }
 
+    unsubscribeToDrug = (ndc) => {
+        let subId;
+        for(let subscription of this.props.subscriptions) {
+            if(ndc === subscription.productNdc) {
+                subId = subscription.id;
+            }
+        }
+        this.props.deleteDrugSubscription(subId);
+    }
+
     render() {
         return (
             <div className="drug-component">
@@ -62,7 +72,7 @@ class DrugComponent extends React.Component {
                         </button>
                         <h2 className="drug-name">{this.props.drugInfo.properties.openfda.brand_name}</h2>
                     </nav>
-                    {this.props.user.userName && <button className="subscribe-button" disabled={this.props.subscriptions.includes(this.props.drugName)} onClick={() => this.subscribeToDrug()}>{this.props.subscriptions.includes(this.props.drugName) ? "Subscribed" : "Subscribe"}</button>}
+                    {this.props.user.userName && <button className={!this.props.drugSubscriptions.includes(this.props.drugName) ? "subscribe-button" : "unsubscribe-button"} onClick={() => {this.props.drugSubscriptions.includes(this.props.drugName) ? this.unsubscribeToDrug(this.props.drugName) : this.subscribeToDrug();}}>{!this.props.drugSubscriptions.includes(this.props.drugName) ? "Subscribe" : "Unsubscribe"}</button>}
                     <DrugInformationComponent drugInfo={this.props.drugInfo}/>
                     <div className="comments-section">
                         <h3 className="comments-section-header">Comments Section</h3>
@@ -102,10 +112,17 @@ class DrugComponent extends React.Component {
 }
 
 const stateToPropertyMapper = (state) => {
+    let arr = []
+    if(Array.isArray(state.drug.subscriptions)) {
+        for(let subscription of state.drug.subscriptions) {
+            arr.push(subscription.productNdc)
+        }
+    }
     return ({
         drugInfo: state.drug.drugInfo,
         comments: state.drug.comments,
         subscriptions: state.drug.subscriptions,
+        drugSubscriptions: arr,
         user: state.drug.user
     })
 };
@@ -129,7 +146,10 @@ const dispatchToPropertyMapper = (dispatch) => {
                 .then(subscriptions => dispatch(userSubscriptionsAction(subscriptions))),
         findCurrentUser: () =>
             UserService.findUserProfile()
-                .then(user => dispatch(userAction(user)))
+                .then(user => dispatch(userAction(user))),
+        deleteDrugSubscription: (subId) =>
+            SubscriptionService.deleteDrugSubscription(subId)
+                .then(response => dispatch(removeSubscriptionAction(subId))),
     })
 };
 
