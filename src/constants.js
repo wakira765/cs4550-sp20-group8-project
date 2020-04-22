@@ -9,7 +9,7 @@ export const DISPLAY_LANDING_PAGE = "DISPLAY_LANDING_PAGE";
 export const HEROKU_API = "https://cs4550-project-server.herokuapp.com/api";
 
 
-export const SOURCE = LOCALHOST_API;
+export const SOURCE = HEROKU_API;
 
 export const NEWS_API_CREDIT = "powered by NewsAPI.org";
 export const NEWS_API_URL = "https://newsapi.org/";
