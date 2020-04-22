@@ -30,8 +30,15 @@ export const findCurrentUserSubscriptions = () => {
         .then(response => response.json())
 };
 
+export const deleteDrugSubscription = (subId) => {
+    return fetch(`${SOURCE}/subscription/${subId}`, {
+        method: 'DELETE'
+    }).then(response => response.json())
+};
+
 export default {
     createDrugSubscription,
     findSubscriptionsByUserId,
-    findCurrentUserSubscriptions
+    findCurrentUserSubscriptions,
+    deleteDrugSubscription
 }
