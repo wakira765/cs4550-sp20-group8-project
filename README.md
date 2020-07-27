@@ -31,11 +31,11 @@ git clone https://github.com/wakira765/cs4550-sp20-team8-project-server.git
 To setup the database, create a local connection in MySQL Workbench. Instructions can be found [here](https://dev.mysql.com/doc/workbench/en/wb-mysql-connections-new.html).\
 Take note of the name of the connection, username and password as they will be used later on. 
 
-Open the back-end repository with an IDE (recommend Intellij) or text editor.\
+Open the back-end repository.\
 Go to the application.properties file in the back-end repository (src/main/resources/application.properties).\
-Change the spring.datasource.url to "jdbc:mysql://localhost:3306/name-of-local-connection".\
+Change the spring.datasource.url to "jdbc:mysql://localhost:3306/NAME-OF-LOCAL-CONNECTION".\
 Change the spring.datasource.username to the username you used earlier.\
-Change the spring.datasource.password to the password you used earlier.\
+Change the spring.datasource.password to the password you used earlier.
 
 Then run the following command:
 ```
