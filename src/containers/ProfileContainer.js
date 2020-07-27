@@ -33,7 +33,7 @@ class ProfileContainer extends Component {
         return (
             <>
                 <ProfileNavBarComponent {...this.props}></ProfileNavBarComponent>
-                <div className="container profile">
+                <div className="profile-container container profile">
                     <div className="profile-top">
                         <div className="profile-username-img">
                             <div className="profile-username">

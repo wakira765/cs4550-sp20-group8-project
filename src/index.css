@@ -20,6 +20,10 @@ code {
 }
 
 /* login styles */
+.wbdv-login-container {
+    margin: 50px;
+}
+
 .wbdv-login-container h1 {
   margin-bottom: 25px;
 }
@@ -123,7 +127,7 @@ code {
 
 /* About page styles */
 .about-container {
-    margin: 50px 0;
+    padding: 50px 0;
 }
 
 .about-container .about-row {
@@ -133,6 +137,24 @@ code {
 
 .about-container .about-row:not(:last-of-type) {
     border-bottom: 1px solid #000000;
+}
+
+.about-container .about-row:nth-child(odd) .about-row-column:nth-child(odd) {
+    display: none;
+}
+
+.about-container .about-row:nth-child(odd) .about-row-column:nth-child(even) {
+    max-width: 100%;
+    flex: 0 0 100%;
+}
+
+.about-container .about-row:nth-child(even) .about-row-column:nth-child(even) {
+    display: none;
+}
+
+.about-container .about-row:nth-child(even) .about-row-column:nth-child(odd) {
+    max-width: 100%;
+    flex: 0 0 100%;
 }
 
 .about-container .about-row svg {
@@ -271,7 +293,7 @@ code {
 }
 
 .drug-component .drug-header-bar {
-    background-color: #34495E;
+    background-color: #17a2b8;
     padding: 20px;
     display: flex;
 }
@@ -288,7 +310,8 @@ code {
     color: #FDFEFE;
 }
 
-.drug-component .subscribe-button {
+.drug-component .subscribe-button,
+.drug-component .unsubscribe-button {
     background-color: #FF6F00;
     padding: 10px;
     border: none;
@@ -299,7 +322,7 @@ code {
     float: right;
 }
 
-.drug-component .subscribe-button[disabled] {
+.drug-component .unsubscribe-button {
     background-color: #546E7A;
 }
 
@@ -333,7 +356,7 @@ code {
 }
 
 .drug-component .post-comment-section .post-comment-button {
-    background-color: #2874A6;
+    background-color: #17a2b8;
     border: none;
     border-radius: 5px;
     padding: 10px;
@@ -455,6 +478,27 @@ code {
         height: 85%;
     }
 
+    .about-container .about-row .about-row-column {
+        display: block;
+    }
+
+    .about-container .about-row:nth-child(odd) .about-row-column:nth-child(odd) {
+        display: block;
+    }
+
+    .about-container .about-row:nth-child(odd) .about-row-column:nth-child(even) {
+        max-width: 50%;
+        flex: 0 0 50%;
+    }
+
+    .about-container .about-row:nth-child(even) .about-row-column:nth-child(even) {
+        display: block;
+    }
+
+    .about-container .about-row:nth-child(even) .about-row-column:nth-child(odd) {
+        max-width: 50%;
+        flex: 0 0 50%;
+    }
     /* drug info page */
 
 }

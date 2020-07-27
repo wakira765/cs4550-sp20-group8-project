@@ -1,6 +1,7 @@
 export const FIND_DRUG_DATA = "FIND_DRUG_DATA";
 export const FIND_DRUG_COMMENTS = "FIND_DRUG_COMMENTS";
 export const CREATE_DRUG_COMMENT = "CREATE_DRUG_COMMENT";
+export const REMOVE_SUBSCRIPTION = "REMOVE_SUBSCRIPTION";
 export const SUBSCRIBE_TO_DRUG = "SUBSCRIBE_TO_DRUG";
 export const USER = "USER";
 export const USER_SUBSCRIPTIONS = "USER_SUBSCRIPTIONS";
@@ -20,6 +21,12 @@ export const createDrugCommentAction = (comment) => ({
     type: CREATE_DRUG_COMMENT,
     comment: comment
 });
+
+export const removeSubscriptionAction = (subId) => ({
+    type: REMOVE_SUBSCRIPTION,
+    subId: subId
+})
+
 
 export const subscribeToDrugAction = (subscription) => ({
     type: SUBSCRIBE_TO_DRUG,

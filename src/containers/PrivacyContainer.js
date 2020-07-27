@@ -9,7 +9,7 @@ class PrivacyContainer extends Component {
             <div>
                 <h1 className="privacy-header">Our Policies on Privacy</h1>
             </div>
-            <div className="container policies">
+            <div className="privacy-container container policies">
                 <div>
                     <h2>What Data Do We Collect?</h2>
                     <p>

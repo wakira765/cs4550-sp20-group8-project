@@ -5,7 +5,6 @@ import {faEdit} from "@fortawesome/free-solid-svg-icons";
 import {UncontrolledCollapse, Button, ButtonGroup, InputGroup, InputGroupAddon, Input} from "reactstrap";
 import {findSubscriptionsByUserId} from "../../services/SubscriptionService";
 import "../../styles/Profile.css";
-import { isThrowStatement } from "typescript";
 
 class ProfilePrivateComponent extends Component {
     state = {
@@ -42,19 +41,25 @@ class ProfilePrivateComponent extends Component {
     componentDidMount() {
         findUserProfile()
             .then(profile =>
-                findSubscriptionsByUserId(profile.id)
-                    .then(subscriptions => this.setState({
-                        user: profile,
-                        firstName: profile.firstName,
-                        lastName: profile.lastName,
-                        dob: profile.dob,
-                        email: profile.email,
-                        height: profile.height,
-                        gender: profile.gender,
-                        medicalID: profile.medicalID,
-                        conditions: profile.conditions,
-                        userSubscriptions: subscriptions
-                    })), () => this.props.history.push("/register"))
+                {
+                    if(profile.id) {
+                        findSubscriptionsByUserId(profile.id)
+                            .then(subscriptions => this.setState({
+                                user: profile,
+                                firstName: profile.firstName,
+                                lastName: profile.lastName,
+                                dob: profile.dob,
+                                email: profile.email,
+                                height: profile.height,
+                                gender: profile.gender,
+                                medicalID: profile.medicalID,
+                                conditions: profile.conditions,
+                                userSubscriptions: subscriptions
+                            }));
+                    } else {
+                        this.props.history.push("/login");
+                    }
+                });
     }
 
     handleInputChange = (state) => {
@@ -109,7 +114,7 @@ class ProfilePrivateComponent extends Component {
         console.log(this.state.user)
         return (
             <div className="private-profile">
-                <ButtonGroup className="d-flex flex-row justify-content-between">
+                <ButtonGroup className="d-flex flex-row justify-content-between dropdown-buttons">
                     <Button color="info" id="toggleBasicInfo">Basic Information</Button>
                     <Button color="info" id="togglePhysicalInfo">Physical Information</Button>
                     <Button color="info" id="toggleConditions">Conditions</Button>
