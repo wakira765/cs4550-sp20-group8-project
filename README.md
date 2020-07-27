@@ -57,7 +57,17 @@ npm start
 The front-end should be launched and communicating with the back-end services.
 
 # Demo
+Search relevant news articles and drug recalls on your home page:
+![](homescreen.gif)
 
+Register for an account and edit your profile:
+![](register_profile_edit.gif)
+
+Search for drug information; once you have an account you can also post comments:
+![](search_comment.gif)
+
+The entire web app is responsive and mobile friendly:
+![](responsive.gif)
 
   
 
